@@ -1,0 +1,375 @@
+35c4e4fef4a5c879a5138f695ad9875b
+"use strict";
+
+/* istanbul ignore next */
+function cov_nl8rfe5gp() {
+  var path = "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\layouts\\profiles\\page-ribbon.component.ts";
+  var hash = "276ae29fb007b746fa3a97d241c6861ef7b7dcb9";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\layouts\\profiles\\page-ribbon.component.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 37
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 16
+        },
+        end: {
+          line: 4,
+          column: 32
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 15
+        },
+        end: {
+          line: 5,
+          column: 39
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 20
+        },
+        end: {
+          line: 6,
+          column: 45
+        }
+      },
+      "5": {
+        start: {
+          line: 7,
+          column: 26
+        },
+        end: {
+          line: 7,
+          column: 54
+        }
+      },
+      "6": {
+        start: {
+          line: 8,
+          column: 26
+        },
+        end: {
+          line: 15,
+          column: 1
+        }
+      },
+      "7": {
+        start: {
+          line: 10,
+          column: 8
+        },
+        end: {
+          line: 10,
+          column: 45
+        }
+      },
+      "8": {
+        start: {
+          line: 13,
+          column: 8
+        },
+        end: {
+          line: 13,
+          column: 123
+        }
+      },
+      "9": {
+        start: {
+          line: 13,
+          column: 99
+        },
+        end: {
+          line: 13,
+          column: 120
+        }
+      },
+      "10": {
+        start: {
+          line: 16,
+          column: 0
+        },
+        end: {
+          line: 18,
+          column: 2
+        }
+      },
+      "11": {
+        start: {
+          line: 16,
+          column: 43
+        },
+        end: {
+          line: 18,
+          column: 1
+        }
+      },
+      "12": {
+        start: {
+          line: 19,
+          column: 0
+        },
+        end: {
+          line: 29,
+          column: 24
+        }
+      },
+      "13": {
+        start: {
+          line: 30,
+          column: 0
+        },
+        end: {
+          line: 30,
+          column: 50
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 9,
+            column: 4
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 32
+          },
+          end: {
+            line: 11,
+            column: 5
+          }
+        },
+        line: 9
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 12,
+            column: 4
+          },
+          end: {
+            line: 12,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 12,
+            column: 15
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        line: 12
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 13,
+            column: 84
+          },
+          end: {
+            line: 13,
+            column: 85
+          }
+        },
+        loc: {
+          start: {
+            line: 13,
+            column: 99
+          },
+          end: {
+            line: 13,
+            column: 120
+          }
+        },
+        line: 13
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 16,
+            column: 37
+          },
+          end: {
+            line: 16,
+            column: 38
+          }
+        },
+        loc: {
+          start: {
+            line: 16,
+            column: 43
+          },
+          end: {
+            line: 18,
+            column: 1
+          }
+        },
+        line: 16
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\layouts\\profiles\\page-ribbon.component.ts",
+      mappings: ";;;;AAAA,wCAAkD;AAElD,8CAAqC;AAErC,uDAAmD;IAWtC,mBAAmB,SAAnB,mBAAmB;IAG9B,YAAoB,cAA8B;QAA9B,mBAAc,GAAd,cAAc,CAAgB;IAAG,CAAC;IAEtD,QAAQ;QACN,IAAI,CAAC,UAAU,GAAG,IAAI,CAAC,cAAc,CAAC,cAAc,EAAE,CAAC,IAAI,CAAC,eAAG,CAAC,WAAW,CAAC,EAAE,CAAC,WAAW,CAAC,SAAS,CAAC,CAAC,CAAC;IACzG,CAAC;CACF,CAAA;;YAnBQ,gCAAc;;AAWV,mBAAmB;IAT/B,gBAAS,CAAC;QACT,QAAQ,EAAE,iBAAiB;QAC3B,QAAQ,EAAE;;;;GAIT;KAEF,CAAC;6CAIoC,gCAAc;GAHvC,mBAAmB,CAQ/B;AARY,kDAAmB",
+      names: [],
+      sources: ["C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\layouts\\profiles\\page-ribbon.component.ts"],
+      sourcesContent: ["import { Component, OnInit } from '@angular/core';\nimport { Observable } from 'rxjs';\nimport { map } from 'rxjs/operators';\n\nimport { ProfileService } from './profile.service';\n\n@Component({\n  selector: 'jhi-page-ribbon',\n  template: `\n    <div class=\"ribbon\" *ngIf=\"ribbonEnv$ | async as ribbonEnv\">\n      <a href=\"\" jhiTranslate=\"global.ribbon.{{ ribbonEnv }}\">{{ ribbonEnv }}</a>\n    </div>\n  `,\n  styleUrls: ['./page-ribbon.component.scss'],\n})\nexport class PageRibbonComponent implements OnInit {\n  ribbonEnv$?: Observable<string | undefined>;\n\n  constructor(private profileService: ProfileService) {}\n\n  ngOnInit(): void {\n    this.ribbonEnv$ = this.profileService.getProfileInfo().pipe(map(profileInfo => profileInfo.ribbonEnv));\n  }\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "276ae29fb007b746fa3a97d241c6861ef7b7dcb9"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_nl8rfe5gp = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_nl8rfe5gp();
+cov_nl8rfe5gp().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/* istanbul ignore next */
+cov_nl8rfe5gp().s[1]++;
+exports.PageRibbonComponent = void 0;
+const tslib_1 =
+/* istanbul ignore next */
+(cov_nl8rfe5gp().s[2]++, require("tslib"));
+const core_1 =
+/* istanbul ignore next */
+(cov_nl8rfe5gp().s[3]++, require("@angular/core"));
+const operators_1 =
+/* istanbul ignore next */
+(cov_nl8rfe5gp().s[4]++, require("rxjs/operators"));
+const profile_service_1 =
+/* istanbul ignore next */
+(cov_nl8rfe5gp().s[5]++, require("./profile.service"));
+
+/* istanbul ignore next */
+cov_nl8rfe5gp().s[6]++;
+let PageRibbonComponent = class PageRibbonComponent {
+  constructor(profileService) {
+    /* istanbul ignore next */
+    cov_nl8rfe5gp().f[0]++;
+    cov_nl8rfe5gp().s[7]++;
+    this.profileService = profileService;
+  }
+
+  ngOnInit() {
+    /* istanbul ignore next */
+    cov_nl8rfe5gp().f[1]++;
+    cov_nl8rfe5gp().s[8]++;
+    this.ribbonEnv$ = this.profileService.getProfileInfo().pipe(operators_1.map((profileInfo) => {
+      /* istanbul ignore next */
+      cov_nl8rfe5gp().f[2]++;
+      cov_nl8rfe5gp().s[9]++;
+      return profileInfo.ribbonEnv;
+    }));
+  }
+
+};
+
+/* istanbul ignore next */
+cov_nl8rfe5gp().s[10]++;
+
+PageRibbonComponent.ctorParameters = () => {
+  /* istanbul ignore next */
+  cov_nl8rfe5gp().f[3]++;
+  cov_nl8rfe5gp().s[11]++;
+  return [{
+    type: profile_service_1.ProfileService
+  }];
+};
+
+/* istanbul ignore next */
+cov_nl8rfe5gp().s[12]++;
+PageRibbonComponent = tslib_1.__decorate([core_1.Component({
+  selector: 'jhi-page-ribbon',
+  template: `
+    <div class="ribbon" *ngIf="ribbonEnv$ | async as ribbonEnv">
+      <a href="" jhiTranslate="global.ribbon.{{ ribbonEnv }}">{{ ribbonEnv }}</a>
+    </div>
+  `
+}), tslib_1.__metadata("design:paramtypes", [profile_service_1.ProfileService])], PageRibbonComponent);
+
+/* istanbul ignore next */
+cov_nl8rfe5gp().s[13]++;
+exports.PageRibbonComponent = PageRibbonComponent;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcTmljb2xhc1xcRGVza3RvcFxcdGVzdDZcXGdhdGV3YXlcXHNyY1xcbWFpblxcd2ViYXBwXFxhcHBcXGxheW91dHNcXHByb2ZpbGVzXFxwYWdlLXJpYmJvbi5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLE1BQUEsTUFBQTtBQUFBO0FBQUEseUJBQUEsT0FBQSxDQUFBLGVBQUEsQ0FBQSxDQUFBO0FBRUEsTUFBQSxXQUFBO0FBQUE7QUFBQSx5QkFBQSxPQUFBLENBQUEsZ0JBQUEsQ0FBQSxDQUFBO0FBRUEsTUFBQSxpQkFBQTtBQUFBO0FBQUEseUJBQUEsT0FBQSxDQUFBLG1CQUFBLENBQUEsQ0FBQTs7OztJQVdhLG1CQUFtQixHQUFBLE1BQW5CLG1CQUFtQixDQUFBO0FBRzlCLEVBQUEsV0FBQSxDQUFvQixjQUFwQixFQUFrRDtBQUFBO0FBQUE7QUFBQTtBQUE5QixTQUFBLGNBQUEsR0FBQSxjQUFBO0FBQWtDOztBQUV0RCxFQUFBLFFBQVEsR0FBQTtBQUFBO0FBQUE7QUFBQTtBQUNOLFNBQUssVUFBTCxHQUFrQixLQUFLLGNBQUwsQ0FBb0IsY0FBcEIsR0FBcUMsSUFBckMsQ0FBMEMsV0FBQSxDQUFBLEdBQUEsQ0FBSSxDQUFBLFdBQVcsS0FBSTtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQUEsV0FBVyxDQUFDLFNBQVo7QUFBcUIsS0FBeEMsQ0FBMUMsQ0FBbEI7QUFDRDs7QUFQNkIsQzs7Ozs7Ozs7OztVQVh2QixpQkFBQSxDQUFBOzs7Ozs7QUFXSSxtQkFBbUIsR0FBQSxPQUFBLENBQUEsVUFBQSxDQUFBLENBVC9CLE1BQUEsQ0FBQSxTQUFBLENBQVU7QUFDVCxFQUFBLFFBQVEsRUFBRSxpQkFERDtBQUVULEVBQUEsUUFBUSxFQUFFOzs7O0FBSVQ7QUFOUSxDQUFWLENBUytCLEUseUNBR00saUJBQUEsQ0FBQSxjLEVBSE4sQ0FBQSxFQUFuQixtQkFBbUIsQ0FBbkI7Ozs7QUFBQSxPQUFBLENBQUEsbUJBQUEsR0FBQSxtQkFBQSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbXBvbmVudCwgT25Jbml0IH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBPYnNlcnZhYmxlIH0gZnJvbSAncnhqcyc7XG5pbXBvcnQgeyBtYXAgfSBmcm9tICdyeGpzL29wZXJhdG9ycyc7XG5cbmltcG9ydCB7IFByb2ZpbGVTZXJ2aWNlIH0gZnJvbSAnLi9wcm9maWxlLnNlcnZpY2UnO1xuXG5AQ29tcG9uZW50KHtcbiAgc2VsZWN0b3I6ICdqaGktcGFnZS1yaWJib24nLFxuICB0ZW1wbGF0ZTogYFxuICAgIDxkaXYgY2xhc3M9XCJyaWJib25cIiAqbmdJZj1cInJpYmJvbkVudiQgfCBhc3luYyBhcyByaWJib25FbnZcIj5cbiAgICAgIDxhIGhyZWY9XCJcIiBqaGlUcmFuc2xhdGU9XCJnbG9iYWwucmliYm9uLnt7IHJpYmJvbkVudiB9fVwiPnt7IHJpYmJvbkVudiB9fTwvYT5cbiAgICA8L2Rpdj5cbiAgYCxcbiAgc3R5bGVVcmxzOiBbJy4vcGFnZS1yaWJib24uY29tcG9uZW50LnNjc3MnXSxcbn0pXG5leHBvcnQgY2xhc3MgUGFnZVJpYmJvbkNvbXBvbmVudCBpbXBsZW1lbnRzIE9uSW5pdCB7XG4gIHJpYmJvbkVudiQ/OiBPYnNlcnZhYmxlPHN0cmluZyB8IHVuZGVmaW5lZD47XG5cbiAgY29uc3RydWN0b3IocHJpdmF0ZSBwcm9maWxlU2VydmljZTogUHJvZmlsZVNlcnZpY2UpIHt9XG5cbiAgbmdPbkluaXQoKTogdm9pZCB7XG4gICAgdGhpcy5yaWJib25FbnYkID0gdGhpcy5wcm9maWxlU2VydmljZS5nZXRQcm9maWxlSW5mbygpLnBpcGUobWFwKHByb2ZpbGVJbmZvID0+IHByb2ZpbGVJbmZvLnJpYmJvbkVudikpO1xuICB9XG59XG4iXX0=

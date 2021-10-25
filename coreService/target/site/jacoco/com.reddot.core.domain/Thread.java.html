@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Thread.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.core.domain</a> &gt; <span class="el_source">Thread.java</span></div><h1>Thread.java</h1><pre class="source lang-java linenums">package com.reddot.core.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+/**
+ * A Thread.
+ */
+@Entity
+@Table(name = &quot;thread&quot;)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+<span class="fc" id="L17">public class Thread implements Serializable {</span>
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = &quot;sequenceGenerator&quot;)
+    @SequenceGenerator(name = &quot;sequenceGenerator&quot;)
+    @Column(name = &quot;id&quot;)
+    private Long id;
+
+    @Column(name = &quot;name&quot;)
+    private String name;
+
+<span class="fc" id="L30">    @OneToMany(mappedBy = &quot;thread&quot;)</span>
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { &quot;comments&quot;, &quot;thread&quot; }, allowSetters = true)
+    private Set&lt;Post&gt; posts = new HashSet&lt;&gt;();
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { &quot;threads&quot; }, allowSetters = true)
+    private Board board;
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here
+
+    public Long getId() {
+<span class="fc" id="L42">        return this.id;</span>
+    }
+
+    public Thread id(Long id) {
+<span class="nc" id="L46">        this.setId(id);</span>
+<span class="nc" id="L47">        return this;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L51">        this.id = id;</span>
+<span class="fc" id="L52">    }</span>
+
+    public String getName() {
+<span class="fc" id="L55">        return this.name;</span>
+    }
+
+    public Thread name(String name) {
+<span class="nc" id="L59">        this.setName(name);</span>
+<span class="nc" id="L60">        return this;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L64">        this.name = name;</span>
+<span class="nc" id="L65">    }</span>
+
+    public Set&lt;Post&gt; getPosts() {
+<span class="nc" id="L68">        return this.posts;</span>
+    }
+
+    public void setPosts(Set&lt;Post&gt; posts) {
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (this.posts != null) {</span>
+<span class="nc" id="L73">            this.posts.forEach(i -&gt; i.setThread(null));</span>
+        }
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (posts != null) {</span>
+<span class="nc" id="L76">            posts.forEach(i -&gt; i.setThread(this));</span>
+        }
+<span class="nc" id="L78">        this.posts = posts;</span>
+<span class="nc" id="L79">    }</span>
+
+    public Thread posts(Set&lt;Post&gt; posts) {
+<span class="nc" id="L82">        this.setPosts(posts);</span>
+<span class="nc" id="L83">        return this;</span>
+    }
+
+    public Thread addPost(Post post) {
+<span class="nc" id="L87">        this.posts.add(post);</span>
+<span class="nc" id="L88">        post.setThread(this);</span>
+<span class="nc" id="L89">        return this;</span>
+    }
+
+    public Thread removePost(Post post) {
+<span class="nc" id="L93">        this.posts.remove(post);</span>
+<span class="nc" id="L94">        post.setThread(null);</span>
+<span class="nc" id="L95">        return this;</span>
+    }
+
+    public Board getBoard() {
+<span class="nc" id="L99">        return this.board;</span>
+    }
+
+    public void setBoard(Board board) {
+<span class="nc" id="L103">        this.board = board;</span>
+<span class="nc" id="L104">    }</span>
+
+    public Thread board(Board board) {
+<span class="nc" id="L107">        this.setBoard(board);</span>
+<span class="nc" id="L108">        return this;</span>
+    }
+
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">        if (this == o) {</span>
+<span class="nc" id="L116">            return true;</span>
+        }
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (!(o instanceof Thread)) {</span>
+<span class="fc" id="L119">            return false;</span>
+        }
+<span class="fc bfc" id="L121" title="All 4 branches covered.">        return id != null &amp;&amp; id.equals(((Thread) o).id);</span>
+    }
+
+    @Override
+    public int hashCode() {
+        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
+<span class="fc" id="L127">        return getClass().hashCode();</span>
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+<span class="fc" id="L133">        return &quot;Thread{&quot; +</span>
+<span class="fc" id="L134">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L135">            &quot;, name='&quot; + getName() + &quot;'&quot; +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

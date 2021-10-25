@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PostResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.core.web.rest</a> &gt; <span class="el_source">PostResource.java</span></div><h1>PostResource.java</h1><pre class="source lang-java linenums">package com.reddot.core.web.rest;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.reddot.core.repository.PostRepository;
+import com.reddot.core.service.PostService;
+import com.reddot.core.service.dto.PostDTO;
+import com.reddot.core.service.dto.StatisticPostDTO;
+import com.reddot.core.web.rest.errors.BadRequestAlertException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
+import org.apache.camel.ProducerTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
+import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.ResponseUtil;
+
+/**
+ * REST controller for managing {@link com.reddot.core.domain.Post}.
+ */
+@RestController
+@RequestMapping(&quot;/api&quot;)
+public class PostResource {
+
+<span class="nc" id="L36">    private final Logger log = LoggerFactory.getLogger(PostResource.class);</span>
+
+    private static final String ENTITY_NAME = &quot;corePost&quot;;
+
+    @Value(&quot;${jhipster.clientApp.name}&quot;)
+    private String applicationName;
+
+    private final PostService postService;
+
+    private final PostRepository postRepository;
+    
+	private final ProducerTemplate producerTemplate;
+
+<span class="nc" id="L49">    public PostResource(PostService postService, PostRepository postRepository, ProducerTemplate producerTemplate) {</span>
+<span class="nc" id="L50">        this.postService = postService;</span>
+<span class="nc" id="L51">        this.postRepository = postRepository;</span>
+<span class="nc" id="L52">        this.producerTemplate = producerTemplate;</span>
+<span class="nc" id="L53">    }</span>
+
+    /**
+     * {@code POST  /posts} : Create a new post.
+     *
+     * @param postDTO the postDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new postDTO, or with status {@code 400 (Bad Request)} if the post has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     * @throws JsonProcessingException 
+     */
+    @PostMapping(&quot;/posts&quot;)
+    public ResponseEntity&lt;PostDTO&gt; createPost(@RequestBody PostDTO postDTO) throws URISyntaxException, JsonProcessingException {
+<span class="nc" id="L65">        log.debug(&quot;REST request to save Post : {}&quot;, postDTO);</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (postDTO.getId() != null) {</span>
+<span class="nc" id="L67">            throw new BadRequestAlertException(&quot;A new post cannot already have an ID&quot;, ENTITY_NAME, &quot;idexists&quot;);</span>
+        }
+<span class="nc" id="L69">        PostDTO result = postService.save(postDTO);</span>
+        
+<span class="nc" id="L71">        ObjectMapper mapper = new ObjectMapper();</span>
+
+    	try {
+<span class="nc" id="L74">            StatisticPostDTO stats = new StatisticPostDTO();</span>
+            
+<span class="nc" id="L76">            Calendar cal = Calendar.getInstance();</span>
+            
+<span class="nc" id="L78">            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</span>
+<span class="nc" id="L79">            stats.setUser(authentication.getName());</span>
+            
+<span class="nc" id="L81">            stats.setYear(cal.get(Calendar.YEAR));</span>
+<span class="nc" id="L82">            stats.setMonth(cal.get(Calendar.MONTH));</span>
+<span class="nc" id="L83">            stats.setDay(cal.get(Calendar.DAY_OF_MONTH));</span>
+            
+<span class="nc" id="L85">        	String jsonString = mapper.writeValueAsString(stats);</span>
+            
+<span class="nc" id="L87">            producerTemplate.sendBody(&quot;direct:firstRoute&quot;, jsonString);</span>
+<span class="nc" id="L88">		} catch (Exception e) {</span>
+			// Error is is no blocking
+<span class="nc" id="L90">		}</span>
+
+        
+<span class="nc" id="L93">        return ResponseEntity</span>
+<span class="nc" id="L94">            .created(new URI(&quot;/api/posts/&quot; + result.getId()))</span>
+<span class="nc" id="L95">            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))</span>
+<span class="nc" id="L96">            .body(result);</span>
+    }
+
+    /**
+     * {@code PUT  /posts/:id} : Updates an existing post.
+     *
+     * @param id the id of the postDTO to save.
+     * @param postDTO the postDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated postDTO,
+     * or with status {@code 400 (Bad Request)} if the postDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the postDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping(&quot;/posts/{id}&quot;)
+    public ResponseEntity&lt;PostDTO&gt; updatePost(@PathVariable(value = &quot;id&quot;, required = false) final Long id, @RequestBody PostDTO postDTO)
+        throws URISyntaxException {
+<span class="nc" id="L112">        log.debug(&quot;REST request to update Post : {}, {}&quot;, id, postDTO);</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">        if (postDTO.getId() == null) {</span>
+<span class="nc" id="L114">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        if (!Objects.equals(id, postDTO.getId())) {</span>
+<span class="nc" id="L117">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="nc bnc" id="L120" title="All 2 branches missed.">        if (!postRepository.existsById(id)) {</span>
+<span class="nc" id="L121">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="nc" id="L124">        PostDTO result = postService.save(postDTO);</span>
+<span class="nc" id="L125">        return ResponseEntity</span>
+<span class="nc" id="L126">            .ok()</span>
+<span class="nc" id="L127">            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, postDTO.getId().toString()))</span>
+<span class="nc" id="L128">            .body(result);</span>
+    }
+
+    /**
+     * {@code PATCH  /posts/:id} : Partial updates given fields of an existing post, field will ignore if it is null
+     *
+     * @param id the id of the postDTO to save.
+     * @param postDTO the postDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated postDTO,
+     * or with status {@code 400 (Bad Request)} if the postDTO is not valid,
+     * or with status {@code 404 (Not Found)} if the postDTO is not found,
+     * or with status {@code 500 (Internal Server Error)} if the postDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PatchMapping(value = &quot;/posts/{id}&quot;, consumes = { &quot;application/json&quot;, &quot;application/merge-patch+json&quot; })
+    public ResponseEntity&lt;PostDTO&gt; partialUpdatePost(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody PostDTO postDTO
+    ) throws URISyntaxException {
+<span class="nc" id="L147">        log.debug(&quot;REST request to partial update Post partially : {}, {}&quot;, id, postDTO);</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        if (postDTO.getId() == null) {</span>
+<span class="nc" id="L149">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="nc bnc" id="L151" title="All 2 branches missed.">        if (!Objects.equals(id, postDTO.getId())) {</span>
+<span class="nc" id="L152">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="nc bnc" id="L155" title="All 2 branches missed.">        if (!postRepository.existsById(id)) {</span>
+<span class="nc" id="L156">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="nc" id="L159">        Optional&lt;PostDTO&gt; result = postService.partialUpdate(postDTO);</span>
+
+<span class="nc" id="L161">        return ResponseUtil.wrapOrNotFound(</span>
+            result,
+<span class="nc" id="L163">            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, postDTO.getId().toString())</span>
+        );
+    }
+
+    /**
+     * {@code GET  /posts} : get all the posts.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of posts in body.
+     */
+    @GetMapping(&quot;/posts&quot;)
+    public List&lt;PostDTO&gt; getAllPosts() {
+<span class="nc" id="L174">        log.debug(&quot;REST request to get all Posts&quot;);</span>
+<span class="nc" id="L175">        return postService.findAll();</span>
+    }
+
+    /**
+     * {@code GET  /posts/:id} : get the &quot;id&quot; post.
+     *
+     * @param id the id of the postDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the postDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping(&quot;/posts/{id}&quot;)
+    public ResponseEntity&lt;PostDTO&gt; getPost(@PathVariable Long id) {
+<span class="nc" id="L186">        log.debug(&quot;REST request to get Post : {}&quot;, id);</span>
+<span class="nc" id="L187">        Optional&lt;PostDTO&gt; postDTO = postService.findOne(id);</span>
+<span class="nc" id="L188">        return ResponseUtil.wrapOrNotFound(postDTO);</span>
+    }
+
+    /**
+     * {@code DELETE  /posts/:id} : delete the &quot;id&quot; post.
+     *
+     * @param id the id of the postDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping(&quot;/posts/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deletePost(@PathVariable Long id) {
+<span class="nc" id="L199">        log.debug(&quot;REST request to delete Post : {}&quot;, id);</span>
+<span class="nc" id="L200">        postService.delete(id);</span>
+<span class="nc" id="L201">        return ResponseEntity</span>
+<span class="nc" id="L202">            .noContent()</span>
+<span class="nc" id="L203">            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))</span>
+<span class="nc" id="L204">            .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

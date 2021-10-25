@@ -1,0 +1,156 @@
+97bc9f4856d90ce571f9ff303f2c3dbd
+"use strict";
+
+/* istanbul ignore next */
+function cov_215scc3jma() {
+  var path = "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\admin\\logs\\log.model.ts";
+  var hash = "8866e2025b6703bd6723f9eb74d6b12858643f29";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\admin\\logs\\log.model.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 21
+        }
+      },
+      "2": {
+        start: {
+          line: 6,
+          column: 8
+        },
+        end: {
+          line: 6,
+          column: 25
+        }
+      },
+      "3": {
+        start: {
+          line: 7,
+          column: 8
+        },
+        end: {
+          line: 7,
+          column: 27
+        }
+      },
+      "4": {
+        start: {
+          line: 10,
+          column: 0
+        },
+        end: {
+          line: 10,
+          column: 18
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 5,
+            column: 4
+          },
+          end: {
+            line: 5,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 29
+          },
+          end: {
+            line: 8,
+            column: 5
+          }
+        },
+        line: 5
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\admin\\logs\\log.model.ts",
+      mappings: ";;;AAYA,MAAa,GAAG;IACd,YAAmB,IAAY,EAAS,KAAY;QAAjC,SAAI,GAAJ,IAAI,CAAQ;QAAS,UAAK,GAAL,KAAK,CAAO;IAAG,CAAC;CACzD;AAFD,kBAEC",
+      names: [],
+      sources: ["C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\admin\\logs\\log.model.ts"],
+      sourcesContent: ["export type Level = 'TRACE' | 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'OFF';\n\nexport interface Logger {\n  configuredLevel: Level | null;\n  effectiveLevel: Level;\n}\n\nexport interface LoggersResponse {\n  levels: Level[];\n  loggers: { [key: string]: Logger };\n}\n\nexport class Log {\n  constructor(public name: string, public level: Level) {}\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "8866e2025b6703bd6723f9eb74d6b12858643f29"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_215scc3jma = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_215scc3jma();
+cov_215scc3jma().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/* istanbul ignore next */
+cov_215scc3jma().s[1]++;
+exports.Log = void 0;
+
+class Log {
+  constructor(name, level) {
+    /* istanbul ignore next */
+    cov_215scc3jma().f[0]++;
+    cov_215scc3jma().s[2]++;
+    this.name = name;
+
+    /* istanbul ignore next */
+    cov_215scc3jma().s[3]++;
+    this.level = level;
+  }
+
+}
+
+/* istanbul ignore next */
+cov_215scc3jma().s[4]++;
+exports.Log = Log;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcTmljb2xhc1xcRGVza3RvcFxcdGVzdDZcXGdhdGV3YXlcXHNyY1xcbWFpblxcd2ViYXBwXFxhcHBcXGFkbWluXFxsb2dzXFxsb2cubW9kZWwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFZQSxNQUFhLEdBQWIsQ0FBZ0I7QUFDZCxFQUFBLFdBQUEsQ0FBbUIsSUFBbkIsRUFBd0MsS0FBeEMsRUFBb0Q7QUFBQTtBQUFBO0FBQUE7QUFBakMsU0FBQSxJQUFBLEdBQUEsSUFBQTs7QUFBaUM7QUFBQTtBQUFaLFNBQUEsS0FBQSxHQUFBLEtBQUE7QUFBZ0I7O0FBRDFDOzs7O0FBQWhCLE9BQUEsQ0FBQSxHQUFBLEdBQUEsR0FBQSIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB0eXBlIExldmVsID0gJ1RSQUNFJyB8ICdERUJVRycgfCAnSU5GTycgfCAnV0FSTicgfCAnRVJST1InIHwgJ09GRic7XG5cbmV4cG9ydCBpbnRlcmZhY2UgTG9nZ2VyIHtcbiAgY29uZmlndXJlZExldmVsOiBMZXZlbCB8IG51bGw7XG4gIGVmZmVjdGl2ZUxldmVsOiBMZXZlbDtcbn1cblxuZXhwb3J0IGludGVyZmFjZSBMb2dnZXJzUmVzcG9uc2Uge1xuICBsZXZlbHM6IExldmVsW107XG4gIGxvZ2dlcnM6IHsgW2tleTogc3RyaW5nXTogTG9nZ2VyIH07XG59XG5cbmV4cG9ydCBjbGFzcyBMb2cge1xuICBjb25zdHJ1Y3RvcihwdWJsaWMgbmFtZTogc3RyaW5nLCBwdWJsaWMgbGV2ZWw6IExldmVsKSB7fVxufVxuIl19

@@ -1,0 +1,416 @@
+0a80fd54f5e1c8bb6ce4d366c9e60373
+"use strict";
+
+/* istanbul ignore next */
+function cov_2dm3xoal90() {
+  var path = "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\auth\\state-storage.service.ts";
+  var hash = "1e74f58425ceabf700e3f85fda6df969b600bb93";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\auth\\state-storage.service.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 37
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 16
+        },
+        end: {
+          line: 4,
+          column: 32
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 15
+        },
+        end: {
+          line: 5,
+          column: 39
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 25
+        },
+        end: {
+          line: 6,
+          column: 50
+        }
+      },
+      "5": {
+        start: {
+          line: 7,
+          column: 26
+        },
+        end: {
+          line: 21,
+          column: 1
+        }
+      },
+      "6": {
+        start: {
+          line: 9,
+          column: 8
+        },
+        end: {
+          line: 9,
+          column: 59
+        }
+      },
+      "7": {
+        start: {
+          line: 10,
+          column: 8
+        },
+        end: {
+          line: 10,
+          column: 44
+        }
+      },
+      "8": {
+        start: {
+          line: 13,
+          column: 8
+        },
+        end: {
+          line: 13,
+          column: 67
+        }
+      },
+      "9": {
+        start: {
+          line: 16,
+          column: 8
+        },
+        end: {
+          line: 16,
+          column: 72
+        }
+      },
+      "10": {
+        start: {
+          line: 19,
+          column: 8
+        },
+        end: {
+          line: 19,
+          column: 62
+        }
+      },
+      "11": {
+        start: {
+          line: 22,
+          column: 0
+        },
+        end: {
+          line: 24,
+          column: 2
+        }
+      },
+      "12": {
+        start: {
+          line: 22,
+          column: 43
+        },
+        end: {
+          line: 24,
+          column: 1
+        }
+      },
+      "13": {
+        start: {
+          line: 25,
+          column: 0
+        },
+        end: {
+          line: 28,
+          column: 24
+        }
+      },
+      "14": {
+        start: {
+          line: 29,
+          column: 0
+        },
+        end: {
+          line: 29,
+          column: 50
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 8,
+            column: 4
+          },
+          end: {
+            line: 8,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 8,
+            column: 39
+          },
+          end: {
+            line: 11,
+            column: 5
+          }
+        },
+        line: 8
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 12,
+            column: 4
+          },
+          end: {
+            line: 12,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 12,
+            column: 18
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        line: 12
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 15,
+            column: 4
+          },
+          end: {
+            line: 15,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 15,
+            column: 13
+          },
+          end: {
+            line: 17,
+            column: 5
+          }
+        },
+        line: 15
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 18,
+            column: 4
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 18,
+            column: 15
+          },
+          end: {
+            line: 20,
+            column: 5
+          }
+        },
+        line: 18
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 22,
+            column: 37
+          },
+          end: {
+            line: 22,
+            column: 38
+          }
+        },
+        loc: {
+          start: {
+            line: 22,
+            column: 43
+          },
+          end: {
+            line: 24,
+            column: 1
+          }
+        },
+        line: 22
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\auth\\state-storage.service.ts",
+      mappings: ";;;;AAAA,wCAA2C;AAC3C,mDAAuD;IAG1C,mBAAmB,SAAnB,mBAAmB;IAG9B,YAAoB,qBAA4C;QAA5C,0BAAqB,GAArB,qBAAqB,CAAuB;QAFxD,mBAAc,GAAG,aAAa,CAAC;IAE4B,CAAC;IAEpE,QAAQ,CAAC,GAAW;QAClB,IAAI,CAAC,qBAAqB,CAAC,KAAK,CAAC,IAAI,CAAC,cAAc,EAAE,GAAG,CAAC,CAAC;IAC7D,CAAC;IAED,MAAM;QACJ,OAAO,IAAI,CAAC,qBAAqB,CAAC,QAAQ,CAAC,IAAI,CAAC,cAAc,CAAkB,CAAC;IACnF,CAAC;IAED,QAAQ;QACN,IAAI,CAAC,qBAAqB,CAAC,KAAK,CAAC,IAAI,CAAC,cAAc,CAAC,CAAC;IACxD,CAAC;CACF,CAAA;;YAnBQ,sCAAqB;;AAGjB,mBAAmB;IAD/B,iBAAU,CAAC,EAAE,UAAU,EAAE,MAAM,EAAE,CAAC;6CAIU,sCAAqB;GAHrD,mBAAmB,CAgB/B;AAhBY,kDAAmB",
+      names: [],
+      sources: ["C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\auth\\state-storage.service.ts"],
+      sourcesContent: ["import { Injectable } from '@angular/core';\nimport { SessionStorageService } from 'ngx-webstorage';\n\n@Injectable({ providedIn: 'root' })\nexport class StateStorageService {\n  private previousUrlKey = 'previousUrl';\n\n  constructor(private sessionStorageService: SessionStorageService) {}\n\n  storeUrl(url: string): void {\n    this.sessionStorageService.store(this.previousUrlKey, url);\n  }\n\n  getUrl(): string | null {\n    return this.sessionStorageService.retrieve(this.previousUrlKey) as string | null;\n  }\n\n  clearUrl(): void {\n    this.sessionStorageService.clear(this.previousUrlKey);\n  }\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "1e74f58425ceabf700e3f85fda6df969b600bb93"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2dm3xoal90 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_2dm3xoal90();
+cov_2dm3xoal90().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/* istanbul ignore next */
+cov_2dm3xoal90().s[1]++;
+exports.StateStorageService = void 0;
+const tslib_1 =
+/* istanbul ignore next */
+(cov_2dm3xoal90().s[2]++, require("tslib"));
+const core_1 =
+/* istanbul ignore next */
+(cov_2dm3xoal90().s[3]++, require("@angular/core"));
+const ngx_webstorage_1 =
+/* istanbul ignore next */
+(cov_2dm3xoal90().s[4]++, require("ngx-webstorage"));
+
+/* istanbul ignore next */
+cov_2dm3xoal90().s[5]++;
+let StateStorageService = class StateStorageService {
+  constructor(sessionStorageService) {
+    /* istanbul ignore next */
+    cov_2dm3xoal90().f[0]++;
+    cov_2dm3xoal90().s[6]++;
+    this.sessionStorageService = sessionStorageService;
+
+    /* istanbul ignore next */
+    cov_2dm3xoal90().s[7]++;
+    this.previousUrlKey = 'previousUrl';
+  }
+
+  storeUrl(url) {
+    /* istanbul ignore next */
+    cov_2dm3xoal90().f[1]++;
+    cov_2dm3xoal90().s[8]++;
+    this.sessionStorageService.store(this.previousUrlKey, url);
+  }
+
+  getUrl() {
+    /* istanbul ignore next */
+    cov_2dm3xoal90().f[2]++;
+    cov_2dm3xoal90().s[9]++;
+    return this.sessionStorageService.retrieve(this.previousUrlKey);
+  }
+
+  clearUrl() {
+    /* istanbul ignore next */
+    cov_2dm3xoal90().f[3]++;
+    cov_2dm3xoal90().s[10]++;
+    this.sessionStorageService.clear(this.previousUrlKey);
+  }
+
+};
+
+/* istanbul ignore next */
+cov_2dm3xoal90().s[11]++;
+
+StateStorageService.ctorParameters = () => {
+  /* istanbul ignore next */
+  cov_2dm3xoal90().f[4]++;
+  cov_2dm3xoal90().s[12]++;
+  return [{
+    type: ngx_webstorage_1.SessionStorageService
+  }];
+};
+
+/* istanbul ignore next */
+cov_2dm3xoal90().s[13]++;
+StateStorageService = tslib_1.__decorate([core_1.Injectable({
+  providedIn: 'root'
+}), tslib_1.__metadata("design:paramtypes", [ngx_webstorage_1.SessionStorageService])], StateStorageService);
+
+/* istanbul ignore next */
+cov_2dm3xoal90().s[14]++;
+exports.StateStorageService = StateStorageService;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcTmljb2xhc1xcRGVza3RvcFxcdGVzdDZcXGdhdGV3YXlcXHNyY1xcbWFpblxcd2ViYXBwXFxhcHBcXGNvcmVcXGF1dGhcXHN0YXRlLXN0b3JhZ2Uuc2VydmljZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQWNJOzs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQWRKLE1BQUEsTUFBQTtBQUFBO0FBQUEsMEJBQUEsT0FBQSxDQUFBLGVBQUEsQ0FBQSxDQUFBO0FBQ0EsTUFBQSxnQkFBQTtBQUFBO0FBQUEsMEJBQUEsT0FBQSxDQUFBLGdCQUFBLENBQUEsQ0FBQTs7OztJQUdhLG1CQUFtQixHQUFBLE1BQW5CLG1CQUFtQixDQUFBO0FBRzlCLEVBQUEsV0FBQSxDQUFvQixxQkFBcEIsRUFBZ0U7QUFBQTtBQUFBO0FBQUE7QUFBNUMsU0FBQSxxQkFBQSxHQUFBLHFCQUFBOztBQUE0QztBQUFBO0FBRnhELFNBQUEsY0FBQSxHQUFpQixhQUFqQjtBQUU0RDs7QUFFcEUsRUFBQSxRQUFRLENBQUMsR0FBRCxFQUFZO0FBQUE7QUFBQTtBQUFBO0FBQ2xCLFNBQUsscUJBQUwsQ0FBMkIsS0FBM0IsQ0FBaUMsS0FBSyxjQUF0QyxFQUFzRCxHQUF0RDtBQUNEOztBQUVELEVBQUEsTUFBTSxHQUFBO0FBQUE7QUFBQTtBQUFBO0FBQ0osV0FBTyxLQUFLLHFCQUFMLENBQTJCLFFBQTNCLENBQW9DLEtBQUssY0FBekMsQ0FBUDtBQUNEOztBQUVELEVBQUEsUUFBUSxHQUFBO0FBQUE7QUFBQTtBQUFBO0FBQ04sU0FBSyxxQkFBTCxDQUEyQixLQUEzQixDQUFpQyxLQUFLLGNBQXRDO0FBQ0Q7O0FBZjZCLEM7Ozs7Ozs7Ozs7VUFIdkIsZ0JBQUEsQ0FBQTs7Ozs7O0FBR0ksbUJBQW1CLEdBQUEsT0FBQSxDQUFBLFVBQUEsQ0FBQSxDQUQvQixNQUFBLENBQUEsVUFBQSxDQUFXO0FBQUUsRUFBQSxVQUFVLEVBQUU7QUFBZCxDQUFYLENBQytCLEUseUNBR2EsZ0JBQUEsQ0FBQSxxQixFQUhiLENBQUEsRUFBbkIsbUJBQW1CLENBQW5COzs7O0FBQUEsT0FBQSxDQUFBLG1CQUFBLEdBQUEsbUJBQUEiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBJbmplY3RhYmxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBTZXNzaW9uU3RvcmFnZVNlcnZpY2UgfSBmcm9tICduZ3gtd2Vic3RvcmFnZSc7XG5cbkBJbmplY3RhYmxlKHsgcHJvdmlkZWRJbjogJ3Jvb3QnIH0pXG5leHBvcnQgY2xhc3MgU3RhdGVTdG9yYWdlU2VydmljZSB7XG4gIHByaXZhdGUgcHJldmlvdXNVcmxLZXkgPSAncHJldmlvdXNVcmwnO1xuXG4gIGNvbnN0cnVjdG9yKHByaXZhdGUgc2Vzc2lvblN0b3JhZ2VTZXJ2aWNlOiBTZXNzaW9uU3RvcmFnZVNlcnZpY2UpIHt9XG5cbiAgc3RvcmVVcmwodXJsOiBzdHJpbmcpOiB2b2lkIHtcbiAgICB0aGlzLnNlc3Npb25TdG9yYWdlU2VydmljZS5zdG9yZSh0aGlzLnByZXZpb3VzVXJsS2V5LCB1cmwpO1xuICB9XG5cbiAgZ2V0VXJsKCk6IHN0cmluZyB8IG51bGwge1xuICAgIHJldHVybiB0aGlzLnNlc3Npb25TdG9yYWdlU2VydmljZS5yZXRyaWV2ZSh0aGlzLnByZXZpb3VzVXJsS2V5KSBhcyBzdHJpbmcgfCBudWxsO1xuICB9XG5cbiAgY2xlYXJVcmwoKTogdm9pZCB7XG4gICAgdGhpcy5zZXNzaW9uU3RvcmFnZVNlcnZpY2UuY2xlYXIodGhpcy5wcmV2aW91c1VybEtleSk7XG4gIH1cbn1cbiJdfQ==

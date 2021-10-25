@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PostMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.core.service.mapper</a> &gt; <span class="el_source">PostMapperImpl.java</span></div><h1>PostMapperImpl.java</h1><pre class="source lang-java linenums">package com.reddot.core.service.mapper;
+
+import com.reddot.core.domain.Post;
+import com.reddot.core.service.dto.PostDTO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.processing.Generated;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+    date = &quot;2021-10-26T01:11:31+0200&quot;,
+    comments = &quot;version: 1.4.2.Final, compiler: javac, environment: Java 11.0.12 (Eclipse Foundation)&quot;
+)
+@Component
+<span class="fc" id="L17">public class PostMapperImpl implements PostMapper {</span>
+
+    @Autowired
+    private ThreadMapper threadMapper;
+
+    @Override
+    public Post toEntity(PostDTO dto) {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if ( dto == null ) {</span>
+<span class="fc" id="L25">            return null;</span>
+        }
+
+<span class="fc" id="L28">        Post post = new Post();</span>
+
+<span class="fc" id="L30">        post.setId( dto.getId() );</span>
+<span class="fc" id="L31">        post.setName( dto.getName() );</span>
+<span class="fc" id="L32">        post.setContent( dto.getContent() );</span>
+<span class="fc" id="L33">        post.thread( threadMapper.toEntity( dto.getThread() ) );</span>
+
+<span class="fc" id="L35">        return post;</span>
+    }
+
+    @Override
+    public List&lt;Post&gt; toEntity(List&lt;PostDTO&gt; dtoList) {
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if ( dtoList == null ) {</span>
+<span class="nc" id="L41">            return null;</span>
+        }
+
+<span class="nc" id="L44">        List&lt;Post&gt; list = new ArrayList&lt;Post&gt;( dtoList.size() );</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        for ( PostDTO postDTO : dtoList ) {</span>
+<span class="nc" id="L46">            list.add( toEntity( postDTO ) );</span>
+<span class="nc" id="L47">        }</span>
+
+<span class="nc" id="L49">        return list;</span>
+    }
+
+    @Override
+    public List&lt;PostDTO&gt; toDto(List&lt;Post&gt; entityList) {
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        if ( entityList == null ) {</span>
+<span class="nc" id="L55">            return null;</span>
+        }
+
+<span class="nc" id="L58">        List&lt;PostDTO&gt; list = new ArrayList&lt;PostDTO&gt;( entityList.size() );</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        for ( Post post : entityList ) {</span>
+<span class="nc" id="L60">            list.add( toDto( post ) );</span>
+<span class="nc" id="L61">        }</span>
+
+<span class="nc" id="L63">        return list;</span>
+    }
+
+    @Override
+    public void partialUpdate(Post entity, PostDTO dto) {
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if ( dto == null ) {</span>
+<span class="nc" id="L69">            return;</span>
+        }
+
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if ( dto.getId() != null ) {</span>
+<span class="fc" id="L73">            entity.setId( dto.getId() );</span>
+        }
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        if ( dto.getName() != null ) {</span>
+<span class="fc" id="L76">            entity.setName( dto.getName() );</span>
+        }
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if ( dto.getContent() != null ) {</span>
+<span class="fc" id="L79">            entity.setContent( dto.getContent() );</span>
+        }
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        if ( dto.getThread() != null ) {</span>
+<span class="nc" id="L82">            entity.thread( threadMapper.toEntity( dto.getThread() ) );</span>
+        }
+<span class="fc" id="L84">    }</span>
+
+    @Override
+    public PostDTO toDto(Post s) {
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">        if ( s == null ) {</span>
+<span class="nc" id="L89">            return null;</span>
+        }
+
+<span class="fc" id="L92">        PostDTO postDTO = new PostDTO();</span>
+
+<span class="fc" id="L94">        postDTO.setThread( threadMapper.toDtoId( s.getThread() ) );</span>
+<span class="fc" id="L95">        postDTO.setId( s.getId() );</span>
+<span class="fc" id="L96">        postDTO.setName( s.getName() );</span>
+<span class="fc" id="L97">        postDTO.setContent( s.getContent() );</span>
+
+<span class="fc" id="L99">        return postDTO;</span>
+    }
+
+    @Override
+    public PostDTO toDtoId(Post post) {
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        if ( post == null ) {</span>
+<span class="fc" id="L105">            return null;</span>
+        }
+
+<span class="nc" id="L108">        PostDTO postDTO = new PostDTO();</span>
+
+<span class="nc" id="L110">        postDTO.setId( post.getId() );</span>
+
+<span class="nc" id="L112">        return postDTO;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

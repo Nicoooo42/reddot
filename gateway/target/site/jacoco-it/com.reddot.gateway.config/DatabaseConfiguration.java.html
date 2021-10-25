@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DatabaseConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Gateway</a> &gt; <a href="index.source.html" class="el_package">com.reddot.gateway.config</a> &gt; <span class="el_source">DatabaseConfiguration.java</span></div><h1>DatabaseConfiguration.java</h1><pre class="source lang-java linenums">package com.reddot.gateway.config;
+
+import io.r2dbc.spi.ConnectionFactory;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.convert.CustomConversions;
+import org.springframework.data.convert.ReadingConverter;
+import org.springframework.data.convert.WritingConverter;
+import org.springframework.data.r2dbc.convert.MappingR2dbcConverter;
+import org.springframework.data.r2dbc.convert.R2dbcCustomConversions;
+import org.springframework.data.r2dbc.core.ReactiveDataAccessStrategy;
+import org.springframework.data.r2dbc.dialect.DialectResolver;
+import org.springframework.data.r2dbc.dialect.R2dbcDialect;
+import org.springframework.data.r2dbc.query.UpdateMapper;
+import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
+import org.springframework.data.relational.core.dialect.RenderContextFactory;
+import org.springframework.data.relational.core.sql.render.SqlRenderer;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import tech.jhipster.config.JHipsterConstants;
+
+@Configuration
+@EnableR2dbcRepositories({ &quot;com.reddot.gateway.repository&quot; })
+@EnableTransactionManagement
+<span class="fc" id="L37">public class DatabaseConfiguration {</span>
+
+    // LocalDateTime seems to be the only type that is supported across all drivers atm
+    // See https://github.com/r2dbc/r2dbc-h2/pull/139 https://github.com/mirromutth/r2dbc-mysql/issues/105
+    @Bean
+    public R2dbcCustomConversions r2dbcCustomConversions(R2dbcDialect dialect) {
+<span class="fc" id="L43">        List&lt;Object&gt; converters = new ArrayList&lt;&gt;(dialect.getConverters());</span>
+<span class="fc" id="L44">        converters.add(InstantWriteConverter.INSTANCE);</span>
+<span class="fc" id="L45">        converters.add(InstantReadConverter.INSTANCE);</span>
+<span class="fc" id="L46">        converters.add(BitSetReadConverter.INSTANCE);</span>
+<span class="fc" id="L47">        converters.add(DurationWriteConverter.INSTANCE);</span>
+<span class="fc" id="L48">        converters.add(DurationReadConverter.INSTANCE);</span>
+<span class="fc" id="L49">        converters.add(ZonedDateTimeReadConverter.INSTANCE);</span>
+<span class="fc" id="L50">        converters.add(ZonedDateTimeWriteConverter.INSTANCE);</span>
+<span class="fc" id="L51">        converters.addAll(R2dbcCustomConversions.STORE_CONVERTERS);</span>
+<span class="fc" id="L52">        return new R2dbcCustomConversions(</span>
+<span class="fc" id="L53">            CustomConversions.StoreConversions.of(dialect.getSimpleTypeHolder(), converters),</span>
+<span class="fc" id="L54">            Collections.emptyList()</span>
+        );
+    }
+
+    @Bean
+    public R2dbcDialect dialect(ConnectionFactory connectionFactory) {
+<span class="fc" id="L60">        return DialectResolver.getDialect(connectionFactory);</span>
+    }
+
+    @Bean
+    public UpdateMapper updateMapper(R2dbcDialect dialect, MappingR2dbcConverter mappingR2dbcConverter) {
+<span class="fc" id="L65">        return new UpdateMapper(dialect, mappingR2dbcConverter);</span>
+    }
+
+    @Bean
+    public SqlRenderer sqlRenderer(R2dbcDialect dialect) {
+<span class="fc" id="L70">        RenderContextFactory factory = new RenderContextFactory(dialect);</span>
+<span class="fc" id="L71">        return SqlRenderer.create(factory.createRenderContext());</span>
+    }
+
+<span class="fc" id="L74">    @WritingConverter</span>
+    public enum InstantWriteConverter implements Converter&lt;Instant, LocalDateTime&gt; {
+<span class="fc" id="L76">        INSTANCE;</span>
+
+        public LocalDateTime convert(Instant source) {
+<span class="fc" id="L79">            return LocalDateTime.ofInstant(source, ZoneOffset.UTC);</span>
+        }
+    }
+
+<span class="fc" id="L83">    @ReadingConverter</span>
+    public enum InstantReadConverter implements Converter&lt;LocalDateTime, Instant&gt; {
+<span class="fc" id="L85">        INSTANCE;</span>
+
+        @Override
+        public Instant convert(LocalDateTime localDateTime) {
+<span class="fc" id="L89">            return localDateTime.toInstant(ZoneOffset.UTC);</span>
+        }
+    }
+
+<span class="fc" id="L93">    @ReadingConverter</span>
+    public enum BitSetReadConverter implements Converter&lt;BitSet, Boolean&gt; {
+<span class="fc" id="L95">        INSTANCE;</span>
+
+        @Override
+        public Boolean convert(BitSet bitSet) {
+<span class="nc" id="L99">            return bitSet.get(0);</span>
+        }
+    }
+
+<span class="fc" id="L103">    @ReadingConverter</span>
+    public enum ZonedDateTimeReadConverter implements Converter&lt;LocalDateTime, ZonedDateTime&gt; {
+<span class="fc" id="L105">        INSTANCE;</span>
+
+        @Override
+        public ZonedDateTime convert(LocalDateTime localDateTime) {
+            // Be aware - we are using the UTC timezone
+<span class="nc" id="L110">            return ZonedDateTime.of(localDateTime, ZoneOffset.UTC);</span>
+        }
+    }
+
+<span class="fc" id="L114">    @WritingConverter</span>
+    public enum ZonedDateTimeWriteConverter implements Converter&lt;ZonedDateTime, LocalDateTime&gt; {
+<span class="fc" id="L116">        INSTANCE;</span>
+
+        @Override
+        public LocalDateTime convert(ZonedDateTime zonedDateTime) {
+<span class="nc" id="L120">            return zonedDateTime.toLocalDateTime();</span>
+        }
+    }
+
+<span class="fc" id="L124">    @WritingConverter</span>
+    public enum DurationWriteConverter implements Converter&lt;Duration, Long&gt; {
+<span class="fc" id="L126">        INSTANCE;</span>
+
+        @Override
+        public Long convert(Duration source) {
+<span class="nc bnc" id="L130" title="All 2 branches missed.">            return source != null ? source.toMillis() : null;</span>
+        }
+    }
+
+<span class="fc" id="L134">    @ReadingConverter</span>
+    public enum DurationReadConverter implements Converter&lt;Long, Duration&gt; {
+<span class="fc" id="L136">        INSTANCE;</span>
+
+        @Override
+        public Duration convert(Long source) {
+<span class="nc bnc" id="L140" title="All 2 branches missed.">            return source != null ? Duration.ofMillis(source) : null;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

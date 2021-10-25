@@ -1,0 +1,429 @@
+1f3997bf2859d8fbd7eea9807ce785fc
+"use strict";
+
+/* istanbul ignore next */
+function cov_1q6s0yx42i() {
+  var path = "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\shared\\pagination\\item-count.component.ts";
+  var hash = "faf6e2ee4d0e4048004c3af24b0594b7c04f824e";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\shared\\pagination\\item-count.component.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 36
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 16
+        },
+        end: {
+          line: 4,
+          column: 32
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 15
+        },
+        end: {
+          line: 5,
+          column: 39
+        }
+      },
+      "4": {
+        start: {
+          line: 9,
+          column: 25
+        },
+        end: {
+          line: 27,
+          column: 1
+        }
+      },
+      "5": {
+        start: {
+          line: 17,
+          column: 8
+        },
+        end: {
+          line: 24,
+          column: 9
+        }
+      },
+      "6": {
+        start: {
+          line: 18,
+          column: 12
+        },
+        end: {
+          line: 18,
+          column: 69
+        }
+      },
+      "7": {
+        start: {
+          line: 19,
+          column: 12
+        },
+        end: {
+          line: 19,
+          column: 136
+        }
+      },
+      "8": {
+        start: {
+          line: 22,
+          column: 12
+        },
+        end: {
+          line: 22,
+          column: 35
+        }
+      },
+      "9": {
+        start: {
+          line: 23,
+          column: 12
+        },
+        end: {
+          line: 23,
+          column: 36
+        }
+      },
+      "10": {
+        start: {
+          line: 25,
+          column: 8
+        },
+        end: {
+          line: 25,
+          column: 39
+        }
+      },
+      "11": {
+        start: {
+          line: 28,
+          column: 0
+        },
+        end: {
+          line: 30,
+          column: 2
+        }
+      },
+      "12": {
+        start: {
+          line: 31,
+          column: 0
+        },
+        end: {
+          line: 36,
+          column: 23
+        }
+      },
+      "13": {
+        start: {
+          line: 37,
+          column: 0
+        },
+        end: {
+          line: 37,
+          column: 48
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 16,
+            column: 4
+          },
+          end: {
+            line: 16,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 16,
+            column: 23
+          },
+          end: {
+            line: 26,
+            column: 5
+          }
+        },
+        line: 16
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 17,
+            column: 8
+          },
+          end: {
+            line: 24,
+            column: 9
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 17,
+            column: 8
+          },
+          end: {
+            line: 24,
+            column: 9
+          }
+        }, {
+          start: {
+            line: 21,
+            column: 13
+          },
+          end: {
+            line: 24,
+            column: 9
+          }
+        }],
+        line: 17
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 17,
+            column: 12
+          },
+          end: {
+            line: 17,
+            column: 81
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 17,
+            column: 12
+          },
+          end: {
+            line: 17,
+            column: 23
+          }
+        }, {
+          start: {
+            line: 17,
+            column: 27
+          },
+          end: {
+            line: 17,
+            column: 58
+          }
+        }, {
+          start: {
+            line: 17,
+            column: 62
+          },
+          end: {
+            line: 17,
+            column: 81
+          }
+        }],
+        line: 17
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 19,
+            column: 26
+          },
+          end: {
+            line: 19,
+            column: 135
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 19,
+            column: 82
+          },
+          end: {
+            line: 19,
+            column: 115
+          }
+        }, {
+          start: {
+            line: 19,
+            column: 118
+          },
+          end: {
+            line: 19,
+            column: 135
+          }
+        }],
+        line: 19
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0, 0],
+      "2": [0, 0]
+    },
+    inputSourceMap: {
+      file: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\shared\\pagination\\item-count.component.ts",
+      mappings: ";;;;AAAA,wCAAiD;AAEjD;;GAEG;IAKU,kBAAkB,SAAlB,kBAAkB;IAC7B;;;;;OAKG;IACH,IAAa,MAAM,CAAC,MAAqE;QACvF,IAAI,MAAM,CAAC,IAAI,IAAI,MAAM,CAAC,UAAU,KAAK,SAAS,IAAI,MAAM,CAAC,YAAY,EAAE;YACzE,IAAI,CAAC,KAAK,GAAG,CAAC,MAAM,CAAC,IAAI,GAAG,CAAC,CAAC,GAAG,MAAM,CAAC,YAAY,GAAG,CAAC,CAAC;YACzD,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC,IAAI,GAAG,MAAM,CAAC,YAAY,GAAG,MAAM,CAAC,UAAU,CAAC,CAAC,CAAC,MAAM,CAAC,IAAI,GAAG,MAAM,CAAC,YAAY,CAAC,CAAC,CAAC,MAAM,CAAC,UAAU,CAAC;SAC7H;aAAM;YACL,IAAI,CAAC,KAAK,GAAG,SAAS,CAAC;YACvB,IAAI,CAAC,MAAM,GAAG,SAAS,CAAC;SACzB;QACD,IAAI,CAAC,KAAK,GAAG,MAAM,CAAC,UAAU,CAAC;IACjC,CAAC;CAKF,CAAA;;qBAdE,YAAK;;AAPK,kBAAkB;IAJ9B,gBAAS,CAAC;QACT,QAAQ,EAAE,gBAAgB;QAC1B,QAAQ,EAAE,mHAAmH;KAC9H,CAAC;GACW,kBAAkB,CAqB9B;AArBY,gDAAkB",
+      names: [],
+      sources: ["C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\shared\\pagination\\item-count.component.ts"],
+      sourcesContent: ["import { Component, Input } from '@angular/core';\n\n/**\n * A component that will take care of item count statistics of a pagination.\n */\n@Component({\n  selector: 'jhi-item-count',\n  template: ` <div jhiTranslate=\"global.item-count\" [translateValues]=\"{ first: first, second: second, total: total }\"></div> `,\n})\nexport class ItemCountComponent {\n  /**\n   * @param params  Contains parameters for component:\n   *                    page          Current page number\n   *                    totalItems    Total number of items\n   *                    itemsPerPage  Number of items per page\n   */\n  @Input() set params(params: { page?: number; totalItems?: number; itemsPerPage?: number }) {\n    if (params.page && params.totalItems !== undefined && params.itemsPerPage) {\n      this.first = (params.page - 1) * params.itemsPerPage + 1;\n      this.second = params.page * params.itemsPerPage < params.totalItems ? params.page * params.itemsPerPage : params.totalItems;\n    } else {\n      this.first = undefined;\n      this.second = undefined;\n    }\n    this.total = params.totalItems;\n  }\n\n  first?: number;\n  second?: number;\n  total?: number;\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "faf6e2ee4d0e4048004c3af24b0594b7c04f824e"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1q6s0yx42i = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_1q6s0yx42i();
+cov_1q6s0yx42i().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/* istanbul ignore next */
+cov_1q6s0yx42i().s[1]++;
+exports.ItemCountComponent = void 0;
+const tslib_1 =
+/* istanbul ignore next */
+(cov_1q6s0yx42i().s[2]++, require("tslib"));
+const core_1 =
+/* istanbul ignore next */
+(cov_1q6s0yx42i().s[3]++, require("@angular/core"));
+/**
+ * A component that will take care of item count statistics of a pagination.
+ */
+
+/* istanbul ignore next */
+cov_1q6s0yx42i().s[4]++;
+let ItemCountComponent = class ItemCountComponent {
+  /**
+   * @param params  Contains parameters for component:
+   *                    page          Current page number
+   *                    totalItems    Total number of items
+   *                    itemsPerPage  Number of items per page
+   */
+  set params(params) {
+    /* istanbul ignore next */
+    cov_1q6s0yx42i().f[0]++;
+    cov_1q6s0yx42i().s[5]++;
+
+    if (
+    /* istanbul ignore next */
+    (cov_1q6s0yx42i().b[1][0]++, params.page) &&
+    /* istanbul ignore next */
+    (cov_1q6s0yx42i().b[1][1]++, params.totalItems !== undefined) &&
+    /* istanbul ignore next */
+    (cov_1q6s0yx42i().b[1][2]++, params.itemsPerPage)) {
+      /* istanbul ignore next */
+      cov_1q6s0yx42i().b[0][0]++;
+      cov_1q6s0yx42i().s[6]++;
+      this.first = (params.page - 1) * params.itemsPerPage + 1;
+
+      /* istanbul ignore next */
+      cov_1q6s0yx42i().s[7]++;
+      this.second = params.page * params.itemsPerPage < params.totalItems ?
+      /* istanbul ignore next */
+      (cov_1q6s0yx42i().b[2][0]++, params.page * params.itemsPerPage) :
+      /* istanbul ignore next */
+      (cov_1q6s0yx42i().b[2][1]++, params.totalItems);
+    } else {
+      /* istanbul ignore next */
+      cov_1q6s0yx42i().b[0][1]++;
+      cov_1q6s0yx42i().s[8]++;
+      this.first = undefined;
+
+      /* istanbul ignore next */
+      cov_1q6s0yx42i().s[9]++;
+      this.second = undefined;
+    }
+
+    /* istanbul ignore next */
+    cov_1q6s0yx42i().s[10]++;
+    this.total = params.totalItems;
+  }
+
+};
+
+/* istanbul ignore next */
+cov_1q6s0yx42i().s[11]++;
+ItemCountComponent.propDecorators = {
+  params: [{
+    type: core_1.Input
+  }]
+};
+
+/* istanbul ignore next */
+cov_1q6s0yx42i().s[12]++;
+ItemCountComponent = tslib_1.__decorate([core_1.Component({
+  selector: 'jhi-item-count',
+  template: ` <div jhiTranslate="global.item-count" [translateValues]="{ first: first, second: second, total: total }"></div> `
+})], ItemCountComponent);
+
+/* istanbul ignore next */
+cov_1q6s0yx42i().s[13]++;
+exports.ItemCountComponent = ItemCountComponent;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcTmljb2xhc1xcRGVza3RvcFxcdGVzdDZcXGdhdGV3YXlcXHNyY1xcbWFpblxcd2ViYXBwXFxhcHBcXHNoYXJlZFxccGFnaW5hdGlvblxcaXRlbS1jb3VudC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQWdCZTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFoQmYsTUFBQSxNQUFBO0FBQUE7QUFBQSwwQkFBQSxPQUFBLENBQUEsZUFBQSxDQUFBLENBQUE7QUFFQTs7QUFFRzs7OztJQUtVLGtCQUFrQixHQUFBLE1BQWxCLGtCQUFrQixDQUFBO0FBQzdCOzs7OztBQUtHO0FBQ2dCLE1BQU4sTUFBTSxDQUFDLE1BQUQsRUFBc0U7QUFBQTtBQUFBO0FBQUE7O0FBQ3ZGO0FBQUk7QUFBQSxpQ0FBQSxNQUFNLENBQUMsSUFBUDtBQUFBO0FBQUEsaUNBQWUsTUFBTSxDQUFDLFVBQVAsS0FBc0IsU0FBckM7QUFBQTtBQUFBLGlDQUFrRCxNQUFNLENBQUMsWUFBekQsQ0FBSixFQUEyRTtBQUFBO0FBQUE7QUFBQTtBQUN6RSxXQUFLLEtBQUwsR0FBYSxDQUFDLE1BQU0sQ0FBQyxJQUFQLEdBQWMsQ0FBZixJQUFvQixNQUFNLENBQUMsWUFBM0IsR0FBMEMsQ0FBdkQ7O0FBRHlFO0FBQUE7QUFFekUsV0FBSyxNQUFMLEdBQWMsTUFBTSxDQUFDLElBQVAsR0FBYyxNQUFNLENBQUMsWUFBckIsR0FBb0MsTUFBTSxDQUFDLFVBQTNDO0FBQUE7QUFBQSxtQ0FBd0QsTUFBTSxDQUFDLElBQVAsR0FBYyxNQUFNLENBQUMsWUFBN0U7QUFBQTtBQUFBLG1DQUE0RixNQUFNLENBQUMsVUFBbkcsQ0FBZDtBQUNELEtBSEQsTUFHTztBQUFBO0FBQUE7QUFBQTtBQUNMLFdBQUssS0FBTCxHQUFhLFNBQWI7O0FBREs7QUFBQTtBQUVMLFdBQUssTUFBTCxHQUFjLFNBQWQ7QUFDRDs7QUFQc0Y7QUFBQTtBQVF2RixTQUFLLEtBQUwsR0FBYSxNQUFNLENBQUMsVUFBcEI7QUFDRDs7QUFoQjRCLEM7Ozs7OztVQU81QixNQUFBLENBQUE7Ozs7OztBQVBVLGtCQUFrQixHQUFBLE9BQUEsQ0FBQSxVQUFBLENBQUEsQ0FKOUIsTUFBQSxDQUFBLFNBQUEsQ0FBVTtBQUNULEVBQUEsUUFBUSxFQUFFLGdCQUREO0FBRVQsRUFBQSxRQUFRLEVBQUU7QUFGRCxDQUFWLENBSThCLENBQUEsRUFBbEIsa0JBQWtCLENBQWxCOzs7O0FBQUEsT0FBQSxDQUFBLGtCQUFBLEdBQUEsa0JBQUEiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDb21wb25lbnQsIElucHV0IH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5cbi8qKlxuICogQSBjb21wb25lbnQgdGhhdCB3aWxsIHRha2UgY2FyZSBvZiBpdGVtIGNvdW50IHN0YXRpc3RpY3Mgb2YgYSBwYWdpbmF0aW9uLlxuICovXG5AQ29tcG9uZW50KHtcbiAgc2VsZWN0b3I6ICdqaGktaXRlbS1jb3VudCcsXG4gIHRlbXBsYXRlOiBgIDxkaXYgamhpVHJhbnNsYXRlPVwiZ2xvYmFsLml0ZW0tY291bnRcIiBbdHJhbnNsYXRlVmFsdWVzXT1cInsgZmlyc3Q6IGZpcnN0LCBzZWNvbmQ6IHNlY29uZCwgdG90YWw6IHRvdGFsIH1cIj48L2Rpdj4gYCxcbn0pXG5leHBvcnQgY2xhc3MgSXRlbUNvdW50Q29tcG9uZW50IHtcbiAgLyoqXG4gICAqIEBwYXJhbSBwYXJhbXMgIENvbnRhaW5zIHBhcmFtZXRlcnMgZm9yIGNvbXBvbmVudDpcbiAgICogICAgICAgICAgICAgICAgICAgIHBhZ2UgICAgICAgICAgQ3VycmVudCBwYWdlIG51bWJlclxuICAgKiAgICAgICAgICAgICAgICAgICAgdG90YWxJdGVtcyAgICBUb3RhbCBudW1iZXIgb2YgaXRlbXNcbiAgICogICAgICAgICAgICAgICAgICAgIGl0ZW1zUGVyUGFnZSAgTnVtYmVyIG9mIGl0ZW1zIHBlciBwYWdlXG4gICAqL1xuICBASW5wdXQoKSBzZXQgcGFyYW1zKHBhcmFtczogeyBwYWdlPzogbnVtYmVyOyB0b3RhbEl0ZW1zPzogbnVtYmVyOyBpdGVtc1BlclBhZ2U/OiBudW1iZXIgfSkge1xuICAgIGlmIChwYXJhbXMucGFnZSAmJiBwYXJhbXMudG90YWxJdGVtcyAhPT0gdW5kZWZpbmVkICYmIHBhcmFtcy5pdGVtc1BlclBhZ2UpIHtcbiAgICAgIHRoaXMuZmlyc3QgPSAocGFyYW1zLnBhZ2UgLSAxKSAqIHBhcmFtcy5pdGVtc1BlclBhZ2UgKyAxO1xuICAgICAgdGhpcy5zZWNvbmQgPSBwYXJhbXMucGFnZSAqIHBhcmFtcy5pdGVtc1BlclBhZ2UgPCBwYXJhbXMudG90YWxJdGVtcyA/IHBhcmFtcy5wYWdlICogcGFyYW1zLml0ZW1zUGVyUGFnZSA6IHBhcmFtcy50b3RhbEl0ZW1zO1xuICAgIH0gZWxzZSB7XG4gICAgICB0aGlzLmZpcnN0ID0gdW5kZWZpbmVkO1xuICAgICAgdGhpcy5zZWNvbmQgPSB1bmRlZmluZWQ7XG4gICAgfVxuICAgIHRoaXMudG90YWwgPSBwYXJhbXMudG90YWxJdGVtcztcbiAgfVxuXG4gIGZpcnN0PzogbnVtYmVyO1xuICBzZWNvbmQ/OiBudW1iZXI7XG4gIHRvdGFsPzogbnVtYmVyO1xufVxuIl19

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PostInfo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Stats Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.stats.core.pojo</a> &gt; <span class="el_source">PostInfo.java</span></div><h1>PostInfo.java</h1><pre class="source lang-java linenums">package com.reddot.stats.core.pojo;
+
+public class PostInfo {
+	
+	private String user;
+	private int year;
+	private int date;
+	private int day;
+	private long numberRecord;
+	
+	
+<span class="nc" id="L12">	public PostInfo() {</span>
+		// TODO Auto-generated constructor stub
+<span class="nc" id="L14">	}</span>
+
+
+	public PostInfo(String user, int year, int date, int day, long numberRecord) {
+<span class="nc" id="L18">		super();</span>
+<span class="nc" id="L19">		this.user = user;</span>
+<span class="nc" id="L20">		this.year = year;</span>
+<span class="nc" id="L21">		this.date = date;</span>
+<span class="nc" id="L22">		this.day = day;</span>
+<span class="nc" id="L23">		this.numberRecord = numberRecord;</span>
+<span class="nc" id="L24">	}</span>
+
+
+	public String getUser() {
+<span class="nc" id="L28">		return user;</span>
+	}
+
+	public void setUser(String user) {
+<span class="nc" id="L32">		this.user = user;</span>
+<span class="nc" id="L33">	}</span>
+
+	public int getYear() {
+<span class="nc" id="L36">		return year;</span>
+	}
+
+	public void setYear(int year) {
+<span class="nc" id="L40">		this.year = year;</span>
+<span class="nc" id="L41">	}</span>
+
+	public int getDate() {
+<span class="nc" id="L44">		return date;</span>
+	}
+
+	public void setDate(int date) {
+<span class="nc" id="L48">		this.date = date;</span>
+<span class="nc" id="L49">	}</span>
+
+	public int getDay() {
+<span class="nc" id="L52">		return day;</span>
+	}
+
+	public void setDay(int day) {
+<span class="nc" id="L56">		this.day = day;</span>
+<span class="nc" id="L57">	}</span>
+
+	public long getNumberRecord() {
+<span class="nc" id="L60">		return numberRecord;</span>
+	}
+
+	public void setNumberRecord(long numberRecord) {
+<span class="nc" id="L64">		this.numberRecord = numberRecord;</span>
+<span class="nc" id="L65">	}</span>
+
+
+	@Override
+	public String toString() {
+<span class="nc" id="L70">		return &quot;PostInfo [user=&quot; + user + &quot;, year=&quot; + year + &quot;, date=&quot; + date + &quot;, day=&quot; + day + &quot;]&quot;;</span>
+	}
+	
+	
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

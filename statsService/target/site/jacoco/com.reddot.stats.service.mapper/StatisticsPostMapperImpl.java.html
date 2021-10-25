@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StatisticsPostMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Stats Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.stats.service.mapper</a> &gt; <span class="el_source">StatisticsPostMapperImpl.java</span></div><h1>StatisticsPostMapperImpl.java</h1><pre class="source lang-java linenums">package com.reddot.stats.service.mapper;
+
+import com.reddot.stats.domain.StatisticsPost;
+import com.reddot.stats.service.dto.StatisticsPostDTO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+    date = &quot;2021-10-26T01:27:41+0200&quot;,
+    comments = &quot;version: 1.4.2.Final, compiler: javac, environment: Java 11.0.12 (Eclipse Foundation)&quot;
+)
+@Component
+<span class="nc" id="L16">public class StatisticsPostMapperImpl implements StatisticsPostMapper {</span>
+
+    @Override
+    public StatisticsPost toEntity(StatisticsPostDTO dto) {
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if ( dto == null ) {</span>
+<span class="nc" id="L21">            return null;</span>
+        }
+
+<span class="nc" id="L24">        StatisticsPost statisticsPost = new StatisticsPost();</span>
+
+<span class="nc" id="L26">        statisticsPost.setId( dto.getId() );</span>
+<span class="nc" id="L27">        statisticsPost.setUser( dto.getUser() );</span>
+<span class="nc" id="L28">        statisticsPost.setYear( dto.getYear() );</span>
+<span class="nc" id="L29">        statisticsPost.setMonth( dto.getMonth() );</span>
+<span class="nc" id="L30">        statisticsPost.setDay( dto.getDay() );</span>
+
+<span class="nc" id="L32">        return statisticsPost;</span>
+    }
+
+    @Override
+    public StatisticsPostDTO toDto(StatisticsPost entity) {
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if ( entity == null ) {</span>
+<span class="nc" id="L38">            return null;</span>
+        }
+
+<span class="nc" id="L41">        StatisticsPostDTO statisticsPostDTO = new StatisticsPostDTO();</span>
+
+<span class="nc" id="L43">        statisticsPostDTO.setId( entity.getId() );</span>
+<span class="nc" id="L44">        statisticsPostDTO.setUser( entity.getUser() );</span>
+<span class="nc" id="L45">        statisticsPostDTO.setYear( entity.getYear() );</span>
+<span class="nc" id="L46">        statisticsPostDTO.setMonth( entity.getMonth() );</span>
+<span class="nc" id="L47">        statisticsPostDTO.setDay( entity.getDay() );</span>
+
+<span class="nc" id="L49">        return statisticsPostDTO;</span>
+    }
+
+    @Override
+    public List&lt;StatisticsPost&gt; toEntity(List&lt;StatisticsPostDTO&gt; dtoList) {
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        if ( dtoList == null ) {</span>
+<span class="nc" id="L55">            return null;</span>
+        }
+
+<span class="nc" id="L58">        List&lt;StatisticsPost&gt; list = new ArrayList&lt;StatisticsPost&gt;( dtoList.size() );</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        for ( StatisticsPostDTO statisticsPostDTO : dtoList ) {</span>
+<span class="nc" id="L60">            list.add( toEntity( statisticsPostDTO ) );</span>
+<span class="nc" id="L61">        }</span>
+
+<span class="nc" id="L63">        return list;</span>
+    }
+
+    @Override
+    public List&lt;StatisticsPostDTO&gt; toDto(List&lt;StatisticsPost&gt; entityList) {
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        if ( entityList == null ) {</span>
+<span class="nc" id="L69">            return null;</span>
+        }
+
+<span class="nc" id="L72">        List&lt;StatisticsPostDTO&gt; list = new ArrayList&lt;StatisticsPostDTO&gt;( entityList.size() );</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        for ( StatisticsPost statisticsPost : entityList ) {</span>
+<span class="nc" id="L74">            list.add( toDto( statisticsPost ) );</span>
+<span class="nc" id="L75">        }</span>
+
+<span class="nc" id="L77">        return list;</span>
+    }
+
+    @Override
+    public void partialUpdate(StatisticsPost entity, StatisticsPostDTO dto) {
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if ( dto == null ) {</span>
+<span class="nc" id="L83">            return;</span>
+        }
+
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        if ( dto.getId() != null ) {</span>
+<span class="nc" id="L87">            entity.setId( dto.getId() );</span>
+        }
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        if ( dto.getUser() != null ) {</span>
+<span class="nc" id="L90">            entity.setUser( dto.getUser() );</span>
+        }
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        if ( dto.getYear() != null ) {</span>
+<span class="nc" id="L93">            entity.setYear( dto.getYear() );</span>
+        }
+<span class="nc bnc" id="L95" title="All 2 branches missed.">        if ( dto.getMonth() != null ) {</span>
+<span class="nc" id="L96">            entity.setMonth( dto.getMonth() );</span>
+        }
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        if ( dto.getDay() != null ) {</span>
+<span class="nc" id="L99">            entity.setDay( dto.getDay() );</span>
+        }
+<span class="nc" id="L101">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

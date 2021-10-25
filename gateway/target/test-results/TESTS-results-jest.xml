@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="183" failures="0" errors="0" time="15.285">
+  <testsuite name="Alert service test" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:45:58" time="2.983" tests="15">
+    <testcase classname="Alert service test Alert Service Test should produce a proper alert object and fetch it" name="Alert service test Alert Service Test should produce a proper alert object and fetch it" time="0.042">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce a proper alert object and add it to external alert objects array" name="Alert service test Alert Service Test should produce a proper alert object and add it to external alert objects array" time="0.013">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce an alert object with correct id" name="Alert service test Alert Service Test should produce an alert object with correct id" time="0.013">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should close an alert correctly" name="Alert service test Alert Service Test should close an alert correctly" time="0.009">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should close an alert on timeout correctly" name="Alert service test Alert Service Test should close an alert on timeout correctly" time="0.014">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should clear alerts" name="Alert service test Alert Service Test should clear alerts" time="0.011">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce a scoped alert" name="Alert service test Alert Service Test should produce a scoped alert" time="0.008">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce a success message" name="Alert service test Alert Service Test should produce a success message" time="0.012">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce a success message with custom position" name="Alert service test Alert Service Test should produce a success message with custom position" time="0.012">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce a error message" name="Alert service test Alert Service Test should produce a error message" time="0.01">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce a warning message" name="Alert service test Alert Service Test should produce a warning message" time="0.014">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce a info message" name="Alert service test Alert Service Test should produce a info message" time="0.007">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce a info message with translated message if key exists" name="Alert service test Alert Service Test should produce a info message with translated message if key exists" time="0.012">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce a info message with provided message if key does not exists" name="Alert service test Alert Service Test should produce a info message with provided message if key does not exists" time="0.008">
+    </testcase>
+    <testcase classname="Alert service test Alert Service Test should produce a info message with provided key if transltion key does not exist in translations and message is not provided" name="Alert service test Alert Service Test should produce a info message with provided key if transltion key does not exist in translations and message is not provided" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="Account Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:45:58" time="3.226" tests="16">
+    <testcase classname="Account Service save should call account saving endpoint with correct values" name="Account Service save should call account saving endpoint with correct values" time="0.059">
+    </testcase>
+    <testcase classname="Account Service authenticate authenticationState should emit null if input is null" name="Account Service authenticate authenticationState should emit null if input is null" time="0.019">
+    </testcase>
+    <testcase classname="Account Service authenticate authenticationState should emit the same account as was in input parameter" name="Account Service authenticate authenticationState should emit the same account as was in input parameter" time="0.009">
+    </testcase>
+    <testcase classname="Account Service identity should call /account only once if last call have not returned" name="Account Service identity should call /account only once if last call have not returned" time="0.009">
+    </testcase>
+    <testcase classname="Account Service identity should call /account only once if not logged out after first authentication and should call /account again if user has logged out" name="Account Service identity should call /account only once if not logged out after first authentication and should call /account again if user has logged out" time="0.014">
+    </testcase>
+    <testcase classname="Account Service identity should change the language on authentication if necessary should change language if user has not changed language manually" name="Account Service identity should change the language on authentication if necessary should change language if user has not changed language manually" time="0.011">
+    </testcase>
+    <testcase classname="Account Service identity should change the language on authentication if necessary should not change language if user has changed language manually" name="Account Service identity should change the language on authentication if necessary should not change language if user has changed language manually" time="0.014">
+    </testcase>
+    <testcase classname="Account Service identity navigateToStoredUrl should navigate to the previous stored url post successful authentication" name="Account Service identity navigateToStoredUrl should navigate to the previous stored url post successful authentication" time="0.012">
+    </testcase>
+    <testcase classname="Account Service identity navigateToStoredUrl should not navigate to the previous stored url when authentication fails" name="Account Service identity navigateToStoredUrl should not navigate to the previous stored url when authentication fails" time="0.016">
+    </testcase>
+    <testcase classname="Account Service identity navigateToStoredUrl should not navigate to the previous stored url when no such url exists post successful authentication" name="Account Service identity navigateToStoredUrl should not navigate to the previous stored url when no such url exists post successful authentication" time="0.014">
+    </testcase>
+    <testcase classname="Account Service hasAnyAuthority hasAnyAuthority string parameter should return false if user is not logged" name="Account Service hasAnyAuthority hasAnyAuthority string parameter should return false if user is not logged" time="0.011">
+    </testcase>
+    <testcase classname="Account Service hasAnyAuthority hasAnyAuthority string parameter should return false if user is logged and has not authority" name="Account Service hasAnyAuthority hasAnyAuthority string parameter should return false if user is logged and has not authority" time="0.015">
+    </testcase>
+    <testcase classname="Account Service hasAnyAuthority hasAnyAuthority string parameter should return true if user is logged and has authority" name="Account Service hasAnyAuthority hasAnyAuthority string parameter should return true if user is logged and has authority" time="0.015">
+    </testcase>
+    <testcase classname="Account Service hasAnyAuthority hasAnyAuthority array parameter should return false if user is not logged" name="Account Service hasAnyAuthority hasAnyAuthority array parameter should return false if user is not logged" time="0.009">
+    </testcase>
+    <testcase classname="Account Service hasAnyAuthority hasAnyAuthority array parameter should return false if user is logged and has not authority" name="Account Service hasAnyAuthority hasAnyAuthority array parameter should return false if user is logged and has not authority" time="0.006">
+    </testcase>
+    <testcase classname="Account Service hasAnyAuthority hasAnyAuthority array parameter should return true if user is logged and has authority" name="Account Service hasAnyAuthority hasAnyAuthority array parameter should return true if user is logged and has authority" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="User Management Component" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:01" time="0.434" tests="2">
+    <testcase classname="User Management Component OnInit Should call load all on init" name="User Management Component OnInit Should call load all on init" time="0.062">
+    </testcase>
+    <testcase classname="User Management Component setActive Should update user and call load all" name="User Management Component setActive Should update user and call load all" time="0.033">
+    </testcase>
+  </testsuite>
+  <testsuite name="MainComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:01" time="0.474" tests="10">
+    <testcase classname="MainComponent page title navigation end should set page title to default title if pageTitle is missing on routes" name="MainComponent page title navigation end should set page title to default title if pageTitle is missing on routes" time="0.045">
+    </testcase>
+    <testcase classname="MainComponent page title navigation end should set page title to root route pageTitle if there is no child routes" name="MainComponent page title navigation end should set page title to root route pageTitle if there is no child routes" time="0.03">
+    </testcase>
+    <testcase classname="MainComponent page title navigation end should set page title to child route pageTitle if child routes exist and pageTitle is set for child route" name="MainComponent page title navigation end should set page title to child route pageTitle if child routes exist and pageTitle is set for child route" time="0.028">
+    </testcase>
+    <testcase classname="MainComponent page title navigation end should set page title to parent route pageTitle if child routes exists but pageTitle is not set for child route data" name="MainComponent page title navigation end should set page title to parent route pageTitle if child routes exists but pageTitle is not set for child route data" time="0.017">
+    </testcase>
+    <testcase classname="MainComponent page title navigation start should not set page title on navigation start" name="MainComponent page title navigation start should not set page title on navigation start" time="0.028">
+    </testcase>
+    <testcase classname="MainComponent page title language change should set page title to default title if pageTitle is missing on routes" name="MainComponent page title language change should set page title to default title if pageTitle is missing on routes" time="0.017">
+    </testcase>
+    <testcase classname="MainComponent page title language change should set page title to root route pageTitle if there is no child routes" name="MainComponent page title language change should set page title to root route pageTitle if there is no child routes" time="0.035">
+    </testcase>
+    <testcase classname="MainComponent page title language change should set page title to child route pageTitle if child routes exist and pageTitle is set for child route" name="MainComponent page title language change should set page title to child route pageTitle if child routes exist and pageTitle is set for child route" time="0.026">
+    </testcase>
+    <testcase classname="MainComponent page title language change should set page title to parent route pageTitle if child routes exists but pageTitle is not set for child route data" name="MainComponent page title language change should set page title to parent route pageTitle if child routes exists but pageTitle is not set for child route data" time="0.023">
+    </testcase>
+    <testcase classname="MainComponent page language attribute should change page language attribute on language change" name="MainComponent page language attribute should change page language attribute on language change" time="0.025">
+    </testcase>
+  </testsuite>
+  <testsuite name="Alert Error Component" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:01" time="0.395" tests="8">
+    <testcase classname="Alert Error Component Error Handling Should display an alert on status 0" name="Alert Error Component Error Handling Should display an alert on status 0" time="0.022">
+    </testcase>
+    <testcase classname="Alert Error Component Error Handling Should display an alert on status 404" name="Alert Error Component Error Handling Should display an alert on status 404" time="0.018">
+    </testcase>
+    <testcase classname="Alert Error Component Error Handling Should display an alert on generic error" name="Alert Error Component Error Handling Should display an alert on generic error" time="0.016">
+    </testcase>
+    <testcase classname="Alert Error Component Error Handling Should display an alert on status 400 for generic error" name="Alert Error Component Error Handling Should display an alert on status 400 for generic error" time="0.029">
+    </testcase>
+    <testcase classname="Alert Error Component Error Handling Should display an alert on status 400 for generic error without message" name="Alert Error Component Error Handling Should display an alert on status 400 for generic error without message" time="0.016">
+    </testcase>
+    <testcase classname="Alert Error Component Error Handling Should display an alert on status 400 for invalid parameters" name="Alert Error Component Error Handling Should display an alert on status 400 for invalid parameters" time="0.014">
+    </testcase>
+    <testcase classname="Alert Error Component Error Handling Should display an alert on status 400 for error headers" name="Alert Error Component Error Handling Should display an alert on status 400 for error headers" time="0.011">
+    </testcase>
+    <testcase classname="Alert Error Component Error Handling Should display an alert on status 500 with detail" name="Alert Error Component Error Handling Should display an alert on status 500 with detail" time="0.02">
+    </testcase>
+  </testsuite>
+  <testsuite name="Directive: SortByDirective" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:02" time="0.506" tests="5">
+    <testcase classname="Directive: SortByDirective should initialize predicate, order, icon when initial component predicate differs from column predicate" name="Directive: SortByDirective should initialize predicate, order, icon when initial component predicate differs from column predicate" time="0.132">
+    </testcase>
+    <testcase classname="Directive: SortByDirective should initialize predicate, order, icon when initial component predicate is same as column predicate" name="Directive: SortByDirective should initialize predicate, order, icon when initial component predicate is same as column predicate" time="0.065">
+    </testcase>
+    <testcase classname="Directive: SortByDirective should update component predicate, order, icon when user clicks on column header" name="Directive: SortByDirective should update component predicate, order, icon when user clicks on column header" time="0.033">
+    </testcase>
+    <testcase classname="Directive: SortByDirective should update component predicate, order, icon when user double clicks on column header" name="Directive: SortByDirective should update component predicate, order, icon when user double clicks on column header" time="0.045">
+    </testcase>
+    <testcase classname="Directive: SortByDirective should not run sorting on click if sorting icon is hidden" name="Directive: SortByDirective should not run sorting on click if sorting icon is hidden" time="0.048">
+    </testcase>
+  </testsuite>
+  <testsuite name="LoginComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:02" time="0.81" tests="7">
+    <testcase classname="LoginComponent ngOnInit Should call accountService.identity on Init" name="LoginComponent ngOnInit Should call accountService.identity on Init" time="0.074">
+    </testcase>
+    <testcase classname="LoginComponent ngOnInit Should call accountService.isAuthenticated on Init" name="LoginComponent ngOnInit Should call accountService.isAuthenticated on Init" time="0.036">
+    </testcase>
+    <testcase classname="LoginComponent ngOnInit should navigate to home page on Init if authenticated=true" name="LoginComponent ngOnInit should navigate to home page on Init if authenticated=true" time="0.041">
+    </testcase>
+    <testcase classname="LoginComponent ngAfterViewInit shoult set focus to username input after the view has been initialized" name="LoginComponent ngAfterViewInit shoult set focus to username input after the view has been initialized" time="0.03">
+    </testcase>
+    <testcase classname="LoginComponent login should authenticate the user and navigate to home page" name="LoginComponent login should authenticate the user and navigate to home page" time="0.028">
+    </testcase>
+    <testcase classname="LoginComponent login should authenticate the user but not navigate to home page if authentication process is already routing to cached url from localstorage" name="LoginComponent login should authenticate the user but not navigate to home page if authentication process is already routing to cached url from localstorage" time="0.042">
+    </testcase>
+    <testcase classname="LoginComponent login should stay on login form and show error message on login error" name="LoginComponent login should stay on login form and show error message on login error" time="0.036">
+    </testcase>
+  </testsuite>
+  <testsuite name="Home Component" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:02" time="0.582" tests="3">
+    <testcase classname="Home Component ngOnInit Should synchronize account variable with current account" name="Home Component ngOnInit Should synchronize account variable with current account" time="0.056">
+    </testcase>
+    <testcase classname="Home Component login Should navigate to /login on login" name="Home Component login Should navigate to /login on login" time="0.052">
+    </testcase>
+    <testcase classname="Home Component ngOnDestroy Should destroy authentication state subscription on component destroy" name="Home Component ngOnDestroy Should destroy authentication state subscription on component destroy" time="0.049">
+    </testcase>
+  </testsuite>
+  <testsuite name="Navbar Component" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:03" time="0.539" tests="3">
+    <testcase classname="Navbar Component Should call profileService.getProfileInfo on init" name="Navbar Component Should call profileService.getProfileInfo on init" time="0.047">
+    </testcase>
+    <testcase classname="Navbar Component Should hold current authenticated user in variable account" name="Navbar Component Should hold current authenticated user in variable account" time="0.026">
+    </testcase>
+    <testcase classname="Navbar Component Should hold current authenticated user in variable account if user is authenticated before page load" name="Navbar Component Should hold current authenticated user in variable account if user is authenticated before page load" time="0.044">
+    </testcase>
+  </testsuite>
+  <testsuite name="RegisterComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:03" time="0.403" tests="5">
+    <testcase classname="RegisterComponent should ensure the two passwords entered match" name="RegisterComponent should ensure the two passwords entered match" time="0.03">
+    </testcase>
+    <testcase classname="RegisterComponent should update success to true after creating an account" name="RegisterComponent should update success to true after creating an account" time="0.036">
+    </testcase>
+    <testcase classname="RegisterComponent should notify of user existence upon 400/login already in use" name="RegisterComponent should notify of user existence upon 400/login already in use" time="0.017">
+    </testcase>
+    <testcase classname="RegisterComponent should notify of email existence upon 400/email address already in use" name="RegisterComponent should notify of email existence upon 400/email address already in use" time="0.029">
+    </testcase>
+    <testcase classname="RegisterComponent should notify of generic error" name="RegisterComponent should notify of generic error" time="0.025">
+    </testcase>
+  </testsuite>
+  <testsuite name="PasswordComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:03" time="0.395" tests="4">
+    <testcase classname="PasswordComponent should show error if passwords do not match" name="PasswordComponent should show error if passwords do not match" time="0.041">
+    </testcase>
+    <testcase classname="PasswordComponent should call Auth.changePassword when passwords match" name="PasswordComponent should call Auth.changePassword when passwords match" time="0.025">
+    </testcase>
+    <testcase classname="PasswordComponent should set success to true upon success" name="PasswordComponent should set success to true upon success" time="0.03">
+    </testcase>
+    <testcase classname="PasswordComponent should notify of error if change password fails" name="PasswordComponent should notify of error if change password fails" time="0.032">
+    </testcase>
+  </testsuite>
+  <testsuite name="ItemCountComponent test" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:03" time="0.389" tests="4">
+    <testcase classname="ItemCountComponent test UI logic tests should initialize with undefined" name="ItemCountComponent test UI logic tests should initialize with undefined" time="0.039">
+    </testcase>
+    <testcase classname="ItemCountComponent test UI logic tests should set calculated numbers to undefined if the page value is not yet defined" name="ItemCountComponent test UI logic tests should set calculated numbers to undefined if the page value is not yet defined" time="0.029">
+    </testcase>
+    <testcase classname="ItemCountComponent test UI logic tests should change the content on page change" name="ItemCountComponent test UI logic tests should change the content on page change" time="0.031">
+    </testcase>
+    <testcase classname="ItemCountComponent test UI logic tests should set the second number to totalItems if this is the last page which contains less than itemsPerPage items" name="ItemCountComponent test UI logic tests should set the second number to totalItems if this is the last page which contains less than itemsPerPage items" time="0.033">
+    </testcase>
+  </testsuite>
+  <testsuite name="PasswordResetInitComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:04" time="0.409" tests="3">
+    <testcase classname="PasswordResetInitComponent sets focus after the view has been initialized" name="PasswordResetInitComponent sets focus after the view has been initialized" time="0.036">
+    </testcase>
+    <testcase classname="PasswordResetInitComponent notifies of success upon successful requestReset" name="PasswordResetInitComponent notifies of success upon successful requestReset" time="0.034">
+    </testcase>
+    <testcase classname="PasswordResetInitComponent no notification of success upon error response" name="PasswordResetInitComponent no notification of success upon error response" time="0.036">
+    </testcase>
+  </testsuite>
+  <testsuite name="User Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:04" time="0.467" tests="9">
+    <testcase classname="User Service Service methods should return Users" name="User Service Service methods should return Users" time="0.031">
+    </testcase>
+    <testcase classname="User Service Service methods should propagate not found response" name="User Service Service methods should propagate not found response" time="0.015">
+    </testcase>
+    <testcase classname="User Service Service methods addUserToCollectionIfMissing should add a User to an empty array" name="User Service Service methods addUserToCollectionIfMissing should add a User to an empty array" time="0.024">
+    </testcase>
+    <testcase classname="User Service Service methods addUserToCollectionIfMissing should not add a User to an array that contains it" name="User Service Service methods addUserToCollectionIfMissing should not add a User to an array that contains it" time="0.02">
+    </testcase>
+    <testcase classname="User Service Service methods addUserToCollectionIfMissing should add a User to an array that doesn&apos;t contain it" name="User Service Service methods addUserToCollectionIfMissing should add a User to an array that doesn&apos;t contain it" time="0.018">
+    </testcase>
+    <testcase classname="User Service Service methods addUserToCollectionIfMissing should add only unique User to an array" name="User Service Service methods addUserToCollectionIfMissing should add only unique User to an array" time="0.018">
+    </testcase>
+    <testcase classname="User Service Service methods addUserToCollectionIfMissing should accept varargs" name="User Service Service methods addUserToCollectionIfMissing should accept varargs" time="0.011">
+    </testcase>
+    <testcase classname="User Service Service methods addUserToCollectionIfMissing should accept null and undefined values" name="User Service Service methods addUserToCollectionIfMissing should accept null and undefined values" time="0.014">
+    </testcase>
+    <testcase classname="User Service Service methods addUserToCollectionIfMissing should return initial array if no users is added" name="User Service Service methods addUserToCollectionIfMissing should return initial array if no users is added" time="0.013">
+    </testcase>
+  </testsuite>
+  <testsuite name="User Management Update Component" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:04" time="0.376" tests="3">
+    <testcase classname="User Management Update Component OnInit Should load authorities and language on init" name="User Management Update Component OnInit Should load authorities and language on init" time="0.035">
+    </testcase>
+    <testcase classname="User Management Update Component save Should call update service on save for existing user" name="User Management Update Component save Should call update service on save for existing user" time="0.048">
+    </testcase>
+    <testcase classname="User Management Update Component save Should call create service on save for new user" name="User Management Update Component save Should call create service on save for new user" time="0.025">
+    </testcase>
+  </testsuite>
+  <testsuite name="HealthModalComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:04" time="0.492" tests="6">
+    <testcase classname="HealthModalComponent readableValue should return stringify value" name="HealthModalComponent readableValue should return stringify value" time="0.037">
+    </testcase>
+    <testcase classname="HealthModalComponent readableValue should return string value" name="HealthModalComponent readableValue should return string value" time="0.066">
+    </testcase>
+    <testcase classname="HealthModalComponent readableValue should return storage space in an human readable unit (GB)" name="HealthModalComponent readableValue should return storage space in an human readable unit (GB)" time="0.062">
+    </testcase>
+    <testcase classname="HealthModalComponent readableValue should return storage space in an human readable unit (MB)" name="HealthModalComponent readableValue should return storage space in an human readable unit (MB)" time="0.013">
+    </testcase>
+    <testcase classname="HealthModalComponent readableValue should return string value" name="HealthModalComponent readableValue should return string value" time="0.022">
+    </testcase>
+    <testcase classname="HealthModalComponent dismiss should call dismiss when dismiss modal is called" name="HealthModalComponent dismiss should call dismiss when dismiss modal is called" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="HealthComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:05" time="0.389" tests="3">
+    <testcase classname="HealthComponent getBadgeClass should get badge class" name="HealthComponent getBadgeClass should get badge class" time="0.028">
+    </testcase>
+    <testcase classname="HealthComponent refresh should call refresh on init" name="HealthComponent refresh should call refresh on init" time="0.038">
+    </testcase>
+    <testcase classname="HealthComponent refresh should handle a 503 on refreshing health data" name="HealthComponent refresh should handle a 503 on refreshing health data" time="0.023">
+    </testcase>
+  </testsuite>
+  <testsuite name="HasAnyAuthorityDirective tests" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:05" time="0.453" tests="4">
+    <testcase classname="HasAnyAuthorityDirective tests set jhiHasAnyAuthority should show restricted content to user if user has required role" name="HasAnyAuthorityDirective tests set jhiHasAnyAuthority should show restricted content to user if user has required role" time="0.065">
+    </testcase>
+    <testcase classname="HasAnyAuthorityDirective tests set jhiHasAnyAuthority should not show restricted content to user if user has not required role" name="HasAnyAuthorityDirective tests set jhiHasAnyAuthority should not show restricted content to user if user has not required role" time="0.038">
+    </testcase>
+    <testcase classname="HasAnyAuthorityDirective tests change authorities should show or not show restricted content correctly if user authorities are changing" name="HasAnyAuthorityDirective tests change authorities should show or not show restricted content correctly if user authorities are changing" time="0.026">
+    </testcase>
+    <testcase classname="HasAnyAuthorityDirective tests ngOnDestroy should destroy authentication state subscription on component destroy" name="HasAnyAuthorityDirective tests ngOnDestroy should destroy authentication state subscription on component destroy" time="0.018">
+    </testcase>
+  </testsuite>
+  <testsuite name="MetricsComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:05" time="0.321" tests="1">
+    <testcase classname="MetricsComponent refresh should call refresh on init" name="MetricsComponent refresh should call refresh on init" time="0.039">
+    </testcase>
+  </testsuite>
+  <testsuite name="ActivateComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:05" time="0.392" tests="3">
+    <testcase classname="ActivateComponent calls activate.get with the key from params" name="ActivateComponent calls activate.get with the key from params" time="0.033">
+    </testcase>
+    <testcase classname="ActivateComponent should set set success to true upon successful activation" name="ActivateComponent should set set success to true upon successful activation" time="0.046">
+    </testcase>
+    <testcase classname="ActivateComponent should set set error to true upon activation failure" name="ActivateComponent should set set error to true upon activation failure" time="0.049">
+    </testcase>
+  </testsuite>
+  <testsuite name="PasswordResetFinishComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:05" time="0.483" tests="5">
+    <testcase classname="PasswordResetFinishComponent should define its initial state" name="PasswordResetFinishComponent should define its initial state" time="0.067">
+    </testcase>
+    <testcase classname="PasswordResetFinishComponent sets focus after the view has been initialized" name="PasswordResetFinishComponent sets focus after the view has been initialized" time="0.033">
+    </testcase>
+    <testcase classname="PasswordResetFinishComponent should ensure the two passwords entered match" name="PasswordResetFinishComponent should ensure the two passwords entered match" time="0.023">
+    </testcase>
+    <testcase classname="PasswordResetFinishComponent should update success to true after resetting password" name="PasswordResetFinishComponent should update success to true after resetting password" time="0.018">
+    </testcase>
+    <testcase classname="PasswordResetFinishComponent should notify of generic error" name="PasswordResetFinishComponent should notify of generic error" time="0.028">
+    </testcase>
+  </testsuite>
+  <testsuite name="Directive: SortDirective" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:06" time="0.338" tests="3">
+    <testcase classname="Directive: SortDirective should update predicate, order and invoke sortChange function" name="Directive: SortDirective should update predicate, order and invoke sortChange function" time="0.038">
+    </testcase>
+    <testcase classname="Directive: SortDirective should change sort order to descending when same field is sorted again" name="Directive: SortDirective should change sort order to descending when same field is sorted again" time="0.048">
+    </testcase>
+    <testcase classname="Directive: SortDirective should change sort order to ascending when different field is sorted" name="Directive: SortDirective should change sort order to ascending when different field is sorted" time="0.024">
+    </testcase>
+  </testsuite>
+  <testsuite name="Data Utils Service Test" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:06" time="0.333" tests="2">
+    <testcase classname="Data Utils Service Test byteSize should return the bytesize of the text" name="Data Utils Service Test byteSize should return the bytesize of the text" time="0.02">
+    </testcase>
+    <testcase classname="Data Utils Service Test openFile should open the file in the new window" name="Data Utils Service Test openFile should open the file in the new window" time="0.034">
+    </testcase>
+  </testsuite>
+  <testsuite name="SettingsComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:06" time="0.605" tests="3">
+    <testcase classname="SettingsComponent should send the current identity upon save" name="SettingsComponent should send the current identity upon save" time="0.04">
+    </testcase>
+    <testcase classname="SettingsComponent should notify of success upon successful save" name="SettingsComponent should notify of success upon successful save" time="0.039">
+    </testcase>
+    <testcase classname="SettingsComponent should notify of error upon failed save" name="SettingsComponent should notify of error upon failed save" time="0.026">
+    </testcase>
+  </testsuite>
+  <testsuite name="Parse links service test" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:06" time="0.571" tests="4">
+    <testcase classname="Parse links service test Parse Links Service Test should throw an error when passed an empty string" name="Parse links service test Parse Links Service Test should throw an error when passed an empty string" time="0.17">
+    </testcase>
+    <testcase classname="Parse links service test Parse Links Service Test should throw an error when passed without comma" name="Parse links service test Parse Links Service Test should throw an error when passed without comma" time="0.02">
+    </testcase>
+    <testcase classname="Parse links service test Parse Links Service Test should throw an error when passed without semicolon" name="Parse links service test Parse Links Service Test should throw an error when passed without semicolon" time="0.018">
+    </testcase>
+    <testcase classname="Parse links service test Parse Links Service Test should return links when headers are passed" name="Parse links service test Parse Links Service Test should return links when headers are passed" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="Auth JWT" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:07" time="0.473" tests="6">
+    <testcase classname="Auth JWT Get Token should return empty token if not found in local storage nor session storage" name="Auth JWT Get Token should return empty token if not found in local storage nor session storage" time="0.035">
+    </testcase>
+    <testcase classname="Auth JWT Get Token should return token from session storage if local storage is empty" name="Auth JWT Get Token should return token from session storage if local storage is empty" time="0.017">
+    </testcase>
+    <testcase classname="Auth JWT Get Token should return token from localstorage storage" name="Auth JWT Get Token should return token from localstorage storage" time="0.013">
+    </testcase>
+    <testcase classname="Auth JWT Login should clear session storage and save in local storage when rememberMe is true" name="Auth JWT Login should clear session storage and save in local storage when rememberMe is true" time="0.027">
+    </testcase>
+    <testcase classname="Auth JWT Login should clear local storage and save in session storage when rememberMe is false" name="Auth JWT Login should clear local storage and save in session storage when rememberMe is false" time="0.028">
+    </testcase>
+    <testcase classname="Auth JWT Logout should clear storage" name="Auth JWT Logout should clear storage" time="0.035">
+    </testcase>
+  </testsuite>
+  <testsuite name="Page Ribbon Component" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:07" time="0.377" tests="1">
+    <testcase classname="Page Ribbon Component Should call profileService.getProfileInfo on init" name="Page Ribbon Component Should call profileService.getProfileInfo on init" time="0.05">
+    </testcase>
+  </testsuite>
+  <testsuite name="Event Manager tests" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:07" time="0.329" tests="5">
+    <testcase classname="Event Manager tests EventWithContent should create correctly EventWithContent" name="Event Manager tests EventWithContent should create correctly EventWithContent" time="0.001">
+    </testcase>
+    <testcase classname="Event Manager tests EventManager should not fail when nosubscriber and broadcasting" name="Event Manager tests EventManager should not fail when nosubscriber and broadcasting" time="0.055">
+    </testcase>
+    <testcase classname="Event Manager tests EventManager should create an observable and callback when broadcasted EventWithContent" name="Event Manager tests EventManager should create an observable and callback when broadcasted EventWithContent" time="0.012">
+    </testcase>
+    <testcase classname="Event Manager tests EventManager should create an observable and callback when broadcasted string" name="Event Manager tests EventManager should create an observable and callback when broadcasted string" time="0.014">
+    </testcase>
+    <testcase classname="Event Manager tests EventManager should subscribe to multiple events" name="Event Manager tests EventManager should subscribe to multiple events" time="0.013">
+    </testcase>
+  </testsuite>
+  <testsuite name="Alert Component" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:07" time="0.37" tests="2">
+    <testcase classname="Alert Component Should call alertService.get on init" name="Alert Component Should call alertService.get on init" time="0.034">
+    </testcase>
+    <testcase classname="Alert Component Should call alertService.clear on destroy" name="Alert Component Should call alertService.clear on destroy" time="0.03">
+    </testcase>
+  </testsuite>
+  <testsuite name="LogsComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:08" time="0.421" tests="3">
+    <testcase classname="LogsComponent OnInit should set all default values correctly" name="LogsComponent OnInit should set all default values correctly" time="0.068">
+    </testcase>
+    <testcase classname="LogsComponent OnInit Should call load all on init" name="LogsComponent OnInit Should call load all on init" time="0.026">
+    </testcase>
+    <testcase classname="LogsComponent change log level should change log level correctly" name="LogsComponent change log level should change log level correctly" time="0.082">
+    </testcase>
+  </testsuite>
+  <testsuite name="User Management Delete Component" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:08" time="0.42" tests="1">
+    <testcase classname="User Management Delete Component confirmDelete Should call delete service on confirmDelete" name="User Management Delete Component confirmDelete Should call delete service on confirmDelete" time="0.033">
+    </testcase>
+  </testsuite>
+  <testsuite name="PasswordStrengthBarComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:08" time="0.453" tests="3">
+    <testcase classname="PasswordStrengthBarComponent PasswordStrengthBarComponents should initialize with default values" name="PasswordStrengthBarComponent PasswordStrengthBarComponents should initialize with default values" time="0.046">
+    </testcase>
+    <testcase classname="PasswordStrengthBarComponent PasswordStrengthBarComponents should increase strength upon password value change" name="PasswordStrengthBarComponent PasswordStrengthBarComponents should increase strength upon password value change" time="0.055">
+    </testcase>
+    <testcase classname="PasswordStrengthBarComponent PasswordStrengthBarComponents should change the color based on strength" name="PasswordStrengthBarComponent PasswordStrengthBarComponents should change the color based on strength" time="0.056">
+    </testcase>
+  </testsuite>
+  <testsuite name="ConfigurationComponent" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:08" time="0.379" tests="1">
+    <testcase classname="ConfigurationComponent OnInit Should call load all on init" name="ConfigurationComponent OnInit Should call load all on init" time="0.046">
+    </testcase>
+  </testsuite>
+  <testsuite name="User Management Detail Component" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:09" time="0.359" tests="1">
+    <testcase classname="User Management Detail Component OnInit Should call load all on init" name="User Management Detail Component OnInit Should call load all on init" time="0.024">
+    </testcase>
+  </testsuite>
+  <testsuite name="Logs Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:09" time="0.393" tests="2">
+    <testcase classname="Logs Service Service methods should return Metrics" name="Logs Service Service methods should return Metrics" time="0.027">
+    </testcase>
+    <testcase classname="Logs Service Service methods should return Thread Dump" name="Logs Service Service methods should return Thread Dump" time="0.026">
+    </testcase>
+  </testsuite>
+  <testsuite name="Logs Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:09" time="0.359" tests="1">
+    <testcase classname="Logs Service Service methods should change log level" name="Logs Service Service methods should change log level" time="0.076">
+    </testcase>
+  </testsuite>
+  <testsuite name="RegisterService Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:09" time="0.571" tests="1">
+    <testcase classname="RegisterService Service Service methods should call register endpoint with correct values" name="RegisterService Service Service methods should call register endpoint with correct values" time="0.054">
+    </testcase>
+  </testsuite>
+  <testsuite name="Logs Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:09" time="0.342" tests="2">
+    <testcase classname="Logs Service Service methods should get the config" name="Logs Service Service methods should get the config" time="0.025">
+    </testcase>
+    <testcase classname="Logs Service Service methods should get the env" name="Logs Service Service methods should get the env" time="0.019">
+    </testcase>
+  </testsuite>
+  <testsuite name="FormatMediumDatePipe" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:10" time="0.275" tests="3">
+    <testcase classname="FormatMediumDatePipe should return an empty string when receive undefined" name="FormatMediumDatePipe should return an empty string when receive undefined" time="0.001">
+    </testcase>
+    <testcase classname="FormatMediumDatePipe should return an empty string when receive null" name="FormatMediumDatePipe should return an empty string when receive null" time="0">
+    </testcase>
+    <testcase classname="FormatMediumDatePipe should format date like this D MMM YYYY" name="FormatMediumDatePipe should format date like this D MMM YYYY" time="0.01">
+    </testcase>
+  </testsuite>
+  <testsuite name="FormatMediumDatePipe" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:10" time="0.218" tests="3">
+    <testcase classname="FormatMediumDatePipe should return an empty string when receive undefined" name="FormatMediumDatePipe should return an empty string when receive undefined" time="0.002">
+    </testcase>
+    <testcase classname="FormatMediumDatePipe should return an empty string when receive null" name="FormatMediumDatePipe should return an empty string when receive null" time="0">
+    </testcase>
+    <testcase classname="FormatMediumDatePipe should format date like this D MMM YYYY" name="FormatMediumDatePipe should format date like this D MMM YYYY" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="ApplicationConfigService" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:10" time="0.234" tests="5">
+    <testcase classname="ApplicationConfigService should be created" name="ApplicationConfigService should be created" time="0.026">
+    </testcase>
+    <testcase classname="ApplicationConfigService without prefix should return correctly" name="ApplicationConfigService without prefix should return correctly" time="0.012">
+    </testcase>
+    <testcase classname="ApplicationConfigService without prefix should return correctly when passing microservice" name="ApplicationConfigService without prefix should return correctly when passing microservice" time="0.008">
+    </testcase>
+    <testcase classname="ApplicationConfigService with prefix should return correctly" name="ApplicationConfigService with prefix should return correctly" time="0.015">
+    </testcase>
+    <testcase classname="ApplicationConfigService with prefix should return correctly when passing microservice" name="ApplicationConfigService with prefix should return correctly when passing microservice" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="HealthService Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:10" time="0.154" tests="1">
+    <testcase classname="HealthService Service Service methods should call management/health endpoint with correct values" name="HealthService Service Service methods should call management/health endpoint with correct values" time="0.014">
+    </testcase>
+  </testsuite>
+  <testsuite name="ActivateService Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:10" time="0.155" tests="1">
+    <testcase classname="ActivateService Service Service methods should call api/activate endpoint with correct values" name="ActivateService Service Service methods should call api/activate endpoint with correct values" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="Password Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:10" time="0.163" tests="1">
+    <testcase classname="Password Service Service methods should call change-password endpoint with correct values" name="Password Service Service methods should call change-password endpoint with correct values" time="0.021">
+    </testcase>
+  </testsuite>
+  <testsuite name="PasswordResetFinish Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:10" time="0.166" tests="1">
+    <testcase classname="PasswordResetFinish Service Service methods should call reset-password/finish endpoint with correct values" name="PasswordResetFinish Service Service methods should call reset-password/finish endpoint with correct values" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="TranslateDirective Tests" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:10" time="0.202" tests="1">
+    <testcase classname="TranslateDirective Tests should change HTML" name="TranslateDirective Tests should change HTML" time="0.031">
+    </testcase>
+  </testsuite>
+  <testsuite name="Operators Test" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:11" time="0.132" tests="3">
+    <testcase classname="Operators Test isPresent should remove null and undefined values" name="Operators Test isPresent should remove null and undefined values" time="0.001">
+    </testcase>
+    <testcase classname="Operators Test filterNaN should return 0 for NaN" name="Operators Test filterNaN should return 0 for NaN" time="0">
+    </testcase>
+    <testcase classname="Operators Test filterNaN should return number for a number" name="Operators Test filterNaN should return number for a number" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="PasswordResetInit Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:11" time="0.157" tests="1">
+    <testcase classname="PasswordResetInit Service Service methods should call reset-password/init endpoint with correct values" name="PasswordResetInit Service Service methods should call reset-password/init endpoint with correct values" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="User Service" errors="0" failures="0" skipped="0" timestamp="2021-10-25T22:46:11" time="0.181" tests="3">
+    <testcase classname="User Service Service methods should return User" name="User Service Service methods should return User" time="0.011">
+    </testcase>
+    <testcase classname="User Service Service methods should return Authorities" name="User Service Service methods should return Authorities" time="0.007">
+    </testcase>
+    <testcase classname="User Service Service methods should propagate not found response" name="User Service Service methods should propagate not found response" time="0.009">
+    </testcase>
+  </testsuite>
+</testsuites>

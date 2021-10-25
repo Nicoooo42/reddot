@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ThreadResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.core.web.rest</a> &gt; <span class="el_source">ThreadResource.java</span></div><h1>ThreadResource.java</h1><pre class="source lang-java linenums">package com.reddot.core.web.rest;
+
+import com.reddot.core.repository.ThreadRepository;
+import com.reddot.core.service.ThreadService;
+import com.reddot.core.service.dto.ThreadDTO;
+import com.reddot.core.web.rest.errors.BadRequestAlertException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.ResponseUtil;
+
+/**
+ * REST controller for managing {@link com.reddot.core.domain.Thread}.
+ */
+@RestController
+@RequestMapping(&quot;/api&quot;)
+public class ThreadResource {
+
+<span class="nc" id="L27">    private final Logger log = LoggerFactory.getLogger(ThreadResource.class);</span>
+
+    private static final String ENTITY_NAME = &quot;coreThread&quot;;
+
+    @Value(&quot;${jhipster.clientApp.name}&quot;)
+    private String applicationName;
+
+    private final ThreadService threadService;
+
+    private final ThreadRepository threadRepository;
+
+<span class="nc" id="L38">    public ThreadResource(ThreadService threadService, ThreadRepository threadRepository) {</span>
+<span class="nc" id="L39">        this.threadService = threadService;</span>
+<span class="nc" id="L40">        this.threadRepository = threadRepository;</span>
+<span class="nc" id="L41">    }</span>
+
+    /**
+     * {@code POST  /threads} : Create a new thread.
+     *
+     * @param threadDTO the threadDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new threadDTO, or with status {@code 400 (Bad Request)} if the thread has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PostMapping(&quot;/threads&quot;)
+    public ResponseEntity&lt;ThreadDTO&gt; createThread(@RequestBody ThreadDTO threadDTO) throws URISyntaxException {
+<span class="nc" id="L52">        log.debug(&quot;REST request to save Thread : {}&quot;, threadDTO);</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if (threadDTO.getId() != null) {</span>
+<span class="nc" id="L54">            throw new BadRequestAlertException(&quot;A new thread cannot already have an ID&quot;, ENTITY_NAME, &quot;idexists&quot;);</span>
+        }
+<span class="nc" id="L56">        ThreadDTO result = threadService.save(threadDTO);</span>
+<span class="nc" id="L57">        return ResponseEntity</span>
+<span class="nc" id="L58">            .created(new URI(&quot;/api/threads/&quot; + result.getId()))</span>
+<span class="nc" id="L59">            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))</span>
+<span class="nc" id="L60">            .body(result);</span>
+    }
+
+    /**
+     * {@code PUT  /threads/:id} : Updates an existing thread.
+     *
+     * @param id the id of the threadDTO to save.
+     * @param threadDTO the threadDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated threadDTO,
+     * or with status {@code 400 (Bad Request)} if the threadDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the threadDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping(&quot;/threads/{id}&quot;)
+    public ResponseEntity&lt;ThreadDTO&gt; updateThread(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody ThreadDTO threadDTO
+    ) throws URISyntaxException {
+<span class="nc" id="L78">        log.debug(&quot;REST request to update Thread : {}, {}&quot;, id, threadDTO);</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        if (threadDTO.getId() == null) {</span>
+<span class="nc" id="L80">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (!Objects.equals(id, threadDTO.getId())) {</span>
+<span class="nc" id="L83">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        if (!threadRepository.existsById(id)) {</span>
+<span class="nc" id="L87">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="nc" id="L90">        ThreadDTO result = threadService.save(threadDTO);</span>
+<span class="nc" id="L91">        return ResponseEntity</span>
+<span class="nc" id="L92">            .ok()</span>
+<span class="nc" id="L93">            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, threadDTO.getId().toString()))</span>
+<span class="nc" id="L94">            .body(result);</span>
+    }
+
+    /**
+     * {@code PATCH  /threads/:id} : Partial updates given fields of an existing thread, field will ignore if it is null
+     *
+     * @param id the id of the threadDTO to save.
+     * @param threadDTO the threadDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated threadDTO,
+     * or with status {@code 400 (Bad Request)} if the threadDTO is not valid,
+     * or with status {@code 404 (Not Found)} if the threadDTO is not found,
+     * or with status {@code 500 (Internal Server Error)} if the threadDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PatchMapping(value = &quot;/threads/{id}&quot;, consumes = { &quot;application/json&quot;, &quot;application/merge-patch+json&quot; })
+    public ResponseEntity&lt;ThreadDTO&gt; partialUpdateThread(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody ThreadDTO threadDTO
+    ) throws URISyntaxException {
+<span class="nc" id="L113">        log.debug(&quot;REST request to partial update Thread partially : {}, {}&quot;, id, threadDTO);</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">        if (threadDTO.getId() == null) {</span>
+<span class="nc" id="L115">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="nc bnc" id="L117" title="All 2 branches missed.">        if (!Objects.equals(id, threadDTO.getId())) {</span>
+<span class="nc" id="L118">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="nc bnc" id="L121" title="All 2 branches missed.">        if (!threadRepository.existsById(id)) {</span>
+<span class="nc" id="L122">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="nc" id="L125">        Optional&lt;ThreadDTO&gt; result = threadService.partialUpdate(threadDTO);</span>
+
+<span class="nc" id="L127">        return ResponseUtil.wrapOrNotFound(</span>
+            result,
+<span class="nc" id="L129">            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, threadDTO.getId().toString())</span>
+        );
+    }
+
+    /**
+     * {@code GET  /threads} : get all the threads.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of threads in body.
+     */
+    @GetMapping(&quot;/threads&quot;)
+    public List&lt;ThreadDTO&gt; getAllThreads() {
+<span class="nc" id="L140">        log.debug(&quot;REST request to get all Threads&quot;);</span>
+<span class="nc" id="L141">        return threadService.findAll();</span>
+    }
+
+    /**
+     * {@code GET  /threads/:id} : get the &quot;id&quot; thread.
+     *
+     * @param id the id of the threadDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the threadDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping(&quot;/threads/{id}&quot;)
+    public ResponseEntity&lt;ThreadDTO&gt; getThread(@PathVariable Long id) {
+<span class="nc" id="L152">        log.debug(&quot;REST request to get Thread : {}&quot;, id);</span>
+<span class="nc" id="L153">        Optional&lt;ThreadDTO&gt; threadDTO = threadService.findOne(id);</span>
+<span class="nc" id="L154">        return ResponseUtil.wrapOrNotFound(threadDTO);</span>
+    }
+
+    /**
+     * {@code DELETE  /threads/:id} : delete the &quot;id&quot; thread.
+     *
+     * @param id the id of the threadDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping(&quot;/threads/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteThread(@PathVariable Long id) {
+<span class="nc" id="L165">        log.debug(&quot;REST request to delete Thread : {}&quot;, id);</span>
+<span class="nc" id="L166">        threadService.delete(id);</span>
+<span class="nc" id="L167">        return ResponseEntity</span>
+<span class="nc" id="L168">            .noContent()</span>
+<span class="nc" id="L169">            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))</span>
+<span class="nc" id="L170">            .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

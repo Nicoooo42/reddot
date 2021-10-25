@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ThreadServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.core.service.impl</a> &gt; <span class="el_source">ThreadServiceImpl.java</span></div><h1>ThreadServiceImpl.java</h1><pre class="source lang-java linenums">package com.reddot.core.service.impl;
+
+import com.reddot.core.domain.Thread;
+import com.reddot.core.repository.ThreadRepository;
+import com.reddot.core.service.ThreadService;
+import com.reddot.core.service.dto.ThreadDTO;
+import com.reddot.core.service.mapper.ThreadMapper;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Service Implementation for managing {@link Thread}.
+ */
+@Service
+@Transactional
+public class ThreadServiceImpl implements ThreadService {
+
+<span class="fc" id="L24">    private final Logger log = LoggerFactory.getLogger(ThreadServiceImpl.class);</span>
+
+    private final ThreadRepository threadRepository;
+
+    private final ThreadMapper threadMapper;
+
+<span class="fc" id="L30">    public ThreadServiceImpl(ThreadRepository threadRepository, ThreadMapper threadMapper) {</span>
+<span class="fc" id="L31">        this.threadRepository = threadRepository;</span>
+<span class="fc" id="L32">        this.threadMapper = threadMapper;</span>
+<span class="fc" id="L33">    }</span>
+
+    @Override
+    public ThreadDTO save(ThreadDTO threadDTO) {
+<span class="fc" id="L37">        log.debug(&quot;Request to save Thread : {}&quot;, threadDTO);</span>
+<span class="fc" id="L38">        Thread thread = threadMapper.toEntity(threadDTO);</span>
+<span class="fc" id="L39">        thread = threadRepository.save(thread);</span>
+<span class="fc" id="L40">        return threadMapper.toDto(thread);</span>
+    }
+
+    @Override
+    public Optional&lt;ThreadDTO&gt; partialUpdate(ThreadDTO threadDTO) {
+<span class="fc" id="L45">        log.debug(&quot;Request to partially update Thread : {}&quot;, threadDTO);</span>
+
+<span class="fc" id="L47">        return threadRepository</span>
+<span class="fc" id="L48">            .findById(threadDTO.getId())</span>
+<span class="fc" id="L49">            .map(existingThread -&gt; {</span>
+<span class="fc" id="L50">                threadMapper.partialUpdate(existingThread, threadDTO);</span>
+
+<span class="fc" id="L52">                return existingThread;</span>
+            })
+<span class="fc" id="L54">            .map(threadRepository::save)</span>
+<span class="fc" id="L55">            .map(threadMapper::toDto);</span>
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List&lt;ThreadDTO&gt; findAll() {
+<span class="fc" id="L61">        log.debug(&quot;Request to get all Threads&quot;);</span>
+<span class="fc" id="L62">        return threadRepository.findAll().stream().map(threadMapper::toDto).collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional&lt;ThreadDTO&gt; findOne(Long id) {
+<span class="fc" id="L68">        log.debug(&quot;Request to get Thread : {}&quot;, id);</span>
+<span class="fc" id="L69">        return threadRepository.findById(id).map(threadMapper::toDto);</span>
+    }
+
+    @Override
+    public void delete(Long id) {
+<span class="fc" id="L74">        log.debug(&quot;Request to delete Thread : {}&quot;, id);</span>
+<span class="fc" id="L75">        threadRepository.deleteById(id);</span>
+<span class="fc" id="L76">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

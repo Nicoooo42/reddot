@@ -1,0 +1,484 @@
+3e59862bd7aa63e66907d73a90967bb0
+"use strict";
+
+/* istanbul ignore next */
+function cov_1ud79tveyh() {
+  var path = "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\config\\application-config.service.ts";
+  var hash = "2ec6b7d87acd67411f3ed007da81dba3ac8e83fa";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\config\\application-config.service.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 42
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 16
+        },
+        end: {
+          line: 4,
+          column: 32
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 15
+        },
+        end: {
+          line: 5,
+          column: 39
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 31
+        },
+        end: {
+          line: 26,
+          column: 1
+        }
+      },
+      "5": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 33
+        }
+      },
+      "6": {
+        start: {
+          line: 9,
+          column: 8
+        },
+        end: {
+          line: 9,
+          column: 35
+        }
+      },
+      "7": {
+        start: {
+          line: 12,
+          column: 8
+        },
+        end: {
+          line: 12,
+          column: 45
+        }
+      },
+      "8": {
+        start: {
+          line: 15,
+          column: 8
+        },
+        end: {
+          line: 15,
+          column: 43
+        }
+      },
+      "9": {
+        start: {
+          line: 18,
+          column: 8
+        },
+        end: {
+          line: 18,
+          column: 34
+        }
+      },
+      "10": {
+        start: {
+          line: 21,
+          column: 8
+        },
+        end: {
+          line: 23,
+          column: 9
+        }
+      },
+      "11": {
+        start: {
+          line: 22,
+          column: 12
+        },
+        end: {
+          line: 22,
+          column: 75
+        }
+      },
+      "12": {
+        start: {
+          line: 24,
+          column: 8
+        },
+        end: {
+          line: 24,
+          column: 46
+        }
+      },
+      "13": {
+        start: {
+          line: 27,
+          column: 0
+        },
+        end: {
+          line: 31,
+          column: 29
+        }
+      },
+      "14": {
+        start: {
+          line: 32,
+          column: 0
+        },
+        end: {
+          line: 32,
+          column: 60
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 4
+          },
+          end: {
+            line: 7,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 18
+          },
+          end: {
+            line: 10,
+            column: 5
+          }
+        },
+        line: 7
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 11,
+            column: 4
+          },
+          end: {
+            line: 11,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 38
+          },
+          end: {
+            line: 13,
+            column: 5
+          }
+        },
+        line: 11
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 14,
+            column: 4
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 14,
+            column: 43
+          },
+          end: {
+            line: 16,
+            column: 5
+          }
+        },
+        line: 14
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 17,
+            column: 4
+          },
+          end: {
+            line: 17,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 17,
+            column: 22
+          },
+          end: {
+            line: 19,
+            column: 5
+          }
+        },
+        line: 17
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 20,
+            column: 4
+          },
+          end: {
+            line: 20,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 20,
+            column: 38
+          },
+          end: {
+            line: 25,
+            column: 5
+          }
+        },
+        line: 20
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 14,
+            column: 21
+          },
+          end: {
+            line: 14,
+            column: 41
+          }
+        },
+        type: "default-arg",
+        locations: [{
+          start: {
+            line: 14,
+            column: 37
+          },
+          end: {
+            line: 14,
+            column: 41
+          }
+        }],
+        line: 14
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 21,
+            column: 8
+          },
+          end: {
+            line: 23,
+            column: 9
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 21,
+            column: 8
+          },
+          end: {
+            line: 23,
+            column: 9
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 21
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    b: {
+      "0": [0],
+      "1": [0, 0]
+    },
+    inputSourceMap: {
+      file: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\config\\application-config.service.ts",
+      mappings: ";;;;AAAA,wCAA2C;IAK9B,wBAAwB,SAAxB,wBAAwB;;QAC3B,mBAAc,GAAG,EAAE,CAAC;QACpB,kBAAa,GAAG,KAAK,CAAC;IAoBhC,CAAC;IAlBC,iBAAiB,CAAC,cAAsB;QACtC,IAAI,CAAC,cAAc,GAAG,cAAc,CAAC;IACvC,CAAC;IAED,gBAAgB,CAAC,aAAa,GAAG,IAAI;QACnC,IAAI,CAAC,aAAa,GAAG,aAAa,CAAC;IACrC,CAAC;IAED,eAAe;QACb,OAAO,IAAI,CAAC,aAAa,CAAC;IAC5B,CAAC;IAED,cAAc,CAAC,GAAW,EAAE,YAAqB;QAC/C,IAAI,YAAY,EAAE;YAChB,OAAO,GAAG,IAAI,CAAC,cAAc,YAAY,YAAY,IAAI,GAAG,EAAE,CAAC;SAChE;QACD,OAAO,GAAG,IAAI,CAAC,cAAc,GAAG,GAAG,EAAE,CAAC;IACxC,CAAC;CACF,CAAA;AAtBY,wBAAwB;IAHpC,iBAAU,CAAC;QACV,UAAU,EAAE,MAAM;KACnB,CAAC;GACW,wBAAwB,CAsBpC;AAtBY,4DAAwB",
+      names: [],
+      sources: ["C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\config\\application-config.service.ts"],
+      sourcesContent: ["import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ApplicationConfigService {\n  private endpointPrefix = '';\n  private microfrontend = false;\n\n  setEndpointPrefix(endpointPrefix: string): void {\n    this.endpointPrefix = endpointPrefix;\n  }\n\n  setMicrofrontend(microfrontend = true): void {\n    this.microfrontend = microfrontend;\n  }\n\n  isMicrofrontend(): boolean {\n    return this.microfrontend;\n  }\n\n  getEndpointFor(api: string, microservice?: string): string {\n    if (microservice) {\n      return `${this.endpointPrefix}services/${microservice}/${api}`;\n    }\n    return `${this.endpointPrefix}${api}`;\n  }\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "2ec6b7d87acd67411f3ed007da81dba3ac8e83fa"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1ud79tveyh = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_1ud79tveyh();
+cov_1ud79tveyh().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/* istanbul ignore next */
+cov_1ud79tveyh().s[1]++;
+exports.ApplicationConfigService = void 0;
+const tslib_1 =
+/* istanbul ignore next */
+(cov_1ud79tveyh().s[2]++, require("tslib"));
+const core_1 =
+/* istanbul ignore next */
+(cov_1ud79tveyh().s[3]++, require("@angular/core"));
+
+/* istanbul ignore next */
+cov_1ud79tveyh().s[4]++;
+let ApplicationConfigService = class ApplicationConfigService {
+  constructor() {
+    /* istanbul ignore next */
+    cov_1ud79tveyh().f[0]++;
+    cov_1ud79tveyh().s[5]++;
+    this.endpointPrefix = '';
+
+    /* istanbul ignore next */
+    cov_1ud79tveyh().s[6]++;
+    this.microfrontend = false;
+  }
+
+  setEndpointPrefix(endpointPrefix) {
+    /* istanbul ignore next */
+    cov_1ud79tveyh().f[1]++;
+    cov_1ud79tveyh().s[7]++;
+    this.endpointPrefix = endpointPrefix;
+  }
+
+  setMicrofrontend(microfrontend =
+  /* istanbul ignore next */
+  (cov_1ud79tveyh().b[0][0]++, true)) {
+    /* istanbul ignore next */
+    cov_1ud79tveyh().f[2]++;
+    cov_1ud79tveyh().s[8]++;
+    this.microfrontend = microfrontend;
+  }
+
+  isMicrofrontend() {
+    /* istanbul ignore next */
+    cov_1ud79tveyh().f[3]++;
+    cov_1ud79tveyh().s[9]++;
+    return this.microfrontend;
+  }
+
+  getEndpointFor(api, microservice) {
+    /* istanbul ignore next */
+    cov_1ud79tveyh().f[4]++;
+    cov_1ud79tveyh().s[10]++;
+
+    if (microservice) {
+      /* istanbul ignore next */
+      cov_1ud79tveyh().b[1][0]++;
+      cov_1ud79tveyh().s[11]++;
+      return `${this.endpointPrefix}services/${microservice}/${api}`;
+    } else
+    /* istanbul ignore next */
+    {
+      cov_1ud79tveyh().b[1][1]++;
+    }
+
+    cov_1ud79tveyh().s[12]++;
+    return `${this.endpointPrefix}${api}`;
+  }
+
+};
+
+/* istanbul ignore next */
+cov_1ud79tveyh().s[13]++;
+ApplicationConfigService = tslib_1.__decorate([core_1.Injectable({
+  providedIn: 'root'
+})], ApplicationConfigService);
+
+/* istanbul ignore next */
+cov_1ud79tveyh().s[14]++;
+exports.ApplicationConfigService = ApplicationConfigService;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcTmljb2xhc1xcRGVza3RvcFxcdGVzdDZcXGdhdGV3YXlcXHNyY1xcbWFpblxcd2ViYXBwXFxhcHBcXGNvcmVcXGNvbmZpZ1xcYXBwbGljYXRpb24tY29uZmlnLnNlcnZpY2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBZUc7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBZkgsTUFBQSxNQUFBO0FBQUE7QUFBQSwwQkFBQSxPQUFBLENBQUEsZUFBQSxDQUFBLENBQUE7Ozs7SUFLYSx3QkFBd0IsR0FBQSxNQUF4Qix3QkFBd0IsQ0FBQTs7Ozs7QUFDM0IsU0FBQSxjQUFBLEdBQWlCLEVBQWpCOzs7O0FBQ0EsU0FBQSxhQUFBLEdBQWdCLEtBQWhCO0FBb0JUOztBQWxCQyxFQUFBLGlCQUFpQixDQUFDLGNBQUQsRUFBdUI7QUFBQTtBQUFBO0FBQUE7QUFDdEMsU0FBSyxjQUFMLEdBQXNCLGNBQXRCO0FBQ0Q7O0FBRUQsRUFBQSxnQkFBZ0IsQ0FBQyxhQUFhO0FBQUE7QUFBQSwrQkFBRyxJQUFILENBQWQsRUFBcUI7QUFBQTtBQUFBO0FBQUE7QUFDbkMsU0FBSyxhQUFMLEdBQXFCLGFBQXJCO0FBQ0Q7O0FBRUQsRUFBQSxlQUFlLEdBQUE7QUFBQTtBQUFBO0FBQUE7QUFDYixXQUFPLEtBQUssYUFBWjtBQUNEOztBQUVELEVBQUEsY0FBYyxDQUFDLEdBQUQsRUFBYyxZQUFkLEVBQW1DO0FBQUE7QUFBQTtBQUFBOztBQUMvQyxRQUFJLFlBQUosRUFBa0I7QUFBQTtBQUFBO0FBQUE7QUFDaEIsYUFBTyxHQUFHLEtBQUssY0FBYyxZQUFZLFlBQVksSUFBSSxHQUFHLEVBQTVEO0FBQ0QsS0FGRDtBQUFBO0FBQUE7QUFBQTtBQUFBOztBQUQrQztBQUkvQyxXQUFPLEdBQUcsS0FBSyxjQUFjLEdBQUcsR0FBRyxFQUFuQztBQUNEOztBQXJCa0MsQzs7OztBQUF4Qix3QkFBd0IsR0FBQSxPQUFBLENBQUEsVUFBQSxDQUFBLENBSHBDLE1BQUEsQ0FBQSxVQUFBLENBQVc7QUFDVixFQUFBLFVBQVUsRUFBRTtBQURGLENBQVgsQ0FHb0MsQ0FBQSxFQUF4Qix3QkFBd0IsQ0FBeEI7Ozs7QUFBQSxPQUFBLENBQUEsd0JBQUEsR0FBQSx3QkFBQSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEluamVjdGFibGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcblxuQEluamVjdGFibGUoe1xuICBwcm92aWRlZEluOiAncm9vdCcsXG59KVxuZXhwb3J0IGNsYXNzIEFwcGxpY2F0aW9uQ29uZmlnU2VydmljZSB7XG4gIHByaXZhdGUgZW5kcG9pbnRQcmVmaXggPSAnJztcbiAgcHJpdmF0ZSBtaWNyb2Zyb250ZW5kID0gZmFsc2U7XG5cbiAgc2V0RW5kcG9pbnRQcmVmaXgoZW5kcG9pbnRQcmVmaXg6IHN0cmluZyk6IHZvaWQge1xuICAgIHRoaXMuZW5kcG9pbnRQcmVmaXggPSBlbmRwb2ludFByZWZpeDtcbiAgfVxuXG4gIHNldE1pY3JvZnJvbnRlbmQobWljcm9mcm9udGVuZCA9IHRydWUpOiB2b2lkIHtcbiAgICB0aGlzLm1pY3JvZnJvbnRlbmQgPSBtaWNyb2Zyb250ZW5kO1xuICB9XG5cbiAgaXNNaWNyb2Zyb250ZW5kKCk6IGJvb2xlYW4ge1xuICAgIHJldHVybiB0aGlzLm1pY3JvZnJvbnRlbmQ7XG4gIH1cblxuICBnZXRFbmRwb2ludEZvcihhcGk6IHN0cmluZywgbWljcm9zZXJ2aWNlPzogc3RyaW5nKTogc3RyaW5nIHtcbiAgICBpZiAobWljcm9zZXJ2aWNlKSB7XG4gICAgICByZXR1cm4gYCR7dGhpcy5lbmRwb2ludFByZWZpeH1zZXJ2aWNlcy8ke21pY3Jvc2VydmljZX0vJHthcGl9YDtcbiAgICB9XG4gICAgcmV0dXJuIGAke3RoaXMuZW5kcG9pbnRQcmVmaXh9JHthcGl9YDtcbiAgfVxufVxuIl19

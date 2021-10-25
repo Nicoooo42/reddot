@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Gateway</a> &gt; <a href="index.source.html" class="el_package">com.reddot.gateway.service</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package com.reddot.gateway.service;
+
+import com.reddot.gateway.config.Constants;
+import com.reddot.gateway.domain.Authority;
+import com.reddot.gateway.domain.User;
+import com.reddot.gateway.repository.AuthorityRepository;
+import com.reddot.gateway.repository.UserRepository;
+import com.reddot.gateway.security.AuthoritiesConstants;
+import com.reddot.gateway.security.SecurityUtils;
+import com.reddot.gateway.service.dto.AdminUserDTO;
+import com.reddot.gateway.service.dto.UserDTO;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
+import tech.jhipster.security.RandomUtil;
+
+/**
+ * Service class for managing users.
+ */
+@Service
+public class UserService {
+
+<span class="fc" id="L35">    private final Logger log = LoggerFactory.getLogger(UserService.class);</span>
+
+    private final UserRepository userRepository;
+
+    private final PasswordEncoder passwordEncoder;
+
+    private final AuthorityRepository authorityRepository;
+
+<span class="fc" id="L43">    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository) {</span>
+<span class="fc" id="L44">        this.userRepository = userRepository;</span>
+<span class="fc" id="L45">        this.passwordEncoder = passwordEncoder;</span>
+<span class="fc" id="L46">        this.authorityRepository = authorityRepository;</span>
+<span class="fc" id="L47">    }</span>
+
+    @Transactional
+    public Mono&lt;User&gt; activateRegistration(String key) {
+<span class="fc" id="L51">        log.debug(&quot;Activating user for activation key {}&quot;, key);</span>
+<span class="fc" id="L52">        return userRepository</span>
+<span class="fc" id="L53">            .findOneByActivationKey(key)</span>
+<span class="fc" id="L54">            .flatMap(user -&gt; {</span>
+                // activate given user for the registration key.
+<span class="fc" id="L56">                user.setActivated(true);</span>
+<span class="fc" id="L57">                user.setActivationKey(null);</span>
+<span class="fc" id="L58">                return saveUser(user);</span>
+            })
+<span class="fc" id="L60">            .doOnNext(user -&gt; log.debug(&quot;Activated user: {}&quot;, user));</span>
+    }
+
+    @Transactional
+    public Mono&lt;User&gt; completePasswordReset(String newPassword, String key) {
+<span class="fc" id="L65">        log.debug(&quot;Reset user password for reset key {}&quot;, key);</span>
+<span class="fc" id="L66">        return userRepository</span>
+<span class="fc" id="L67">            .findOneByResetKey(key)</span>
+<span class="fc" id="L68">            .filter(user -&gt; user.getResetDate().isAfter(Instant.now().minus(1, ChronoUnit.DAYS)))</span>
+<span class="fc" id="L69">            .publishOn(Schedulers.boundedElastic())</span>
+<span class="fc" id="L70">            .map(user -&gt; {</span>
+<span class="fc" id="L71">                user.setPassword(passwordEncoder.encode(newPassword));</span>
+<span class="fc" id="L72">                user.setResetKey(null);</span>
+<span class="fc" id="L73">                user.setResetDate(null);</span>
+<span class="fc" id="L74">                return user;</span>
+            })
+<span class="fc" id="L76">            .flatMap(this::saveUser);</span>
+    }
+
+    @Transactional
+    public Mono&lt;User&gt; requestPasswordReset(String mail) {
+<span class="fc" id="L81">        return userRepository</span>
+<span class="fc" id="L82">            .findOneByEmailIgnoreCase(mail)</span>
+<span class="fc" id="L83">            .filter(User::isActivated)</span>
+<span class="fc" id="L84">            .publishOn(Schedulers.boundedElastic())</span>
+<span class="fc" id="L85">            .map(user -&gt; {</span>
+<span class="fc" id="L86">                user.setResetKey(RandomUtil.generateResetKey());</span>
+<span class="fc" id="L87">                user.setResetDate(Instant.now());</span>
+<span class="fc" id="L88">                return user;</span>
+            })
+<span class="fc" id="L90">            .flatMap(this::saveUser);</span>
+    }
+
+    @Transactional
+    public Mono&lt;User&gt; registerUser(AdminUserDTO userDTO, String password) {
+<span class="fc" id="L95">        return userRepository</span>
+<span class="fc" id="L96">            .findOneByLogin(userDTO.getLogin().toLowerCase())</span>
+<span class="fc" id="L97">            .flatMap(existingUser -&gt; {</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">                if (!existingUser.isActivated()) {</span>
+<span class="fc" id="L99">                    return userRepository.delete(existingUser);</span>
+                } else {
+<span class="fc" id="L101">                    return Mono.error(new UsernameAlreadyUsedException());</span>
+                }
+            })
+<span class="fc" id="L104">            .then(userRepository.findOneByEmailIgnoreCase(userDTO.getEmail()))</span>
+<span class="fc" id="L105">            .flatMap(existingUser -&gt; {</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">                if (!existingUser.isActivated()) {</span>
+<span class="fc" id="L107">                    return userRepository.delete(existingUser);</span>
+                } else {
+<span class="fc" id="L109">                    return Mono.error(new EmailAlreadyUsedException());</span>
+                }
+            })
+<span class="fc" id="L112">            .publishOn(Schedulers.boundedElastic())</span>
+<span class="fc" id="L113">            .then(</span>
+<span class="fc" id="L114">                Mono.fromCallable(() -&gt; {</span>
+<span class="fc" id="L115">                    User newUser = new User();</span>
+<span class="fc" id="L116">                    String encryptedPassword = passwordEncoder.encode(password);</span>
+<span class="fc" id="L117">                    newUser.setLogin(userDTO.getLogin().toLowerCase());</span>
+                    // new user gets initially a generated password
+<span class="fc" id="L119">                    newUser.setPassword(encryptedPassword);</span>
+<span class="fc" id="L120">                    newUser.setFirstName(userDTO.getFirstName());</span>
+<span class="fc" id="L121">                    newUser.setLastName(userDTO.getLastName());</span>
+<span class="pc bpc" id="L122" title="1 of 2 branches missed.">                    if (userDTO.getEmail() != null) {</span>
+<span class="fc" id="L123">                        newUser.setEmail(userDTO.getEmail().toLowerCase());</span>
+                    }
+<span class="fc" id="L125">                    newUser.setImageUrl(userDTO.getImageUrl());</span>
+<span class="fc" id="L126">                    newUser.setLangKey(userDTO.getLangKey());</span>
+                    // new user is not active
+<span class="fc" id="L128">                    newUser.setActivated(false);</span>
+                    // new user gets registration key
+<span class="fc" id="L130">                    newUser.setActivationKey(RandomUtil.generateActivationKey());</span>
+<span class="fc" id="L131">                    return newUser;</span>
+                })
+            )
+<span class="fc" id="L134">            .flatMap(newUser -&gt; {</span>
+<span class="fc" id="L135">                Set&lt;Authority&gt; authorities = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L136">                return authorityRepository</span>
+<span class="fc" id="L137">                    .findById(AuthoritiesConstants.USER)</span>
+<span class="fc" id="L138">                    .map(authorities::add)</span>
+<span class="fc" id="L139">                    .thenReturn(newUser)</span>
+<span class="fc" id="L140">                    .doOnNext(user -&gt; user.setAuthorities(authorities))</span>
+<span class="fc" id="L141">                    .flatMap(this::saveUser)</span>
+<span class="fc" id="L142">                    .doOnNext(user -&gt; log.debug(&quot;Created Information for User: {}&quot;, user));</span>
+            });
+    }
+
+    @Transactional
+    public Mono&lt;User&gt; createUser(AdminUserDTO userDTO) {
+<span class="fc" id="L148">        User user = new User();</span>
+<span class="fc" id="L149">        user.setLogin(userDTO.getLogin().toLowerCase());</span>
+<span class="fc" id="L150">        user.setFirstName(userDTO.getFirstName());</span>
+<span class="fc" id="L151">        user.setLastName(userDTO.getLastName());</span>
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">        if (userDTO.getEmail() != null) {</span>
+<span class="fc" id="L153">            user.setEmail(userDTO.getEmail().toLowerCase());</span>
+        }
+<span class="fc" id="L155">        user.setImageUrl(userDTO.getImageUrl());</span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">        if (userDTO.getLangKey() == null) {</span>
+<span class="nc" id="L157">            user.setLangKey(Constants.DEFAULT_LANGUAGE); // default language</span>
+        } else {
+<span class="fc" id="L159">            user.setLangKey(userDTO.getLangKey());</span>
+        }
+<span class="fc" id="L161">        return Flux</span>
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">            .fromIterable(userDTO.getAuthorities() != null ? userDTO.getAuthorities() : new HashSet&lt;&gt;())</span>
+<span class="fc" id="L163">            .flatMap(authorityRepository::findById)</span>
+<span class="fc" id="L164">            .doOnNext(authority -&gt; user.getAuthorities().add(authority))</span>
+<span class="fc" id="L165">            .then(Mono.just(user))</span>
+<span class="fc" id="L166">            .publishOn(Schedulers.boundedElastic())</span>
+<span class="fc" id="L167">            .map(newUser -&gt; {</span>
+<span class="fc" id="L168">                String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());</span>
+<span class="fc" id="L169">                newUser.setPassword(encryptedPassword);</span>
+<span class="fc" id="L170">                newUser.setResetKey(RandomUtil.generateResetKey());</span>
+<span class="fc" id="L171">                newUser.setResetDate(Instant.now());</span>
+<span class="fc" id="L172">                newUser.setActivated(true);</span>
+<span class="fc" id="L173">                return newUser;</span>
+            })
+<span class="fc" id="L175">            .flatMap(this::saveUser)</span>
+<span class="fc" id="L176">            .doOnNext(user1 -&gt; log.debug(&quot;Created Information for User: {}&quot;, user1));</span>
+    }
+
+    /**
+     * Update all information for a specific user, and return the modified user.
+     *
+     * @param userDTO user to update.
+     * @return updated user.
+     */
+    @Transactional
+    public Mono&lt;AdminUserDTO&gt; updateUser(AdminUserDTO userDTO) {
+<span class="fc" id="L187">        return userRepository</span>
+<span class="fc" id="L188">            .findById(userDTO.getId())</span>
+<span class="fc" id="L189">            .flatMap(user -&gt; {</span>
+<span class="fc" id="L190">                user.setLogin(userDTO.getLogin().toLowerCase());</span>
+<span class="fc" id="L191">                user.setFirstName(userDTO.getFirstName());</span>
+<span class="fc" id="L192">                user.setLastName(userDTO.getLastName());</span>
+<span class="pc bpc" id="L193" title="1 of 2 branches missed.">                if (userDTO.getEmail() != null) {</span>
+<span class="fc" id="L194">                    user.setEmail(userDTO.getEmail().toLowerCase());</span>
+                }
+<span class="fc" id="L196">                user.setImageUrl(userDTO.getImageUrl());</span>
+<span class="fc" id="L197">                user.setActivated(userDTO.isActivated());</span>
+<span class="fc" id="L198">                user.setLangKey(userDTO.getLangKey());</span>
+<span class="fc" id="L199">                Set&lt;Authority&gt; managedAuthorities = user.getAuthorities();</span>
+<span class="fc" id="L200">                managedAuthorities.clear();</span>
+<span class="fc" id="L201">                return userRepository</span>
+<span class="fc" id="L202">                    .deleteUserAuthorities(user.getId())</span>
+<span class="fc" id="L203">                    .thenMany(Flux.fromIterable(userDTO.getAuthorities()))</span>
+<span class="fc" id="L204">                    .flatMap(authorityRepository::findById)</span>
+<span class="fc" id="L205">                    .map(managedAuthorities::add)</span>
+<span class="fc" id="L206">                    .then(Mono.just(user));</span>
+            })
+<span class="fc" id="L208">            .flatMap(this::saveUser)</span>
+<span class="fc" id="L209">            .doOnNext(user -&gt; log.debug(&quot;Changed Information for User: {}&quot;, user))</span>
+<span class="fc" id="L210">            .map(AdminUserDTO::new);</span>
+    }
+
+    @Transactional
+    public Mono&lt;Void&gt; deleteUser(String login) {
+<span class="fc" id="L215">        return userRepository</span>
+<span class="fc" id="L216">            .findOneByLogin(login)</span>
+<span class="fc" id="L217">            .flatMap(user -&gt; userRepository.delete(user).thenReturn(user))</span>
+<span class="fc" id="L218">            .doOnNext(user -&gt; log.debug(&quot;Deleted User: {}&quot;, user))</span>
+<span class="fc" id="L219">            .then();</span>
+    }
+
+    /**
+     * Update basic information (first name, last name, email, language) for the current user.
+     *
+     * @param firstName first name of user.
+     * @param lastName  last name of user.
+     * @param email     email id of user.
+     * @param langKey   language key.
+     * @param imageUrl  image URL of user.
+     * @return a completed {@link Mono}.
+     */
+    @Transactional
+    public Mono&lt;Void&gt; updateUser(String firstName, String lastName, String email, String langKey, String imageUrl) {
+<span class="fc" id="L234">        return SecurityUtils</span>
+<span class="fc" id="L235">            .getCurrentUserLogin()</span>
+<span class="fc" id="L236">            .flatMap(userRepository::findOneByLogin)</span>
+<span class="fc" id="L237">            .flatMap(user -&gt; {</span>
+<span class="fc" id="L238">                user.setFirstName(firstName);</span>
+<span class="fc" id="L239">                user.setLastName(lastName);</span>
+<span class="pc bpc" id="L240" title="1 of 2 branches missed.">                if (email != null) {</span>
+<span class="fc" id="L241">                    user.setEmail(email.toLowerCase());</span>
+                }
+<span class="fc" id="L243">                user.setLangKey(langKey);</span>
+<span class="fc" id="L244">                user.setImageUrl(imageUrl);</span>
+<span class="fc" id="L245">                return saveUser(user);</span>
+            })
+<span class="fc" id="L247">            .doOnNext(user -&gt; log.debug(&quot;Changed Information for User: {}&quot;, user))</span>
+<span class="fc" id="L248">            .then();</span>
+    }
+
+    @Transactional
+    public Mono&lt;User&gt; saveUser(User user) {
+<span class="fc" id="L253">        return SecurityUtils</span>
+<span class="fc" id="L254">            .getCurrentUserLogin()</span>
+<span class="fc" id="L255">            .switchIfEmpty(Mono.just(Constants.SYSTEM))</span>
+<span class="fc" id="L256">            .flatMap(login -&gt; {</span>
+<span class="fc bfc" id="L257" title="All 2 branches covered.">                if (user.getCreatedBy() == null) {</span>
+<span class="fc" id="L258">                    user.setCreatedBy(login);</span>
+                }
+<span class="fc" id="L260">                user.setLastModifiedBy(login);</span>
+                // Saving the relationship can be done in an entity callback
+                // once https://github.com/spring-projects/spring-data-r2dbc/issues/215 is done
+<span class="fc" id="L263">                return userRepository</span>
+<span class="fc" id="L264">                    .save(user)</span>
+<span class="fc" id="L265">                    .flatMap(savedUser -&gt;</span>
+<span class="fc" id="L266">                        Flux</span>
+<span class="fc" id="L267">                            .fromIterable(user.getAuthorities())</span>
+<span class="fc" id="L268">                            .flatMap(authority -&gt; userRepository.saveUserAuthority(savedUser.getId(), authority.getName()))</span>
+<span class="fc" id="L269">                            .then(Mono.just(savedUser))</span>
+                    );
+            });
+    }
+
+    @Transactional
+    public Mono&lt;Void&gt; changePassword(String currentClearTextPassword, String newPassword) {
+<span class="fc" id="L276">        return SecurityUtils</span>
+<span class="fc" id="L277">            .getCurrentUserLogin()</span>
+<span class="fc" id="L278">            .flatMap(userRepository::findOneByLogin)</span>
+<span class="fc" id="L279">            .publishOn(Schedulers.boundedElastic())</span>
+<span class="fc" id="L280">            .map(user -&gt; {</span>
+<span class="fc" id="L281">                String currentEncryptedPassword = user.getPassword();</span>
+<span class="fc bfc" id="L282" title="All 2 branches covered.">                if (!passwordEncoder.matches(currentClearTextPassword, currentEncryptedPassword)) {</span>
+<span class="fc" id="L283">                    throw new InvalidPasswordException();</span>
+                }
+<span class="fc" id="L285">                String encryptedPassword = passwordEncoder.encode(newPassword);</span>
+<span class="fc" id="L286">                user.setPassword(encryptedPassword);</span>
+<span class="fc" id="L287">                return user;</span>
+            })
+<span class="fc" id="L289">            .flatMap(this::saveUser)</span>
+<span class="fc" id="L290">            .doOnNext(user -&gt; log.debug(&quot;Changed password for User: {}&quot;, user))</span>
+<span class="fc" id="L291">            .then();</span>
+    }
+
+    @Transactional(readOnly = true)
+    public Flux&lt;AdminUserDTO&gt; getAllManagedUsers(Pageable pageable) {
+<span class="fc" id="L296">        return userRepository.findAllWithAuthorities(pageable).map(AdminUserDTO::new);</span>
+    }
+
+    @Transactional(readOnly = true)
+    public Flux&lt;UserDTO&gt; getAllPublicUsers(Pageable pageable) {
+<span class="fc" id="L301">        return userRepository.findAllByIdNotNullAndActivatedIsTrue(pageable).map(UserDTO::new);</span>
+    }
+
+    @Transactional(readOnly = true)
+    public Mono&lt;Long&gt; countManagedUsers() {
+<span class="fc" id="L306">        return userRepository.count();</span>
+    }
+
+    @Transactional(readOnly = true)
+    public Mono&lt;User&gt; getUserWithAuthoritiesByLogin(String login) {
+<span class="fc" id="L311">        return userRepository.findOneWithAuthoritiesByLogin(login);</span>
+    }
+
+    @Transactional(readOnly = true)
+    public Mono&lt;User&gt; getUserWithAuthorities() {
+<span class="fc" id="L316">        return SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findOneWithAuthoritiesByLogin);</span>
+    }
+
+    /**
+     * Not activated users should be automatically deleted after 3 days.
+     * &lt;p&gt;
+     * This is scheduled to get fired everyday, at 01:00 (am).
+     */
+    @Scheduled(cron = &quot;0 0 1 * * ?&quot;)
+    public void removeNotActivatedUsers() {
+<span class="fc" id="L326">        removeNotActivatedUsersReactively().blockLast();</span>
+<span class="fc" id="L327">    }</span>
+
+    @Transactional
+    public Flux&lt;User&gt; removeNotActivatedUsersReactively() {
+<span class="fc" id="L331">        return userRepository</span>
+<span class="fc" id="L332">            .findAllByActivatedIsFalseAndActivationKeyIsNotNullAndCreatedDateBefore(</span>
+<span class="fc" id="L333">                LocalDateTime.ofInstant(Instant.now().minus(3, ChronoUnit.DAYS), ZoneOffset.UTC)</span>
+            )
+<span class="fc" id="L335">            .flatMap(user -&gt; userRepository.delete(user).thenReturn(user))</span>
+<span class="fc" id="L336">            .doOnNext(user -&gt; log.debug(&quot;Deleted User: {}&quot;, user));</span>
+    }
+
+    /**
+     * Gets a list of all the authorities.
+     * @return a list of all the authorities.
+     */
+    @Transactional(readOnly = true)
+    public Flux&lt;String&gt; getAuthorities() {
+<span class="fc" id="L345">        return authorityRepository.findAll().map(Authority::getName);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

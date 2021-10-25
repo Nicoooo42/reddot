@@ -1,0 +1,860 @@
+3cb32fe157a6a5a320288ac32267c803
+"use strict";
+
+/* istanbul ignore next */
+function cov_2mhfyy7177() {
+  var path = "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\util\\event-manager.service.ts";
+  var hash = "7c01a77ff5ca3918139da5b86310479c1e9240b5";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\util\\event-manager.service.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 57
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 16
+        },
+        end: {
+          line: 4,
+          column: 32
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 15
+        },
+        end: {
+          line: 5,
+          column: 39
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 15
+        },
+        end: {
+          line: 6,
+          column: 30
+        }
+      },
+      "5": {
+        start: {
+          line: 7,
+          column: 20
+        },
+        end: {
+          line: 7,
+          column: 45
+        }
+      },
+      "6": {
+        start: {
+          line: 10,
+          column: 8
+        },
+        end: {
+          line: 10,
+          column: 25
+        }
+      },
+      "7": {
+        start: {
+          line: 11,
+          column: 8
+        },
+        end: {
+          line: 11,
+          column: 31
+        }
+      },
+      "8": {
+        start: {
+          line: 14,
+          column: 0
+        },
+        end: {
+          line: 14,
+          column: 44
+        }
+      },
+      "9": {
+        start: {
+          line: 18,
+          column: 19
+        },
+        end: {
+          line: 58,
+          column: 1
+        }
+      },
+      "10": {
+        start: {
+          line: 20,
+          column: 8
+        },
+        end: {
+          line: 22,
+          column: 37
+        }
+      },
+      "11": {
+        start: {
+          line: 21,
+          column: 12
+        },
+        end: {
+          line: 21,
+          column: 37
+        }
+      },
+      "12": {
+        start: {
+          line: 28,
+          column: 8
+        },
+        end: {
+          line: 30,
+          column: 9
+        }
+      },
+      "13": {
+        start: {
+          line: 29,
+          column: 12
+        },
+        end: {
+          line: 29,
+          column: 38
+        }
+      },
+      "14": {
+        start: {
+          line: 38,
+          column: 8
+        },
+        end: {
+          line: 40,
+          column: 9
+        }
+      },
+      "15": {
+        start: {
+          line: 39,
+          column: 12
+        },
+        end: {
+          line: 39,
+          column: 38
+        }
+      },
+      "16": {
+        start: {
+          line: 41,
+          column: 8
+        },
+        end: {
+          line: 50,
+          column: 33
+        }
+      },
+      "17": {
+        start: {
+          line: 43,
+          column: 12
+        },
+        end: {
+          line: 47,
+          column: 13
+        }
+      },
+      "18": {
+        start: {
+          line: 44,
+          column: 16
+        },
+        end: {
+          line: 46,
+          column: 17
+        }
+      },
+      "19": {
+        start: {
+          line: 45,
+          column: 20
+        },
+        end: {
+          line: 45,
+          column: 32
+        }
+      },
+      "20": {
+        start: {
+          line: 48,
+          column: 12
+        },
+        end: {
+          line: 48,
+          column: 25
+        }
+      },
+      "21": {
+        start: {
+          line: 56,
+          column: 8
+        },
+        end: {
+          line: 56,
+          column: 33
+        }
+      },
+      "22": {
+        start: {
+          line: 59,
+          column: 0
+        },
+        end: {
+          line: 59,
+          column: 39
+        }
+      },
+      "23": {
+        start: {
+          line: 59,
+          column: 36
+        },
+        end: {
+          line: 59,
+          column: 38
+        }
+      },
+      "24": {
+        start: {
+          line: 60,
+          column: 0
+        },
+        end: {
+          line: 65,
+          column: 17
+        }
+      },
+      "25": {
+        start: {
+          line: 66,
+          column: 0
+        },
+        end: {
+          line: 66,
+          column: 36
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 9,
+            column: 4
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 31
+          },
+          end: {
+            line: 12,
+            column: 5
+          }
+        },
+        line: 9
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 19,
+            column: 4
+          },
+          end: {
+            line: 19,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 19,
+            column: 18
+          },
+          end: {
+            line: 23,
+            column: 5
+          }
+        },
+        line: 19
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 20,
+            column: 48
+          },
+          end: {
+            line: 20,
+            column: 49
+          }
+        },
+        loc: {
+          start: {
+            line: 20,
+            column: 62
+          },
+          end: {
+            line: 22,
+            column: 9
+          }
+        },
+        line: 20
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 27,
+            column: 4
+          },
+          end: {
+            line: 27,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 27,
+            column: 21
+          },
+          end: {
+            line: 31,
+            column: 5
+          }
+        },
+        line: 27
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 37,
+            column: 4
+          },
+          end: {
+            line: 37,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 37,
+            column: 36
+          },
+          end: {
+            line: 51,
+            column: 5
+          }
+        },
+        line: 37
+      },
+      "5": {
+        name: "(anonymous_5)",
+        decl: {
+          start: {
+            line: 42,
+            column: 37
+          },
+          end: {
+            line: 42,
+            column: 38
+          }
+        },
+        loc: {
+          start: {
+            line: 42,
+            column: 48
+          },
+          end: {
+            line: 49,
+            column: 9
+          }
+        },
+        line: 42
+      },
+      "6": {
+        name: "(anonymous_6)",
+        decl: {
+          start: {
+            line: 55,
+            column: 4
+          },
+          end: {
+            line: 55,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 55,
+            column: 24
+          },
+          end: {
+            line: 57,
+            column: 5
+          }
+        },
+        line: 55
+      },
+      "7": {
+        name: "(anonymous_7)",
+        decl: {
+          start: {
+            line: 59,
+            column: 30
+          },
+          end: {
+            line: 59,
+            column: 31
+          }
+        },
+        loc: {
+          start: {
+            line: 59,
+            column: 36
+          },
+          end: {
+            line: 59,
+            column: 38
+          }
+        },
+        line: 59
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 28,
+            column: 8
+          },
+          end: {
+            line: 30,
+            column: 9
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 28,
+            column: 8
+          },
+          end: {
+            line: 30,
+            column: 9
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 28
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 38,
+            column: 8
+          },
+          end: {
+            line: 40,
+            column: 9
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 38,
+            column: 8
+          },
+          end: {
+            line: 40,
+            column: 9
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 38
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 44,
+            column: 16
+          },
+          end: {
+            line: 46,
+            column: 17
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 44,
+            column: 16
+          },
+          end: {
+            line: 46,
+            column: 17
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 44
+      },
+      "3": {
+        loc: {
+          start: {
+            line: 44,
+            column: 20
+          },
+          end: {
+            line: 44,
+            column: 129
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 44,
+            column: 21
+          },
+          end: {
+            line: 44,
+            column: 46
+          }
+        }, {
+          start: {
+            line: 44,
+            column: 50
+          },
+          end: {
+            line: 44,
+            column: 69
+          }
+        }, {
+          start: {
+            line: 44,
+            column: 75
+          },
+          end: {
+            line: 44,
+            column: 100
+          }
+        }, {
+          start: {
+            line: 44,
+            column: 104
+          },
+          end: {
+            line: 44,
+            column: 128
+          }
+        }],
+        line: 44
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0,
+      "19": 0,
+      "20": 0,
+      "21": 0,
+      "22": 0,
+      "23": 0,
+      "24": 0,
+      "25": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0],
+      "2": [0, 0],
+      "3": [0, 0, 0, 0]
+    },
+    inputSourceMap: {
+      file: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\util\\event-manager.service.ts",
+      mappings: ";;;;AAAA,wCAA2C;AAC3C,+BAA0D;AAC1D,8CAA+C;AAE/C,MAAa,gBAAgB;IAC3B,YAAmB,IAAY,EAAS,OAAU;QAA/B,SAAI,GAAJ,IAAI,CAAQ;QAAS,YAAO,GAAP,OAAO,CAAG;IAAG,CAAC;CACvD;AAFD,4CAEC;AAED;;GAEG;IAIU,YAAY,SAAZ,YAAY;IAIvB;QACE,IAAI,CAAC,UAAU,GAAG,IAAI,iBAAU,CAAC,CAAC,QAAsD,EAAE,EAAE;YAC1F,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;QAC3B,CAAC,CAAC,CAAC,IAAI,CAAC,iBAAK,EAAE,CAAC,CAAC;IACnB,CAAC;IAED;;OAEG;IACH,SAAS,CAAC,KAAyC;QACjD,IAAI,IAAI,CAAC,QAAQ,EAAE;YACjB,IAAI,CAAC,QAAQ,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC;SAC3B;IACH,CAAC;IAED;;;;OAIG;IACH,SAAS,CAAC,UAA6B,EAAE,QAA6D;QACpG,IAAI,OAAO,UAAU,KAAK,QAAQ,EAAE;YAClC,UAAU,GAAG,CAAC,UAAU,CAAC,CAAC;SAC3B;QACD,OAAO,IAAI,CAAC,UAAU;aACnB,IAAI,CACH,kBAAM,CAAC,CAAC,KAAyC,EAAE,EAAE;YACnD,KAAK,MAAM,SAAS,IAAI,UAAU,EAAE;gBAClC,IAAI,CAAC,OAAO,KAAK,KAAK,QAAQ,IAAI,KAAK,KAAK,SAAS,CAAC,IAAI,CAAC,OAAO,KAAK,KAAK,QAAQ,IAAI,KAAK,CAAC,IAAI,KAAK,SAAS,CAAC,EAAE;oBACjH,OAAO,IAAI,CAAC;iBACb;aACF;YACD,OAAO,KAAK,CAAC;QACf,CAAC,CAAC,CACH;aACA,SAAS,CAAC,QAAQ,CAAC,CAAC;IACzB,CAAC;IAED;;OAEG;IACH,OAAO,CAAC,UAAwB;QAC9B,UAAU,CAAC,WAAW,EAAE,CAAC;IAC3B,CAAC;CACF,CAAA;;AAhDY,YAAY;IAHxB,iBAAU,CAAC;QACV,UAAU,EAAE,MAAM;KACnB,CAAC;;GACW,YAAY,CAgDxB;AAhDY,oCAAY",
+      names: [],
+      sources: ["C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\core\\util\\event-manager.service.ts"],
+      sourcesContent: ["import { Injectable } from '@angular/core';\nimport { Observable, Observer, Subscription } from 'rxjs';\nimport { filter, share } from 'rxjs/operators';\n\nexport class EventWithContent<T> {\n  constructor(public name: string, public content: T) {}\n}\n\n/**\n * An utility class to manage RX events\n */\n@Injectable({\n  providedIn: 'root',\n})\nexport class EventManager {\n  observable: Observable<EventWithContent<unknown> | string>;\n  observer?: Observer<EventWithContent<unknown> | string>;\n\n  constructor() {\n    this.observable = new Observable((observer: Observer<EventWithContent<unknown> | string>) => {\n      this.observer = observer;\n    }).pipe(share());\n  }\n\n  /**\n   * Method to broadcast the event to observer\n   */\n  broadcast(event: EventWithContent<unknown> | string): void {\n    if (this.observer) {\n      this.observer.next(event);\n    }\n  }\n\n  /**\n   * Method to subscribe to an event with callback\n   * @param eventNames  Single event name or array of event names to what subscribe\n   * @param callback    Callback to run when the event occurs\n   */\n  subscribe(eventNames: string | string[], callback: (event: EventWithContent<unknown> | string) => void): Subscription {\n    if (typeof eventNames === 'string') {\n      eventNames = [eventNames];\n    }\n    return this.observable\n      .pipe(\n        filter((event: EventWithContent<unknown> | string) => {\n          for (const eventName of eventNames) {\n            if ((typeof event === 'string' && event === eventName) || (typeof event !== 'string' && event.name === eventName)) {\n              return true;\n            }\n          }\n          return false;\n        })\n      )\n      .subscribe(callback);\n  }\n\n  /**\n   * Method to unsubscribe the subscription\n   */\n  destroy(subscriber: Subscription): void {\n    subscriber.unsubscribe();\n  }\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "7c01a77ff5ca3918139da5b86310479c1e9240b5"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2mhfyy7177 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_2mhfyy7177();
+cov_2mhfyy7177().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/* istanbul ignore next */
+cov_2mhfyy7177().s[1]++;
+exports.EventManager = exports.EventWithContent = void 0;
+const tslib_1 =
+/* istanbul ignore next */
+(cov_2mhfyy7177().s[2]++, require("tslib"));
+const core_1 =
+/* istanbul ignore next */
+(cov_2mhfyy7177().s[3]++, require("@angular/core"));
+const rxjs_1 =
+/* istanbul ignore next */
+(cov_2mhfyy7177().s[4]++, require("rxjs"));
+const operators_1 =
+/* istanbul ignore next */
+(cov_2mhfyy7177().s[5]++, require("rxjs/operators"));
+
+class EventWithContent {
+  constructor(name, content) {
+    /* istanbul ignore next */
+    cov_2mhfyy7177().f[0]++;
+    cov_2mhfyy7177().s[6]++;
+    this.name = name;
+
+    /* istanbul ignore next */
+    cov_2mhfyy7177().s[7]++;
+    this.content = content;
+  }
+
+}
+
+/* istanbul ignore next */
+cov_2mhfyy7177().s[8]++;
+exports.EventWithContent = EventWithContent;
+/**
+ * An utility class to manage RX events
+ */
+
+/* istanbul ignore next */
+cov_2mhfyy7177().s[9]++;
+let EventManager = class EventManager {
+  constructor() {
+    /* istanbul ignore next */
+    cov_2mhfyy7177().f[1]++;
+    cov_2mhfyy7177().s[10]++;
+    this.observable = new rxjs_1.Observable((observer) => {
+      /* istanbul ignore next */
+      cov_2mhfyy7177().f[2]++;
+      cov_2mhfyy7177().s[11]++;
+      this.observer = observer;
+    }).pipe(operators_1.share());
+  }
+  /**
+   * Method to broadcast the event to observer
+   */
+
+
+  broadcast(event) {
+    /* istanbul ignore next */
+    cov_2mhfyy7177().f[3]++;
+    cov_2mhfyy7177().s[12]++;
+
+    if (this.observer) {
+      /* istanbul ignore next */
+      cov_2mhfyy7177().b[0][0]++;
+      cov_2mhfyy7177().s[13]++;
+      this.observer.next(event);
+    } else
+    /* istanbul ignore next */
+    {
+      cov_2mhfyy7177().b[0][1]++;
+    }
+  }
+  /**
+   * Method to subscribe to an event with callback
+   * @param eventNames  Single event name or array of event names to what subscribe
+   * @param callback    Callback to run when the event occurs
+   */
+
+
+  subscribe(eventNames, callback) {
+    /* istanbul ignore next */
+    cov_2mhfyy7177().f[4]++;
+    cov_2mhfyy7177().s[14]++;
+
+    if (typeof eventNames === 'string') {
+      /* istanbul ignore next */
+      cov_2mhfyy7177().b[1][0]++;
+      cov_2mhfyy7177().s[15]++;
+      eventNames = [eventNames];
+    } else
+    /* istanbul ignore next */
+    {
+      cov_2mhfyy7177().b[1][1]++;
+    }
+
+    cov_2mhfyy7177().s[16]++;
+    return this.observable.pipe(operators_1.filter((event) => {
+      /* istanbul ignore next */
+      cov_2mhfyy7177().f[5]++;
+      cov_2mhfyy7177().s[17]++;
+
+      for (const eventName of eventNames) {
+        /* istanbul ignore next */
+        cov_2mhfyy7177().s[18]++;
+
+        if (
+        /* istanbul ignore next */
+        (cov_2mhfyy7177().b[3][0]++, typeof event === 'string') &&
+        /* istanbul ignore next */
+        (cov_2mhfyy7177().b[3][1]++, event === eventName) ||
+        /* istanbul ignore next */
+        (cov_2mhfyy7177().b[3][2]++, typeof event !== 'string') &&
+        /* istanbul ignore next */
+        (cov_2mhfyy7177().b[3][3]++, event.name === eventName)) {
+          /* istanbul ignore next */
+          cov_2mhfyy7177().b[2][0]++;
+          cov_2mhfyy7177().s[19]++;
+          return true;
+        } else
+        /* istanbul ignore next */
+        {
+          cov_2mhfyy7177().b[2][1]++;
+        }
+      }
+
+      /* istanbul ignore next */
+      cov_2mhfyy7177().s[20]++;
+      return false;
+    })).subscribe(callback);
+  }
+  /**
+   * Method to unsubscribe the subscription
+   */
+
+
+  destroy(subscriber) {
+    /* istanbul ignore next */
+    cov_2mhfyy7177().f[6]++;
+    cov_2mhfyy7177().s[21]++;
+    subscriber.unsubscribe();
+  }
+
+};
+
+/* istanbul ignore next */
+cov_2mhfyy7177().s[22]++;
+
+EventManager.ctorParameters = () => {
+  /* istanbul ignore next */
+  cov_2mhfyy7177().f[7]++;
+  cov_2mhfyy7177().s[23]++;
+  return [];
+};
+
+/* istanbul ignore next */
+cov_2mhfyy7177().s[24]++;
+EventManager = tslib_1.__decorate([core_1.Injectable({
+  providedIn: 'root'
+}), tslib_1.__metadata("design:paramtypes", [])], EventManager);
+
+/* istanbul ignore next */
+cov_2mhfyy7177().s[25]++;
+exports.EventManager = EventManager;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcTmljb2xhc1xcRGVza3RvcFxcdGVzdDZcXGdhdGV3YXlcXHNyY1xcbWFpblxcd2ViYXBwXFxhcHBcXGNvcmVcXHV0aWxcXGV2ZW50LW1hbmFnZXIuc2VydmljZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLE1BQUEsTUFBQTtBQUFBO0FBQUEsMEJBQUEsT0FBQSxDQUFBLGVBQUEsQ0FBQSxDQUFBO0FBQ0EsTUFBQSxNQUFBO0FBQUE7QUFBQSwwQkFBQSxPQUFBLENBQUEsTUFBQSxDQUFBLENBQUE7QUFDQSxNQUFBLFdBQUE7QUFBQTtBQUFBLDBCQUFBLE9BQUEsQ0FBQSxnQkFBQSxDQUFBLENBQUE7O0FBRUEsTUFBYSxnQkFBYixDQUE2QjtBQUMzQixFQUFBLFdBQUEsQ0FBbUIsSUFBbkIsRUFBd0MsT0FBeEMsRUFBa0Q7QUFBQTtBQUFBO0FBQUE7QUFBL0IsU0FBQSxJQUFBLEdBQUEsSUFBQTs7QUFBK0I7QUFBQTtBQUFWLFNBQUEsT0FBQSxHQUFBLE9BQUE7QUFBYzs7QUFEM0I7Ozs7QUFBN0IsT0FBQSxDQUFBLGdCQUFBLEdBQUEsZ0JBQUE7QUFJQTs7QUFFRzs7OztJQUlVLFlBQVksR0FBQSxNQUFaLFlBQVksQ0FBQTtBQUl2QixFQUFBLFdBQUEsR0FBQTtBQUFBO0FBQUE7QUFBQTtBQUNFLFNBQUssVUFBTCxHQUFrQixJQUFJLE1BQUEsQ0FBQSxVQUFKLENBQWUsQ0FBQyxRQUFELEtBQTJEO0FBQUE7QUFBQTtBQUFBO0FBQzFGLFdBQUssUUFBTCxHQUFnQixRQUFoQjtBQUNELEtBRmlCLEVBRWYsSUFGZSxDQUVWLFdBQUEsQ0FBQSxLQUFBLEVBRlUsQ0FBbEI7QUFHRDtBQUVEOztBQUVHOzs7QUFDSCxFQUFBLFNBQVMsQ0FBQyxLQUFELEVBQTBDO0FBQUE7QUFBQTtBQUFBOztBQUNqRCxRQUFJLEtBQUssUUFBVCxFQUFtQjtBQUFBO0FBQUE7QUFBQTtBQUNqQixXQUFLLFFBQUwsQ0FBYyxJQUFkLENBQW1CLEtBQW5CO0FBQ0QsS0FGRDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBR0Q7QUFFRDs7OztBQUlHOzs7QUFDSCxFQUFBLFNBQVMsQ0FBQyxVQUFELEVBQWdDLFFBQWhDLEVBQTZGO0FBQUE7QUFBQTtBQUFBOztBQUNwRyxRQUFJLE9BQU8sVUFBUCxLQUFzQixRQUExQixFQUFvQztBQUFBO0FBQUE7QUFBQTtBQUNsQyxNQUFBLFVBQVUsR0FBRyxDQUFDLFVBQUQsQ0FBYjtBQUNELEtBRkQ7QUFBQTtBQUFBO0FBQUE7QUFBQTs7QUFEb0c7QUFJcEcsV0FBTyxLQUFLLFVBQUwsQ0FDSixJQURJLENBRUgsV0FBQSxDQUFBLE1BQUEsQ0FBTyxDQUFDLEtBQUQsS0FBOEM7QUFBQTtBQUFBO0FBQUE7O0FBQ25ELFdBQUssTUFBTSxTQUFYLElBQXdCLFVBQXhCLEVBQW9DO0FBQUE7QUFBQTs7QUFDbEM7QUFBSztBQUFBLDRDQUFPLEtBQVAsS0FBaUIsUUFBakI7QUFBQTtBQUFBLHFDQUE2QixLQUFLLEtBQUssU0FBdkMsQ0FBRDtBQUF1RDtBQUFBLDRDQUFPLEtBQVAsS0FBaUIsUUFBakI7QUFBQTtBQUFBLHFDQUE2QixLQUFLLENBQUMsSUFBTixLQUFlLFNBQTVDLENBQTNELEVBQW1IO0FBQUE7QUFBQTtBQUFBO0FBQ2pILGlCQUFPLElBQVA7QUFDRCxTQUZEO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFHRDs7QUFMa0Q7QUFBQTtBQU1uRCxhQUFPLEtBQVA7QUFDRCxLQVBELENBRkcsRUFXSixTQVhJLENBV00sUUFYTixDQUFQO0FBWUQ7QUFFRDs7QUFFRzs7O0FBQ0gsRUFBQSxPQUFPLENBQUMsVUFBRCxFQUF5QjtBQUFBO0FBQUE7QUFBQTtBQUM5QixJQUFBLFVBQVUsQ0FBQyxXQUFYO0FBQ0Q7O0FBL0NzQixDOzs7Ozs7Ozs7Ozs7OztBQUFaLFlBQVksR0FBQSxPQUFBLENBQUEsVUFBQSxDQUFBLENBSHhCLE1BQUEsQ0FBQSxVQUFBLENBQVc7QUFDVixFQUFBLFVBQVUsRUFBRTtBQURGLENBQVgsQ0FHd0IsRSwyQ0FBQSxDQUFBLEVBQVosWUFBWSxDQUFaOzs7O0FBQUEsT0FBQSxDQUFBLFlBQUEsR0FBQSxZQUFBIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgSW5qZWN0YWJsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgT2JzZXJ2YWJsZSwgT2JzZXJ2ZXIsIFN1YnNjcmlwdGlvbiB9IGZyb20gJ3J4anMnO1xuaW1wb3J0IHsgZmlsdGVyLCBzaGFyZSB9IGZyb20gJ3J4anMvb3BlcmF0b3JzJztcblxuZXhwb3J0IGNsYXNzIEV2ZW50V2l0aENvbnRlbnQ8VD4ge1xuICBjb25zdHJ1Y3RvcihwdWJsaWMgbmFtZTogc3RyaW5nLCBwdWJsaWMgY29udGVudDogVCkge31cbn1cblxuLyoqXG4gKiBBbiB1dGlsaXR5IGNsYXNzIHRvIG1hbmFnZSBSWCBldmVudHNcbiAqL1xuQEluamVjdGFibGUoe1xuICBwcm92aWRlZEluOiAncm9vdCcsXG59KVxuZXhwb3J0IGNsYXNzIEV2ZW50TWFuYWdlciB7XG4gIG9ic2VydmFibGU6IE9ic2VydmFibGU8RXZlbnRXaXRoQ29udGVudDx1bmtub3duPiB8IHN0cmluZz47XG4gIG9ic2VydmVyPzogT2JzZXJ2ZXI8RXZlbnRXaXRoQ29udGVudDx1bmtub3duPiB8IHN0cmluZz47XG5cbiAgY29uc3RydWN0b3IoKSB7XG4gICAgdGhpcy5vYnNlcnZhYmxlID0gbmV3IE9ic2VydmFibGUoKG9ic2VydmVyOiBPYnNlcnZlcjxFdmVudFdpdGhDb250ZW50PHVua25vd24+IHwgc3RyaW5nPikgPT4ge1xuICAgICAgdGhpcy5vYnNlcnZlciA9IG9ic2VydmVyO1xuICAgIH0pLnBpcGUoc2hhcmUoKSk7XG4gIH1cblxuICAvKipcbiAgICogTWV0aG9kIHRvIGJyb2FkY2FzdCB0aGUgZXZlbnQgdG8gb2JzZXJ2ZXJcbiAgICovXG4gIGJyb2FkY2FzdChldmVudDogRXZlbnRXaXRoQ29udGVudDx1bmtub3duPiB8IHN0cmluZyk6IHZvaWQge1xuICAgIGlmICh0aGlzLm9ic2VydmVyKSB7XG4gICAgICB0aGlzLm9ic2VydmVyLm5leHQoZXZlbnQpO1xuICAgIH1cbiAgfVxuXG4gIC8qKlxuICAgKiBNZXRob2QgdG8gc3Vic2NyaWJlIHRvIGFuIGV2ZW50IHdpdGggY2FsbGJhY2tcbiAgICogQHBhcmFtIGV2ZW50TmFtZXMgIFNpbmdsZSBldmVudCBuYW1lIG9yIGFycmF5IG9mIGV2ZW50IG5hbWVzIHRvIHdoYXQgc3Vic2NyaWJlXG4gICAqIEBwYXJhbSBjYWxsYmFjayAgICBDYWxsYmFjayB0byBydW4gd2hlbiB0aGUgZXZlbnQgb2NjdXJzXG4gICAqL1xuICBzdWJzY3JpYmUoZXZlbnROYW1lczogc3RyaW5nIHwgc3RyaW5nW10sIGNhbGxiYWNrOiAoZXZlbnQ6IEV2ZW50V2l0aENvbnRlbnQ8dW5rbm93bj4gfCBzdHJpbmcpID0+IHZvaWQpOiBTdWJzY3JpcHRpb24ge1xuICAgIGlmICh0eXBlb2YgZXZlbnROYW1lcyA9PT0gJ3N0cmluZycpIHtcbiAgICAgIGV2ZW50TmFtZXMgPSBbZXZlbnROYW1lc107XG4gICAgfVxuICAgIHJldHVybiB0aGlzLm9ic2VydmFibGVcbiAgICAgIC5waXBlKFxuICAgICAgICBmaWx0ZXIoKGV2ZW50OiBFdmVudFdpdGhDb250ZW50PHVua25vd24+IHwgc3RyaW5nKSA9PiB7XG4gICAgICAgICAgZm9yIChjb25zdCBldmVudE5hbWUgb2YgZXZlbnROYW1lcykge1xuICAgICAgICAgICAgaWYgKCh0eXBlb2YgZXZlbnQgPT09ICdzdHJpbmcnICYmIGV2ZW50ID09PSBldmVudE5hbWUpIHx8ICh0eXBlb2YgZXZlbnQgIT09ICdzdHJpbmcnICYmIGV2ZW50Lm5hbWUgPT09IGV2ZW50TmFtZSkpIHtcbiAgICAgICAgICAgICAgcmV0dXJuIHRydWU7XG4gICAgICAgICAgICB9XG4gICAgICAgICAgfVxuICAgICAgICAgIHJldHVybiBmYWxzZTtcbiAgICAgICAgfSlcbiAgICAgIClcbiAgICAgIC5zdWJzY3JpYmUoY2FsbGJhY2spO1xuICB9XG5cbiAgLyoqXG4gICAqIE1ldGhvZCB0byB1bnN1YnNjcmliZSB0aGUgc3Vic2NyaXB0aW9uXG4gICAqL1xuICBkZXN0cm95KHN1YnNjcmliZXI6IFN1YnNjcmlwdGlvbik6IHZvaWQge1xuICAgIHN1YnNjcmliZXIudW5zdWJzY3JpYmUoKTtcbiAgfVxufVxuIl19

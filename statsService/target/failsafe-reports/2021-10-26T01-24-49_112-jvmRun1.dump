@@ -1,0 +1,682 @@
+# Created at 2021-10-26T01:25:48.018
+Exiting self fork JVM. Received SHUTDOWN command from Maven shutdown hook.
+Thread dump before exiting the process (6916@DESKTOP-V78THCQ):
+"main" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/java.lang.Thread.sleep(Native Method)
+        at app//com.hazelcast.internal.cluster.impl.MulticastJoiner.findMasterWithMulticast(MulticastJoiner.java:184)
+        at app//com.hazelcast.internal.cluster.impl.MulticastJoiner.doJoin(MulticastJoiner.java:68)
+        at app//com.hazelcast.internal.cluster.impl.AbstractJoiner.join(AbstractJoiner.java:137)
+        at app//com.hazelcast.instance.impl.Node.join(Node.java:808)
+        at app//com.hazelcast.instance.impl.Node.start(Node.java:471)
+        at app//com.hazelcast.instance.impl.HazelcastInstanceImpl.<init>(HazelcastInstanceImpl.java:123)
+        at app//com.hazelcast.instance.impl.HazelcastInstanceFactory.constructHazelcastInstance(HazelcastInstanceFactory.java:211)
+        at app//com.hazelcast.instance.impl.HazelcastInstanceFactory.newHazelcastInstance(HazelcastInstanceFactory.java:190)
+        at app//com.hazelcast.instance.impl.HazelcastInstanceFactory.newHazelcastInstance(HazelcastInstanceFactory.java:128)
+        at app//com.hazelcast.core.Hazelcast.newHazelcastInstance(Hazelcast.java:57)
+        at app//com.reddot.stats.config.CacheConfiguration.hazelcastInstance(CacheConfiguration.java:110)
+        at app//com.reddot.stats.config.CacheConfiguration$$EnhancerBySpringCGLIB$$696cd96d.CGLIB$hazelcastInstance$3(<generated>)
+        at app//com.reddot.stats.config.CacheConfiguration$$EnhancerBySpringCGLIB$$696cd96d$$FastClassBySpringCGLIB$$f22583a4.invoke(<generated>)
+        at app//org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+        at app//org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+        at app//com.reddot.stats.config.CacheConfiguration$$EnhancerBySpringCGLIB$$696cd96d.hazelcastInstance(<generated>)
+        at java.base@11.0.12/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base@11.0.12/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base@11.0.12/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base@11.0.12/java.lang.reflect.Method.invoke(Method.java:566)
+        at app//org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+        at app//org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+        at app//org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638)
+        at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+        at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+        at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+        at app//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+        at app//org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+        at app//org.springframework.beans.factory.support.AbstractBeanFactory$$Lambda$566/0x00000001003bc840.getObject(Unknown Source)
+        at app//org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+        at app//org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+        at app//org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+        at app//org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+        at app//org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+        at app//org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+        at app//org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+        at app//org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+        at app//org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+        at app//org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434)
+        at app//org.springframework.boot.SpringApplication.run(SpringApplication.java:338)
+        at app//org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:123)
+        at app//org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+        at app//org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+        at app//org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
+        at app//org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+        at app//org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+        at app//org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:248)
+        at app//org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor$$Lambda$416/0x00000001002e4440.execute(Unknown Source)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor$$Lambda$415/0x00000001002e4040.accept(Unknown Source)
+        at java.base@11.0.12/java.util.stream.StreamSpliterators$WrappingSpliterator$$Lambda$169/0x0000000100175840.accept(Unknown Source)
+        at java.base@11.0.12/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+        at java.base@11.0.12/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)
+        at java.base@11.0.12/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1655)
+        at java.base@11.0.12/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+        at java.base@11.0.12/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+        at java.base@11.0.12/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+        at java.base@11.0.12/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+        at java.base@11.0.12/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734)
+        at java.base@11.0.12/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor$$Lambda$414/0x00000001002e4c40.execute(Unknown Source)
+        at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor$$Lambda$407/0x00000001002e7440.get(Unknown Source)
+        at java.base@11.0.12/java.util.Optional.orElseGet(Optional.java:369)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258)
+        at app//org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor$$Lambda$322/0x0000000100260c40.getTestInstances(Unknown Source)
+        at app//org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31)
+        at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101)
+        at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor$$Lambda$406/0x00000001002e7040.execute(Unknown Source)
+        at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+        at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100)
+        at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$268/0x000000010024a840.execute(Unknown Source)
+        at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79)
+        at app//org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService$$Lambda$289/0x000000010024d440.accept(Unknown Source)
+        at java.base@11.0.12/java.util.ArrayList.forEach(ArrayList.java:1541)
+        at app//org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$285/0x000000010024e440.execute(Unknown Source)
+        at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$284/0x000000010024e040.invoke(Unknown Source)
+        at app//org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$283/0x000000010024ec40.execute(Unknown Source)
+        at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+        at app//org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService$$Lambda$289/0x000000010024d440.accept(Unknown Source)
+
+"Reference Handler" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@11.0.12/java.lang.ref.Reference.waitForReferencePendingList(Native Method)
+        at java.base@11.0.12/java.lang.ref.Reference.processPendingReferences(Reference.java:241)
+        at java.base@11.0.12/java.lang.ref.Reference$ReferenceHandler.run(Reference.java:213)
+
+"Finalizer" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/java.lang.Object.wait(Native Method)
+        at java.base@11.0.12/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+        at java.base@11.0.12/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:176)
+        at java.base@11.0.12/java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:170)
+
+"Signal Dispatcher" 
+   java.lang.Thread.State: RUNNABLE
+
+"Attach Listener" 
+   java.lang.Thread.State: RUNNABLE
+
+"Common-Cleaner" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/java.lang.Object.wait(Native Method)
+        at java.base@11.0.12/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+        at java.base@11.0.12/jdk.internal.ref.CleanerImpl.run(CleanerImpl.java:148)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+        at java.base@11.0.12/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:134)
+
+"surefire-forkedjvm-command-thread" 
+   java.lang.Thread.State: RUNNABLE
+        at java.management@11.0.12/sun.management.ThreadImpl.getThreadInfo1(Native Method)
+        at java.management@11.0.12/sun.management.ThreadImpl.getThreadInfo(ThreadImpl.java:197)
+        at app//org.apache.maven.surefire.booter.ForkedBooter.generateThreadDump(ForkedBooter.java:649)
+        at app//org.apache.maven.surefire.booter.ForkedBooter.access$400(ForkedBooter.java:82)
+        at app//org.apache.maven.surefire.booter.ForkedBooter$4.update(ForkedBooter.java:340)
+        at app//org.apache.maven.surefire.booter.CommandReader$CommandRunnable.callListeners(CommandReader.java:423)
+        at app//org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:364)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"SeedGenerator Thread" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/java.lang.Object.wait(Native Method)
+        at java.base@11.0.12/java.lang.Object.wait(Object.java:328)
+        at java.base@11.0.12/sun.security.provider.SeedGenerator$ThreadedSeedGenerator.run(SeedGenerator.java:332)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"HikariPool-3 housekeeper" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+        at java.base@11.0.12/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+        at java.base@11.0.12/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"HikariPool-3 connection adder" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:458)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"spring.cloud.inetutils" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"hz.statsService.scheduled.thread-" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+        at java.base@11.0.12/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+        at java.base@11.0.12/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.executeRun(HazelcastManagedThread.java:76)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.event-11" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at app//com.hazelcast.internal.util.executor.StripedExecutor$Worker.run(StripedExecutor.java:227)
+
+"hz.statsService.event-12" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at app//com.hazelcast.internal.util.executor.StripedExecutor$Worker.run(StripedExecutor.java:227)
+
+"hz.statsService.event-13" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at app//com.hazelcast.internal.util.executor.StripedExecutor$Worker.run(StripedExecutor.java:227)
+
+"hz.statsService.event-14" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at app//com.hazelcast.internal.util.executor.StripedExecutor$Worker.run(StripedExecutor.java:227)
+
+"hz.statsService.event-15" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at app//com.hazelcast.internal.util.executor.StripedExecutor$Worker.run(StripedExecutor.java:227)
+
+"hz.statsService.operation-parker" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+        at java.base@11.0.12/java.util.concurrent.DelayQueue.poll(DelayQueue.java:265)
+        at app//com.hazelcast.spi.impl.operationparker.impl.OperationParkerImpl$ExpirationTask.doRun(OperationParkerImpl.java:228)
+        at app//com.hazelcast.spi.impl.operationparker.impl.OperationParkerImpl$ExpirationTask.run(OperationParkerImpl.java:211)
+        at java.base@11.0.12/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+        at java.base@11.0.12/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.executeRun(HazelcastManagedThread.java:76)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.MetricsRegistry.thread-1" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+        at java.base@11.0.12/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+        at java.base@11.0.12/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"hz.statsService.MetricsRegistry.thread-2" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@11.0.12/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"hz.statsService.migration" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:458)
+        at app//com.hazelcast.internal.partition.impl.MigrationQueue.poll(MigrationQueue.java:48)
+        at app//com.hazelcast.internal.partition.impl.MigrationThread.doRun(MigrationThread.java:92)
+        at app//com.hazelcast.internal.partition.impl.MigrationThread.run(MigrationThread.java:66)
+
+"hz.statsService.cached.thread-1" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:460)
+        at java.base@11.0.12/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:361)
+        at java.base@11.0.12/java.util.concurrent.SynchronousQueue.take(SynchronousQueue.java:920)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.executeRun(HazelcastManagedThread.java:76)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.InvocationMonitorThread" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+        at java.base@11.0.12/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+        at java.base@11.0.12/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"hz.statsService.partition-operation.thread-0" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.partition-operation.thread-1" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.partition-operation.thread-2" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.partition-operation.thread-3" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.partition-operation.thread-4" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.partition-operation.thread-5" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.partition-operation.thread-6" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.partition-operation.thread-7" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.priority-generic-operation.thread-0" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:76)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.generic-operation.thread-0" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.generic-operation.thread-1" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.generic-operation.thread-2" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.generic-operation.thread-3" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationQueueImpl.take(OperationQueueImpl.java:85)
+        at app//com.hazelcast.spi.impl.operationexecutor.impl.OperationThread.executeRun(OperationThread.java:118)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.response-0" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.spi.impl.operationservice.impl.InboundResponseHandlerSupplier$ResponseThread.doRun(InboundResponseHandlerSupplier.java:295)
+        at app//com.hazelcast.spi.impl.operationservice.impl.InboundResponseHandlerSupplier$ResponseThread.executeRun(InboundResponseHandlerSupplier.java:284)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.response-1" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.spi.impl.operationservice.impl.InboundResponseHandlerSupplier$ResponseThread.doRun(InboundResponseHandlerSupplier.java:295)
+        at app//com.hazelcast.spi.impl.operationservice.impl.InboundResponseHandlerSupplier$ResponseThread.executeRun(InboundResponseHandlerSupplier.java:284)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.SlowOperationDetectorThread" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/java.lang.Thread.sleep(Native Method)
+        at java.base@11.0.12/java.lang.Thread.sleep(Thread.java:334)
+        at java.base@11.0.12/java.util.concurrent.TimeUnit.sleep(TimeUnit.java:446)
+        at app//com.hazelcast.spi.impl.operationexecutor.slowoperationdetector.SlowOperationDetector$DetectorThread.sleepInterval(SlowOperationDetector.java:289)
+        at app//com.hazelcast.spi.impl.operationexecutor.slowoperationdetector.SlowOperationDetector$DetectorThread.run(SlowOperationDetector.java:154)
+
+"statsService-query-operation-thread-0" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run0(QueryOperationWorker.java:94)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run(QueryOperationWorker.java:84)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"statsService-query-operation-thread-1" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run0(QueryOperationWorker.java:94)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run(QueryOperationWorker.java:84)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"statsService-query-operation-thread-2" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run0(QueryOperationWorker.java:94)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run(QueryOperationWorker.java:84)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"statsService-query-operation-thread-3" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run0(QueryOperationWorker.java:94)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run(QueryOperationWorker.java:84)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"statsService-query-operation-thread-4" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:231)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run0(QueryOperationWorker.java:94)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run(QueryOperationWorker.java:84)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"statsService-query-operation-thread-5" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run0(QueryOperationWorker.java:94)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run(QueryOperationWorker.java:84)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"statsService-query-operation-thread-6" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run0(QueryOperationWorker.java:94)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run(QueryOperationWorker.java:84)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"statsService-query-operation-thread-7" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:323)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.takeAll(MPSCQueue.java:229)
+        at app//com.hazelcast.internal.util.concurrent.MPSCQueue.take(MPSCQueue.java:151)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run0(QueryOperationWorker.java:94)
+        at app//com.hazelcast.sql.impl.worker.QueryOperationWorker.run(QueryOperationWorker.java:84)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"statsService-query-state-checker" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/java.lang.Thread.sleep(Native Method)
+        at app//com.hazelcast.sql.impl.state.QueryStateRegistryUpdater$Worker.run(QueryStateRegistryUpdater.java:114)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+"hz.statsService.cached.thread-2" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:460)
+        at java.base@11.0.12/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:361)
+        at java.base@11.0.12/java.util.concurrent.SynchronousQueue.take(SynchronousQueue.java:920)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.executeRun(HazelcastManagedThread.java:76)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.cached.thread-3" 
+   java.lang.Thread.State: WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+        at java.base@11.0.12/java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:460)
+        at java.base@11.0.12/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:361)
+        at java.base@11.0.12/java.util.concurrent.SynchronousQueue.take(SynchronousQueue.java:920)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+        at java.base@11.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.executeRun(HazelcastManagedThread.java:76)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.IO.thread-in-0" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:357)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:182)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:124)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:136)
+        at app//com.hazelcast.internal.networking.nio.NioThread.selectLoop(NioThread.java:292)
+        at app//com.hazelcast.internal.networking.nio.NioThread.executeRun(NioThread.java:249)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.IO.thread-in-1" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:357)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:182)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:124)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:136)
+        at app//com.hazelcast.internal.networking.nio.NioThread.selectLoop(NioThread.java:292)
+        at app//com.hazelcast.internal.networking.nio.NioThread.executeRun(NioThread.java:249)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.IO.thread-in-2" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:357)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:182)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:124)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:136)
+        at app//com.hazelcast.internal.networking.nio.NioThread.selectLoop(NioThread.java:292)
+        at app//com.hazelcast.internal.networking.nio.NioThread.executeRun(NioThread.java:249)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.IO.thread-out-0" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:357)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:182)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:124)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:136)
+        at app//com.hazelcast.internal.networking.nio.NioThread.selectLoop(NioThread.java:292)
+        at app//com.hazelcast.internal.networking.nio.NioThread.executeRun(NioThread.java:249)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.IO.thread-out-1" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:357)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:182)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:124)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:136)
+        at app//com.hazelcast.internal.networking.nio.NioThread.selectLoop(NioThread.java:292)
+        at app//com.hazelcast.internal.networking.nio.NioThread.executeRun(NioThread.java:249)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.IO.thread-out-2" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:357)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:182)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:124)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:136)
+        at app//com.hazelcast.internal.networking.nio.NioThread.selectLoop(NioThread.java:292)
+        at app//com.hazelcast.internal.networking.nio.NioThread.executeRun(NioThread.java:249)
+        at app//com.hazelcast.internal.util.executor.HazelcastManagedThread.run(HazelcastManagedThread.java:102)
+
+"hz.statsService.IO.BalancerThread" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@11.0.12/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@11.0.12/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+        at java.base@11.0.12/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+        at java.base@11.0.12/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:458)
+        at app//com.hazelcast.internal.networking.nio.iobalancer.IOBalancerThread.run(IOBalancerThread.java:65)
+
+"hz.statsService.IO.thread-Acceptor" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:357)
+        at java.base@11.0.12/sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:182)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:124)
+        at java.base@11.0.12/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:141)
+        at app//com.hazelcast.internal.server.tcp.TcpServerAcceptor$AcceptorIOThread.acceptLoop(TcpServerAcceptor.java:185)
+        at app//com.hazelcast.internal.server.tcp.TcpServerAcceptor$AcceptorIOThread.run(TcpServerAcceptor.java:171)
+
+"hz.statsService.MulticastThread" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@11.0.12/java.net.TwoStacksPlainDatagramSocketImpl.receive0(Native Method)
+        at java.base@11.0.12/java.net.TwoStacksPlainDatagramSocketImpl.receive(TwoStacksPlainDatagramSocketImpl.java:123)
+        at java.base@11.0.12/java.net.DatagramSocket.receive(DatagramSocket.java:814)
+        at app//com.hazelcast.internal.cluster.impl.MulticastService.receive(MulticastService.java:224)
+        at app//com.hazelcast.internal.cluster.impl.MulticastService.run(MulticastService.java:200)
+        at java.base@11.0.12/java.lang.Thread.run(Thread.java:829)
+
+
+

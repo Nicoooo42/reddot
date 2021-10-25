@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ThreadMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.core.service.mapper</a> &gt; <span class="el_source">ThreadMapperImpl.java</span></div><h1>ThreadMapperImpl.java</h1><pre class="source lang-java linenums">package com.reddot.core.service.mapper;
+
+import com.reddot.core.domain.Thread;
+import com.reddot.core.service.dto.ThreadDTO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.processing.Generated;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+    date = &quot;2021-10-26T01:11:31+0200&quot;,
+    comments = &quot;version: 1.4.2.Final, compiler: javac, environment: Java 11.0.12 (Eclipse Foundation)&quot;
+)
+@Component
+<span class="fc" id="L17">public class ThreadMapperImpl implements ThreadMapper {</span>
+
+    @Autowired
+    private BoardMapper boardMapper;
+
+    @Override
+    public Thread toEntity(ThreadDTO dto) {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if ( dto == null ) {</span>
+<span class="fc" id="L25">            return null;</span>
+        }
+
+<span class="fc" id="L28">        Thread thread = new Thread();</span>
+
+<span class="fc" id="L30">        thread.setId( dto.getId() );</span>
+<span class="fc" id="L31">        thread.setName( dto.getName() );</span>
+<span class="fc" id="L32">        thread.board( boardMapper.toEntity( dto.getBoard() ) );</span>
+
+<span class="fc" id="L34">        return thread;</span>
+    }
+
+    @Override
+    public List&lt;Thread&gt; toEntity(List&lt;ThreadDTO&gt; dtoList) {
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if ( dtoList == null ) {</span>
+<span class="nc" id="L40">            return null;</span>
+        }
+
+<span class="nc" id="L43">        List&lt;Thread&gt; list = new ArrayList&lt;Thread&gt;( dtoList.size() );</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        for ( ThreadDTO threadDTO : dtoList ) {</span>
+<span class="nc" id="L45">            list.add( toEntity( threadDTO ) );</span>
+<span class="nc" id="L46">        }</span>
+
+<span class="nc" id="L48">        return list;</span>
+    }
+
+    @Override
+    public List&lt;ThreadDTO&gt; toDto(List&lt;Thread&gt; entityList) {
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if ( entityList == null ) {</span>
+<span class="nc" id="L54">            return null;</span>
+        }
+
+<span class="nc" id="L57">        List&lt;ThreadDTO&gt; list = new ArrayList&lt;ThreadDTO&gt;( entityList.size() );</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        for ( Thread thread : entityList ) {</span>
+<span class="nc" id="L59">            list.add( toDto( thread ) );</span>
+<span class="nc" id="L60">        }</span>
+
+<span class="nc" id="L62">        return list;</span>
+    }
+
+    @Override
+    public void partialUpdate(Thread entity, ThreadDTO dto) {
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        if ( dto == null ) {</span>
+<span class="nc" id="L68">            return;</span>
+        }
+
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if ( dto.getId() != null ) {</span>
+<span class="fc" id="L72">            entity.setId( dto.getId() );</span>
+        }
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        if ( dto.getName() != null ) {</span>
+<span class="fc" id="L75">            entity.setName( dto.getName() );</span>
+        }
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if ( dto.getBoard() != null ) {</span>
+<span class="nc" id="L78">            entity.board( boardMapper.toEntity( dto.getBoard() ) );</span>
+        }
+<span class="fc" id="L80">    }</span>
+
+    @Override
+    public ThreadDTO toDto(Thread s) {
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">        if ( s == null ) {</span>
+<span class="nc" id="L85">            return null;</span>
+        }
+
+<span class="fc" id="L88">        ThreadDTO threadDTO = new ThreadDTO();</span>
+
+<span class="fc" id="L90">        threadDTO.setBoard( boardMapper.toDtoId( s.getBoard() ) );</span>
+<span class="fc" id="L91">        threadDTO.setId( s.getId() );</span>
+<span class="fc" id="L92">        threadDTO.setName( s.getName() );</span>
+
+<span class="fc" id="L94">        return threadDTO;</span>
+    }
+
+    @Override
+    public ThreadDTO toDtoId(Thread thread) {
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">        if ( thread == null ) {</span>
+<span class="fc" id="L100">            return null;</span>
+        }
+
+<span class="nc" id="L103">        ThreadDTO threadDTO = new ThreadDTO();</span>
+
+<span class="nc" id="L105">        threadDTO.setId( thread.getId() );</span>
+
+<span class="nc" id="L107">        return threadDTO;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

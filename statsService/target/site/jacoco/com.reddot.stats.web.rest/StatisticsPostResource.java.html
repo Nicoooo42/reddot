@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StatisticsPostResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Stats Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.stats.web.rest</a> &gt; <span class="el_source">StatisticsPostResource.java</span></div><h1>StatisticsPostResource.java</h1><pre class="source lang-java linenums">package com.reddot.stats.web.rest;
+
+import com.reddot.stats.pojo.PostInfo;
+import com.reddot.stats.repository.StatisticsPostRepository;
+import com.reddot.stats.service.StatisticsPostService;
+import com.reddot.stats.service.dto.StatisticsPostDTO;
+import com.reddot.stats.web.rest.errors.BadRequestAlertException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.ResponseUtil;
+
+/**
+ * REST controller for managing {@link com.reddot.stats.domain.StatisticsPost}.
+ */
+@RestController
+@RequestMapping(&quot;/api&quot;)
+public class StatisticsPostResource {
+
+<span class="nc" id="L28">    private final Logger log = LoggerFactory.getLogger(StatisticsPostResource.class);</span>
+
+    private static final String ENTITY_NAME = &quot;statsServiceStatisticsPost&quot;;
+
+    @Value(&quot;${jhipster.clientApp.name}&quot;)
+    private String applicationName;
+
+    private final StatisticsPostService statisticsPostService;
+
+    private final StatisticsPostRepository statisticsPostRepository;
+
+<span class="nc" id="L39">    public StatisticsPostResource(StatisticsPostService statisticsPostService, StatisticsPostRepository statisticsPostRepository) {</span>
+<span class="nc" id="L40">        this.statisticsPostService = statisticsPostService;</span>
+<span class="nc" id="L41">        this.statisticsPostRepository = statisticsPostRepository;</span>
+<span class="nc" id="L42">    }</span>
+    
+    
+    /**
+     * {@code GET  /statistics-by-user-and-datr}
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the PostInfo, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping(&quot;/statistics-by-user-and-date&quot;)
+    public List&lt;PostInfo&gt; getStatisticsPost() {
+<span class="nc" id="L52">        log.debug(&quot;REST request to get StatisticsPost : {}&quot;);</span>
+<span class="nc" id="L53">        return statisticsPostService.stasticsByUserAndDate();</span>
+    }
+    
+
+
+    /**
+     * {@code POST  /statistics-posts} : Create a new statisticsPost.
+     *
+     * @param statisticsPostDTO the statisticsPostDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new statisticsPostDTO, or with status {@code 400 (Bad Request)} if the statisticsPost has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PostMapping(&quot;/statistics-posts&quot;)
+    public ResponseEntity&lt;StatisticsPostDTO&gt; createStatisticsPost(@RequestBody StatisticsPostDTO statisticsPostDTO)
+        throws URISyntaxException {
+<span class="nc" id="L68">        log.debug(&quot;REST request to save StatisticsPost : {}&quot;, statisticsPostDTO);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        if (statisticsPostDTO.getId() != null) {</span>
+<span class="nc" id="L70">            throw new BadRequestAlertException(&quot;A new statisticsPost cannot already have an ID&quot;, ENTITY_NAME, &quot;idexists&quot;);</span>
+        }
+<span class="nc" id="L72">        StatisticsPostDTO result = statisticsPostService.save(statisticsPostDTO);</span>
+<span class="nc" id="L73">        return ResponseEntity</span>
+<span class="nc" id="L74">            .created(new URI(&quot;/api/statistics-posts/&quot; + result.getId()))</span>
+<span class="nc" id="L75">            .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))</span>
+<span class="nc" id="L76">            .body(result);</span>
+    }
+
+    /**
+     * {@code PUT  /statistics-posts/:id} : Updates an existing statisticsPost.
+     *
+     * @param id the id of the statisticsPostDTO to save.
+     * @param statisticsPostDTO the statisticsPostDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated statisticsPostDTO,
+     * or with status {@code 400 (Bad Request)} if the statisticsPostDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the statisticsPostDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping(&quot;/statistics-posts/{id}&quot;)
+    public ResponseEntity&lt;StatisticsPostDTO&gt; updateStatisticsPost(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody StatisticsPostDTO statisticsPostDTO
+    ) throws URISyntaxException {
+<span class="nc" id="L94">        log.debug(&quot;REST request to update StatisticsPost : {}, {}&quot;, id, statisticsPostDTO);</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">        if (statisticsPostDTO.getId() == null) {</span>
+<span class="nc" id="L96">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        if (!Objects.equals(id, statisticsPostDTO.getId())) {</span>
+<span class="nc" id="L99">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        if (!statisticsPostRepository.existsById(id)) {</span>
+<span class="nc" id="L103">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="nc" id="L106">        StatisticsPostDTO result = statisticsPostService.save(statisticsPostDTO);</span>
+<span class="nc" id="L107">        return ResponseEntity</span>
+<span class="nc" id="L108">            .ok()</span>
+<span class="nc" id="L109">            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, statisticsPostDTO.getId().toString()))</span>
+<span class="nc" id="L110">            .body(result);</span>
+    }
+
+    /**
+     * {@code PATCH  /statistics-posts/:id} : Partial updates given fields of an existing statisticsPost, field will ignore if it is null
+     *
+     * @param id the id of the statisticsPostDTO to save.
+     * @param statisticsPostDTO the statisticsPostDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated statisticsPostDTO,
+     * or with status {@code 400 (Bad Request)} if the statisticsPostDTO is not valid,
+     * or with status {@code 404 (Not Found)} if the statisticsPostDTO is not found,
+     * or with status {@code 500 (Internal Server Error)} if the statisticsPostDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PatchMapping(value = &quot;/statistics-posts/{id}&quot;, consumes = { &quot;application/json&quot;, &quot;application/merge-patch+json&quot; })
+    public ResponseEntity&lt;StatisticsPostDTO&gt; partialUpdateStatisticsPost(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody StatisticsPostDTO statisticsPostDTO
+    ) throws URISyntaxException {
+<span class="nc" id="L129">        log.debug(&quot;REST request to partial update StatisticsPost partially : {}, {}&quot;, id, statisticsPostDTO);</span>
+<span class="nc bnc" id="L130" title="All 2 branches missed.">        if (statisticsPostDTO.getId() == null) {</span>
+<span class="nc" id="L131">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="nc bnc" id="L133" title="All 2 branches missed.">        if (!Objects.equals(id, statisticsPostDTO.getId())) {</span>
+<span class="nc" id="L134">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="nc bnc" id="L137" title="All 2 branches missed.">        if (!statisticsPostRepository.existsById(id)) {</span>
+<span class="nc" id="L138">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="nc" id="L141">        Optional&lt;StatisticsPostDTO&gt; result = statisticsPostService.partialUpdate(statisticsPostDTO);</span>
+
+<span class="nc" id="L143">        return ResponseUtil.wrapOrNotFound(</span>
+            result,
+<span class="nc" id="L145">            HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, statisticsPostDTO.getId().toString())</span>
+        );
+    }
+
+    /**
+     * {@code GET  /statistics-posts} : get all the statisticsPosts.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of statisticsPosts in body.
+     */
+    @GetMapping(&quot;/statistics-posts&quot;)
+    public List&lt;StatisticsPostDTO&gt; getAllStatisticsPosts() {
+<span class="nc" id="L156">        log.debug(&quot;REST request to get all StatisticsPosts&quot;);</span>
+<span class="nc" id="L157">        return statisticsPostService.findAll();</span>
+    }
+
+    /**
+     * {@code GET  /statistics-posts/:id} : get the &quot;id&quot; statisticsPost.
+     *
+     * @param id the id of the statisticsPostDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the statisticsPostDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping(&quot;/statistics-posts/{id}&quot;)
+    public ResponseEntity&lt;StatisticsPostDTO&gt; getStatisticsPost(@PathVariable Long id) {
+<span class="nc" id="L168">        log.debug(&quot;REST request to get StatisticsPost : {}&quot;, id);</span>
+<span class="nc" id="L169">        Optional&lt;StatisticsPostDTO&gt; statisticsPostDTO = statisticsPostService.findOne(id);</span>
+<span class="nc" id="L170">        return ResponseUtil.wrapOrNotFound(statisticsPostDTO);</span>
+    }
+
+    /**
+     * {@code DELETE  /statistics-posts/:id} : delete the &quot;id&quot; statisticsPost.
+     *
+     * @param id the id of the statisticsPostDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping(&quot;/statistics-posts/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteStatisticsPost(@PathVariable Long id) {
+<span class="nc" id="L181">        log.debug(&quot;REST request to delete StatisticsPost : {}&quot;, id);</span>
+<span class="nc" id="L182">        statisticsPostService.delete(id);</span>
+<span class="nc" id="L183">        return ResponseEntity</span>
+<span class="nc" id="L184">            .noContent()</span>
+<span class="nc" id="L185">            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))</span>
+<span class="nc" id="L186">            .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

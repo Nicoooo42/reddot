@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ModifyServersOpenApiFilter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Gateway</a> &gt; <a href="index.source.html" class="el_package">com.reddot.gateway.web.filter</a> &gt; <span class="el_source">ModifyServersOpenApiFilter.java</span></div><h1>ModifyServersOpenApiFilter.java</h1><pre class="source lang-java linenums">package com.reddot.gateway.web.filter;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Objects;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import org.reactivestreams.Publisher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.core.Ordered;
+import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.core.io.buffer.DataBufferFactory;
+import org.springframework.core.io.buffer.DataBufferUtils;
+import org.springframework.core.io.buffer.DefaultDataBufferFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+@Component
+<span class="fc" id="L35">public class ModifyServersOpenApiFilter implements GlobalFilter, Ordered {</span>
+
+<span class="fc" id="L37">    private static final Logger log = LoggerFactory.getLogger(ModifyServersOpenApiFilter.class);</span>
+
+    @Override
+    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+<span class="fc" id="L41">        String path = exchange.getRequest().getURI().getPath();</span>
+<span class="pc bpc" id="L42" title="1 of 4 branches missed.">        if (path.startsWith(&quot;/services&quot;) &amp;&amp; path.contains(&quot;/v3/api-docs&quot;)) {</span>
+<span class="fc" id="L43">            ServerHttpResponse originalResponse = exchange.getResponse();</span>
+<span class="fc" id="L44">            DataBufferFactory bufferFactory = originalResponse.bufferFactory();</span>
+<span class="fc" id="L45">            ServerHttpResponseDecorator decoratedResponse = createModifyServersOpenApiInterceptor(path, originalResponse, bufferFactory);</span>
+
+            // replace response with decorator
+<span class="fc" id="L48">            return chain.filter(exchange.mutate().response(decoratedResponse).build());</span>
+        } else {
+<span class="fc" id="L50">            return chain.filter(exchange);</span>
+        }
+    }
+
+    @Override
+    public int getOrder() {
+<span class="fc" id="L56">        return -1;</span>
+    }
+
+    public ModifyServersOpenApiInterceptor createModifyServersOpenApiInterceptor(
+        String path,
+        ServerHttpResponse originalResponse,
+        DataBufferFactory bufferFactory
+    ) {
+<span class="fc" id="L64">        return new ModifyServersOpenApiInterceptor(path, originalResponse, bufferFactory);</span>
+    }
+
+    public class ModifyServersOpenApiInterceptor extends ServerHttpResponseDecorator {
+
+        private final String path;
+        private final ServerHttpResponse originalResponse;
+        private final DataBufferFactory bufferFactory;
+<span class="fc" id="L72">        private String rewritedBody = &quot;&quot;;</span>
+
+<span class="fc" id="L74">        private ModifyServersOpenApiInterceptor(String path, ServerHttpResponse originalResponse, DataBufferFactory bufferFactory) {</span>
+<span class="fc" id="L75">            super(originalResponse);</span>
+<span class="fc" id="L76">            this.path = path;</span>
+<span class="fc" id="L77">            this.originalResponse = originalResponse;</span>
+<span class="fc" id="L78">            this.bufferFactory = bufferFactory;</span>
+<span class="fc" id="L79">        }</span>
+
+        public String getRewritedBody() {
+<span class="fc" id="L82">            return rewritedBody;</span>
+        }
+
+        @Override
+        public Mono&lt;Void&gt; writeWith(Publisher&lt;? extends DataBuffer&gt; body) {
+<span class="fc" id="L87">            rewritedBody = &quot;&quot;;</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">            if (body instanceof Flux) {</span>
+<span class="fc" id="L89">                Flux&lt;? extends DataBuffer&gt; fluxBody = (Flux&lt;? extends DataBuffer&gt;) body;</span>
+
+<span class="fc" id="L91">                return super.writeWith(fluxBody.buffer().map(dataBuffers -&gt; rewriteBodyWithServers(dataBuffers)));</span>
+            }
+            // when body is not a flux
+<span class="fc" id="L94">            return super.writeWith(body);</span>
+        }
+
+        private DataBuffer rewriteBodyWithServers(List&lt;? extends DataBuffer&gt; dataBuffers) {
+<span class="fc" id="L98">            DataBufferFactory dataBufferFactory = new DefaultDataBufferFactory();</span>
+<span class="fc" id="L99">            DataBuffer join = dataBufferFactory.join(dataBuffers);</span>
+<span class="fc" id="L100">            byte[] content = new byte[join.readableByteCount()];</span>
+<span class="fc" id="L101">            join.read(content);</span>
+
+            // release memory
+<span class="fc" id="L104">            DataBufferUtils.release(join);</span>
+<span class="fc" id="L105">            String strBody = contentToString(content);</span>
+
+            try {
+                // create custom server
+<span class="fc" id="L109">                ObjectMapper mapper = new ObjectMapper();</span>
+<span class="fc" id="L110">                JsonNode jsonBody = mapper.readTree(strBody);</span>
+<span class="fc" id="L111">                ObjectNode serversToJson = mapper.createObjectNode();</span>
+<span class="fc" id="L112">                serversToJson.set(&quot;url&quot;, mapper.valueToTree(path.replace(&quot;/v3/api-docs&quot;, &quot;&quot;)));</span>
+<span class="fc" id="L113">                serversToJson.set(&quot;description&quot;, mapper.valueToTree(&quot;added by global filter&quot;));</span>
+
+                // add custom server
+<span class="fc" id="L116">                ArrayNode servers = mapper.createArrayNode();</span>
+<span class="fc" id="L117">                servers.add(serversToJson);</span>
+<span class="fc" id="L118">                ((ObjectNode) jsonBody).set(&quot;servers&quot;, servers);</span>
+
+<span class="fc" id="L120">                rewritedBody = jsonBody.toString();</span>
+<span class="fc" id="L121">                return rewritedBodyToDataBuffer();</span>
+<span class="nc" id="L122">            } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L123">                log.error(&quot;Error when modify servers from api-doc of {}: {}&quot;, path, e.getMessage());</span>
+            }
+<span class="nc" id="L125">            return join;</span>
+        }
+
+        private DataBuffer rewritedBodyToDataBuffer() {
+<span class="fc bfc" id="L129" title="All 2 branches covered.">            if (isZippedResponse()) {</span>
+<span class="fc" id="L130">                byte[] zippedBody = zipContent(rewritedBody);</span>
+<span class="fc" id="L131">                originalResponse.getHeaders().setContentLength(zippedBody.length);</span>
+<span class="fc" id="L132">                return bufferFactory.wrap(zippedBody);</span>
+            }
+<span class="fc" id="L134">            originalResponse.getHeaders().setContentLength(rewritedBody.getBytes().length);</span>
+<span class="fc" id="L135">            return bufferFactory.wrap(rewritedBody.getBytes());</span>
+        }
+
+        private String contentToString(byte[] content) {
+<span class="fc bfc" id="L139" title="All 2 branches covered.">            if (isZippedResponse()) {</span>
+<span class="fc" id="L140">                byte[] unzippedContent = unzipContent(content);</span>
+<span class="fc" id="L141">                return new String(unzippedContent, StandardCharsets.UTF_8);</span>
+            }
+<span class="fc" id="L143">            return new String(content, StandardCharsets.UTF_8);</span>
+        }
+
+        private boolean isZippedResponse() {
+<span class="fc" id="L147">            return (</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">                !originalResponse.getHeaders().isEmpty() &amp;&amp;</span>
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">                originalResponse.getHeaders().get(HttpHeaders.CONTENT_ENCODING) != null &amp;&amp;</span>
+<span class="pc bpc" id="L150" title="1 of 2 branches missed.">                Objects.requireNonNull(originalResponse.getHeaders().get(HttpHeaders.CONTENT_ENCODING)).contains(&quot;gzip&quot;)</span>
+            );
+        }
+
+        private byte[] unzipContent(byte[] content) {
+            try {
+<span class="fc" id="L156">                GZIPInputStream gzipInputStream = new GZIPInputStream(new ByteArrayInputStream(content));</span>
+<span class="fc" id="L157">                byte[] unzippedContent = gzipInputStream.readAllBytes();</span>
+<span class="fc" id="L158">                gzipInputStream.close();</span>
+<span class="fc" id="L159">                return unzippedContent;</span>
+<span class="nc" id="L160">            } catch (IOException e) {</span>
+<span class="nc" id="L161">                log.error(&quot;Error when unzip content during modify servers from api-doc of {}: {}&quot;, path, e.getMessage());</span>
+            }
+<span class="nc" id="L163">            return content;</span>
+        }
+
+        private byte[] zipContent(String content) {
+            try {
+<span class="fc" id="L168">                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(content.length());</span>
+<span class="fc" id="L169">                GZIPOutputStream gzipOutputStream = new GZIPOutputStream(byteArrayOutputStream);</span>
+<span class="fc" id="L170">                gzipOutputStream.write(content.getBytes(StandardCharsets.UTF_8));</span>
+<span class="fc" id="L171">                gzipOutputStream.flush();</span>
+<span class="fc" id="L172">                gzipOutputStream.close();</span>
+<span class="fc" id="L173">                return byteArrayOutputStream.toByteArray();</span>
+<span class="nc" id="L174">            } catch (IOException e) {</span>
+<span class="nc" id="L175">                log.error(&quot;Error when zip content during modify servers from api-doc of {}: {}&quot;, path, e.getMessage());</span>
+            }
+<span class="nc" id="L177">            return content.getBytes();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BoardResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.core.web.rest</a> &gt; <span class="el_source">BoardResource.java</span></div><h1>BoardResource.java</h1><pre class="source lang-java linenums">package com.reddot.core.web.rest;
+
+import com.reddot.core.repository.BoardRepository;
+import com.reddot.core.service.BoardService;
+import com.reddot.core.service.dto.BoardDTO;
+import com.reddot.core.web.rest.errors.BadRequestAlertException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.ResponseUtil;
+
+/**
+ * REST controller for managing {@link com.reddot.core.domain.Board}.
+ */
+@RestController
+@RequestMapping(&quot;/api&quot;)
+public class BoardResource {
+
+<span class="fc" id="L27">    private final Logger log = LoggerFactory.getLogger(BoardResource.class);</span>
+
+    private static final String ENTITY_NAME = &quot;coreBoard&quot;;
+
+    @Value(&quot;${jhipster.clientApp.name}&quot;)
+    private String applicationName;
+
+    private final BoardService boardService;
+
+    private final BoardRepository boardRepository;
+
+<span class="fc" id="L38">    public BoardResource(BoardService boardService, BoardRepository boardRepository) {</span>
+<span class="fc" id="L39">        this.boardService = boardService;</span>
+<span class="fc" id="L40">        this.boardRepository = boardRepository;</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * {@code POST  /boards} : Create a new board.
+     *
+     * @param boardDTO the boardDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new boardDTO, or with status {@code 400 (Bad Request)} if the board has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PostMapping(&quot;/boards&quot;)
+    public ResponseEntity&lt;BoardDTO&gt; createBoard(@RequestBody BoardDTO boardDTO) throws URISyntaxException {
+<span class="fc" id="L52">        log.debug(&quot;REST request to save Board : {}&quot;, boardDTO);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (boardDTO.getId() != null) {</span>
+<span class="fc" id="L54">            throw new BadRequestAlertException(&quot;A new board cannot already have an ID&quot;, ENTITY_NAME, &quot;idexists&quot;);</span>
+        }
+<span class="fc" id="L56">        BoardDTO result = boardService.save(boardDTO);</span>
+<span class="fc" id="L57">        return ResponseEntity</span>
+<span class="fc" id="L58">            .created(new URI(&quot;/api/boards/&quot; + result.getId()))</span>
+<span class="fc" id="L59">            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))</span>
+<span class="fc" id="L60">            .body(result);</span>
+    }
+
+    /**
+     * {@code PUT  /boards/:id} : Updates an existing board.
+     *
+     * @param id the id of the boardDTO to save.
+     * @param boardDTO the boardDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated boardDTO,
+     * or with status {@code 400 (Bad Request)} if the boardDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the boardDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping(&quot;/boards/{id}&quot;)
+    public ResponseEntity&lt;BoardDTO&gt; updateBoard(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody BoardDTO boardDTO
+    ) throws URISyntaxException {
+<span class="fc" id="L78">        log.debug(&quot;REST request to update Board : {}, {}&quot;, id, boardDTO);</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">        if (boardDTO.getId() == null) {</span>
+<span class="nc" id="L80">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        if (!Objects.equals(id, boardDTO.getId())) {</span>
+<span class="fc" id="L83">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        if (!boardRepository.existsById(id)) {</span>
+<span class="fc" id="L87">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="fc" id="L90">        BoardDTO result = boardService.save(boardDTO);</span>
+<span class="fc" id="L91">        return ResponseEntity</span>
+<span class="fc" id="L92">            .ok()</span>
+<span class="fc" id="L93">            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, boardDTO.getId().toString()))</span>
+<span class="fc" id="L94">            .body(result);</span>
+    }
+
+    /**
+     * {@code PATCH  /boards/:id} : Partial updates given fields of an existing board, field will ignore if it is null
+     *
+     * @param id the id of the boardDTO to save.
+     * @param boardDTO the boardDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated boardDTO,
+     * or with status {@code 400 (Bad Request)} if the boardDTO is not valid,
+     * or with status {@code 404 (Not Found)} if the boardDTO is not found,
+     * or with status {@code 500 (Internal Server Error)} if the boardDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PatchMapping(value = &quot;/boards/{id}&quot;, consumes = { &quot;application/json&quot;, &quot;application/merge-patch+json&quot; })
+    public ResponseEntity&lt;BoardDTO&gt; partialUpdateBoard(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody BoardDTO boardDTO
+    ) throws URISyntaxException {
+<span class="fc" id="L113">        log.debug(&quot;REST request to partial update Board partially : {}, {}&quot;, id, boardDTO);</span>
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">        if (boardDTO.getId() == null) {</span>
+<span class="nc" id="L115">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (!Objects.equals(id, boardDTO.getId())) {</span>
+<span class="fc" id="L118">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="fc bfc" id="L121" title="All 2 branches covered.">        if (!boardRepository.existsById(id)) {</span>
+<span class="fc" id="L122">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="fc" id="L125">        Optional&lt;BoardDTO&gt; result = boardService.partialUpdate(boardDTO);</span>
+
+<span class="fc" id="L127">        return ResponseUtil.wrapOrNotFound(</span>
+            result,
+<span class="fc" id="L129">            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, boardDTO.getId().toString())</span>
+        );
+    }
+
+    /**
+     * {@code GET  /boards} : get all the boards.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of boards in body.
+     */
+    @GetMapping(&quot;/boards&quot;)
+    public List&lt;BoardDTO&gt; getAllBoards() {
+<span class="fc" id="L140">        log.debug(&quot;REST request to get all Boards&quot;);</span>
+<span class="fc" id="L141">        return boardService.findAll();</span>
+    }
+
+    /**
+     * {@code GET  /boards/:id} : get the &quot;id&quot; board.
+     *
+     * @param id the id of the boardDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the boardDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping(&quot;/boards/{id}&quot;)
+    public ResponseEntity&lt;BoardDTO&gt; getBoard(@PathVariable Long id) {
+<span class="fc" id="L152">        log.debug(&quot;REST request to get Board : {}&quot;, id);</span>
+<span class="fc" id="L153">        Optional&lt;BoardDTO&gt; boardDTO = boardService.findOne(id);</span>
+<span class="fc" id="L154">        return ResponseUtil.wrapOrNotFound(boardDTO);</span>
+    }
+
+    /**
+     * {@code DELETE  /boards/:id} : delete the &quot;id&quot; board.
+     *
+     * @param id the id of the boardDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping(&quot;/boards/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteBoard(@PathVariable Long id) {
+<span class="fc" id="L165">        log.debug(&quot;REST request to delete Board : {}&quot;, id);</span>
+<span class="fc" id="L166">        boardService.delete(id);</span>
+<span class="fc" id="L167">        return ResponseEntity</span>
+<span class="fc" id="L168">            .noContent()</span>
+<span class="fc" id="L169">            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))</span>
+<span class="fc" id="L170">            .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

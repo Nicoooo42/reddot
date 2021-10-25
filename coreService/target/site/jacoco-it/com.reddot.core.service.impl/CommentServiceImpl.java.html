@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommentServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.core.service.impl</a> &gt; <span class="el_source">CommentServiceImpl.java</span></div><h1>CommentServiceImpl.java</h1><pre class="source lang-java linenums">package com.reddot.core.service.impl;
+
+import com.reddot.core.domain.Comment;
+import com.reddot.core.repository.CommentRepository;
+import com.reddot.core.service.CommentService;
+import com.reddot.core.service.dto.CommentDTO;
+import com.reddot.core.service.mapper.CommentMapper;
+
+import io.undertow.util.BadRequestException;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Service Implementation for managing {@link Comment}.
+ */
+@Service
+@Transactional
+public class CommentServiceImpl implements CommentService {
+
+<span class="fc" id="L27">    private final Logger log = LoggerFactory.getLogger(CommentServiceImpl.class);</span>
+
+    private final CommentRepository commentRepository;
+
+    private final CommentMapper commentMapper;
+
+<span class="fc" id="L33">    public CommentServiceImpl(CommentRepository commentRepository, CommentMapper commentMapper) {</span>
+<span class="fc" id="L34">        this.commentRepository = commentRepository;</span>
+<span class="fc" id="L35">        this.commentMapper = commentMapper;</span>
+<span class="fc" id="L36">    }</span>
+
+    @Override
+    public CommentDTO save(CommentDTO commentDTO) throws BadRequestException {
+<span class="fc" id="L40">        log.debug(&quot;Request to save Comment : {}&quot;, commentDTO);</span>
+<span class="fc" id="L41">        Comment comment = commentMapper.toEntity(commentDTO);</span>
+        
+<span class="fc" id="L43">        boolean test = isDeepCommentOk(comment, 0);</span>
+        
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if(!isDeepCommentOk(comment, 0)) {</span>
+<span class="nc" id="L46">        	throw new BadRequestException(&quot;Only 10 level of comment are accepted&quot;);</span>
+        }
+<span class="fc" id="L48">        comment = commentRepository.save(comment);</span>
+<span class="fc" id="L49">        return commentMapper.toDto(comment);</span>
+    }
+
+    @Override
+    public Optional&lt;CommentDTO&gt; partialUpdate(CommentDTO commentDTO) {
+<span class="fc" id="L54">        log.debug(&quot;Request to partially update Comment : {}&quot;, commentDTO);</span>
+
+<span class="fc" id="L56">        return commentRepository</span>
+<span class="fc" id="L57">            .findById(commentDTO.getId())</span>
+<span class="fc" id="L58">            .map(existingComment -&gt; {</span>
+<span class="fc" id="L59">                commentMapper.partialUpdate(existingComment, commentDTO);</span>
+
+<span class="fc" id="L61">                return existingComment;</span>
+            })
+<span class="fc" id="L63">            .map(commentRepository::save)</span>
+<span class="fc" id="L64">            .map(commentMapper::toDto);</span>
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List&lt;CommentDTO&gt; findAll() {
+<span class="fc" id="L70">        log.debug(&quot;Request to get all Comments&quot;);</span>
+<span class="fc" id="L71">        return commentRepository.findAll().stream().map(commentMapper::toDto).collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional&lt;CommentDTO&gt; findOne(Long id) {
+<span class="fc" id="L77">        log.debug(&quot;Request to get Comment : {}&quot;, id);</span>
+<span class="fc" id="L78">        return commentRepository.findById(id).map(commentMapper::toDto);</span>
+    }
+
+    @Override
+    public void delete(Long id) {
+<span class="fc" id="L83">        log.debug(&quot;Request to delete Comment : {}&quot;, id);</span>
+<span class="fc" id="L84">        commentRepository.deleteById(id);</span>
+<span class="fc" id="L85">    }</span>
+    
+    private boolean isDeepCommentOk(Comment comment, int level) {
+<span class="pc bpc" id="L88" title="2 of 4 branches missed.">    	if (comment.getComment() == null &amp;&amp; level &lt; 10) {</span>
+<span class="fc" id="L89">    		return true;</span>
+<span class="nc bnc" id="L90" title="All 4 branches missed.">    	}else if (comment.getComment() != null &amp;&amp; level &lt; 10) {</span>
+<span class="nc" id="L91">    		return isDeepCommentOk(comment.getComment(), level +1);</span>
+    	}
+<span class="nc" id="L93">    	return false;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

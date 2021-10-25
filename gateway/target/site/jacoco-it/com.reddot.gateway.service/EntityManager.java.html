@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EntityManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Gateway</a> &gt; <a href="index.source.html" class="el_package">com.reddot.gateway.service</a> &gt; <span class="el_source">EntityManager.java</span></div><h1>EntityManager.java</h1><pre class="source lang-java linenums">package com.reddot.gateway.service;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.r2dbc.convert.R2dbcConverter;
+import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
+import org.springframework.data.r2dbc.core.StatementMapper;
+import org.springframework.data.r2dbc.mapping.OutboundRow;
+import org.springframework.data.r2dbc.query.UpdateMapper;
+import org.springframework.data.relational.core.mapping.RelationalPersistentEntity;
+import org.springframework.data.relational.core.query.Criteria;
+import org.springframework.data.relational.core.sql.Conditions;
+import org.springframework.data.relational.core.sql.OrderByField;
+import org.springframework.data.relational.core.sql.Select;
+import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoin;
+import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoinCondition;
+import org.springframework.data.relational.core.sql.SelectBuilder.SelectOrdered;
+import org.springframework.data.relational.core.sql.SqlIdentifier;
+import org.springframework.data.relational.core.sql.Table;
+import org.springframework.data.relational.core.sql.render.SqlRenderer;
+import org.springframework.r2dbc.core.Parameter;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+/**
+ * Helper class to create SQL selects based on the entity, paging parameters and criteria.
+ *
+ */
+@Service
+public class EntityManager {
+
+    public static final String ENTITY_ALIAS = &quot;e&quot;;
+    public static final String ALIAS_PREFIX = &quot;e_&quot;;
+
+    public static class LinkTable {
+
+        final String tableName;
+        final String idColumn;
+        final String referenceColumn;
+
+<span class="nc" id="L49">        public LinkTable(String tableName, String idColumn, String referenceColumn) {</span>
+<span class="nc" id="L50">            Assert.notNull(tableName, &quot;tableName is null&quot;);</span>
+<span class="nc" id="L51">            Assert.notNull(idColumn, &quot;idColumn is null&quot;);</span>
+<span class="nc" id="L52">            Assert.notNull(referenceColumn, &quot;referenceColumn is null&quot;);</span>
+<span class="nc" id="L53">            this.tableName = tableName;</span>
+<span class="nc" id="L54">            this.idColumn = idColumn;</span>
+<span class="nc" id="L55">            this.referenceColumn = referenceColumn;</span>
+<span class="nc" id="L56">        }</span>
+    }
+
+    private final SqlRenderer sqlRenderer;
+    private final UpdateMapper updateMapper;
+    private final R2dbcEntityTemplate r2dbcEntityTemplate;
+    private final StatementMapper statementMapper;
+
+<span class="fc" id="L64">    public EntityManager(SqlRenderer sqlRenderer, UpdateMapper updateMapper, R2dbcEntityTemplate r2dbcEntityTemplate) {</span>
+<span class="fc" id="L65">        this.sqlRenderer = sqlRenderer;</span>
+<span class="fc" id="L66">        this.updateMapper = updateMapper;</span>
+<span class="fc" id="L67">        this.r2dbcEntityTemplate = r2dbcEntityTemplate;</span>
+<span class="fc" id="L68">        this.statementMapper = r2dbcEntityTemplate.getDataAccessStrategy().getStatementMapper();</span>
+<span class="fc" id="L69">    }</span>
+
+    /**
+     * Creates an SQL select statement from the given fragment and pagination parameters.
+     * @param selectFrom a representation of a select statement.
+     * @param entityType the entity type which holds the table name.
+     * @param pageable page parameter, or null, if everything needs to be returned
+     * @return sql select statement
+     */
+    public String createSelect(SelectFromAndJoin selectFrom, Class&lt;?&gt; entityType, Pageable pageable, Criteria criteria) {
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        if (pageable != null) {</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">            if (criteria != null) {</span>
+<span class="nc" id="L81">                return createSelectImpl(</span>
+<span class="nc" id="L82">                    selectFrom.limitOffset(pageable.getPageSize(), pageable.getOffset()).where(Conditions.just(criteria.toString())),</span>
+                    entityType,
+<span class="nc" id="L84">                    pageable.getSort()</span>
+                );
+            } else {
+<span class="nc" id="L87">                return createSelectImpl(</span>
+<span class="nc" id="L88">                    selectFrom.limitOffset(pageable.getPageSize(), pageable.getOffset()),</span>
+                    entityType,
+<span class="nc" id="L90">                    pageable.getSort()</span>
+                );
+            }
+        } else {
+<span class="nc bnc" id="L94" title="All 2 branches missed.">            if (criteria != null) {</span>
+<span class="nc" id="L95">                return createSelectImpl(selectFrom.where(Conditions.just(criteria.toString())), entityType, null);</span>
+            } else {
+<span class="nc" id="L97">                return createSelectImpl(selectFrom, entityType, null);</span>
+            }
+        }
+    }
+
+    /**
+     * Creates an SQL select statement from the given fragment and pagination parameters.
+     * @param selectFrom a representation of a select statement.
+     * @param entityType the entity type which holds the table name.
+     * @param pageable page parameter, or null, if everything needs to be returned
+     * @return sql select statement
+     */
+    public String createSelect(SelectFromAndJoinCondition selectFrom, Class&lt;?&gt; entityType, Pageable pageable, Criteria criteria) {
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        if (pageable != null) {</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">            if (criteria != null) {</span>
+<span class="nc" id="L112">                return createSelectImpl(</span>
+<span class="nc" id="L113">                    selectFrom.limitOffset(pageable.getPageSize(), pageable.getOffset()).where(Conditions.just(criteria.toString())),</span>
+                    entityType,
+<span class="nc" id="L115">                    pageable.getSort()</span>
+                );
+            } else {
+<span class="nc" id="L118">                return createSelectImpl(</span>
+<span class="nc" id="L119">                    selectFrom.limitOffset(pageable.getPageSize(), pageable.getOffset()),</span>
+                    entityType,
+<span class="nc" id="L121">                    pageable.getSort()</span>
+                );
+            }
+        } else {
+<span class="nc bnc" id="L125" title="All 2 branches missed.">            if (criteria != null) {</span>
+<span class="nc" id="L126">                return createSelectImpl(selectFrom.where(Conditions.just(criteria.toString())), entityType, null);</span>
+            } else {
+<span class="nc" id="L128">                return createSelectImpl(selectFrom, entityType, null);</span>
+            }
+        }
+    }
+
+    private String createSelectImpl(SelectOrdered selectFrom, Class&lt;?&gt; entityType, Sort sortParameter) {
+<span class="nc bnc" id="L134" title="All 4 branches missed.">        if (sortParameter != null &amp;&amp; sortParameter.isSorted()) {</span>
+<span class="nc" id="L135">            RelationalPersistentEntity&lt;?&gt; entity = getPersistentEntity(entityType);</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">            if (entity != null) {</span>
+<span class="nc" id="L137">                Sort sort = updateMapper.getMappedObject(sortParameter, entity);</span>
+<span class="nc" id="L138">                selectFrom =</span>
+<span class="nc" id="L139">                    selectFrom.orderBy(createOrderByFields(Table.create(entity.getTableName()).as(EntityManager.ENTITY_ALIAS), sort));</span>
+            }
+        }
+<span class="nc" id="L142">        return createSelect(selectFrom.build());</span>
+    }
+
+    private RelationalPersistentEntity&lt;?&gt; getPersistentEntity(Class&lt;?&gt; entityType) {
+<span class="nc" id="L146">        return r2dbcEntityTemplate.getConverter().getMappingContext().getPersistentEntity(entityType);</span>
+    }
+
+    /**
+     * Delete all the entity with the given type, and return the number of deletions.
+     * @param entityType the entity type which holds the table name.
+     * @return the number of deleted entity
+     */
+    public Mono&lt;Integer&gt; deleteAll(Class&lt;?&gt; entityType) {
+<span class="nc" id="L155">        return r2dbcEntityTemplate.delete(entityType).all();</span>
+    }
+
+    /**
+     * Delete all the rows from the given table, and return the number of deletions.
+     * @param tableName the name of the table to delete.
+     * @return the number of deleted rows.
+     */
+    public Mono&lt;Integer&gt; deleteAll(String tableName) {
+<span class="nc" id="L164">        StatementMapper.DeleteSpec delete = statementMapper.createDelete(tableName);</span>
+<span class="nc" id="L165">        return r2dbcEntityTemplate.getDatabaseClient().sql(statementMapper.getMappedObject(delete)).fetch().rowsUpdated();</span>
+    }
+
+    /**
+     * Generate an actual SQL from the given {@link Select}.
+     * @param select a representation of a select statement.
+     * @return the generated SQL select.
+     */
+    public String createSelect(Select select) {
+<span class="nc" id="L174">        return sqlRenderer.render(select);</span>
+    }
+
+    /**
+     * Inserts the given entity into the database - and sets the id, if it's an autoincrement field.
+     * @param &lt;S&gt; the type of the persisted entity.
+     * @param entity the entity to be inserted into the database.
+     * @return the persisted entity.
+     */
+    public &lt;S&gt; Mono&lt;S&gt; insert(S entity) {
+<span class="nc" id="L184">        return r2dbcEntityTemplate.insert(entity);</span>
+    }
+
+    /**
+     * Updates the table, which links the entity with the referred entities.
+     * @param table describes the link table, it contains a table name, the column name for the id, and for the referred entity id.
+     * @param entityId the id of the entity, for which the links are created.
+     * @param referencedIds the id of the referred entities.
+     * @return the number of inserted rows.
+     */
+    public Mono&lt;Integer&gt; updateLinkTable(LinkTable table, Long entityId, Stream&lt;Long&gt; referencedIds) {
+<span class="nc" id="L195">        return deleteFromLinkTable(table, entityId)</span>
+<span class="nc" id="L196">            .then(</span>
+                Flux
+<span class="nc" id="L198">                    .fromStream(referencedIds)</span>
+<span class="nc" id="L199">                    .flatMap((Long referenceId) -&gt; {</span>
+<span class="nc" id="L200">                        StatementMapper.InsertSpec insert = r2dbcEntityTemplate</span>
+<span class="nc" id="L201">                            .getDataAccessStrategy()</span>
+<span class="nc" id="L202">                            .getStatementMapper()</span>
+<span class="nc" id="L203">                            .createInsert(table.tableName)</span>
+<span class="nc" id="L204">                            .withColumn(table.idColumn, Parameter.from(entityId))</span>
+<span class="nc" id="L205">                            .withColumn(table.referenceColumn, Parameter.from(referenceId));</span>
+
+<span class="nc" id="L207">                        return r2dbcEntityTemplate.getDatabaseClient().sql(statementMapper.getMappedObject(insert)).fetch().rowsUpdated();</span>
+                    })
+<span class="nc" id="L209">                    .collectList()</span>
+<span class="nc" id="L210">                    .map((List&lt;Integer&gt; updates) -&gt; updates.stream().reduce(Integer::sum).orElse(0))</span>
+            );
+    }
+
+    public Mono&lt;Void&gt; deleteFromLinkTable(LinkTable table, Long entityId) {
+<span class="nc" id="L215">        Assert.notNull(entityId, &quot;entityId is null&quot;);</span>
+<span class="nc" id="L216">        StatementMapper.DeleteSpec deleteSpec = r2dbcEntityTemplate</span>
+<span class="nc" id="L217">            .getDataAccessStrategy()</span>
+<span class="nc" id="L218">            .getStatementMapper()</span>
+<span class="nc" id="L219">            .createDelete(table.tableName)</span>
+<span class="nc" id="L220">            .withCriteria(Criteria.from(Criteria.where(table.idColumn).is(entityId)));</span>
+<span class="nc" id="L221">        return r2dbcEntityTemplate.getDatabaseClient().sql(statementMapper.getMappedObject(deleteSpec)).then();</span>
+    }
+
+    private static Collection&lt;? extends OrderByField&gt; createOrderByFields(Table table, Sort sortToUse) {
+<span class="nc" id="L225">        List&lt;OrderByField&gt; fields = new ArrayList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L227" title="All 2 branches missed.">        for (Sort.Order order : sortToUse) {</span>
+<span class="nc" id="L228">            String propertyName = order.getProperty();</span>
+<span class="nc" id="L229">            OrderByField orderByField = OrderByField.from(table.column(propertyName).as(EntityManager.ALIAS_PREFIX + propertyName));</span>
+
+<span class="nc bnc" id="L231" title="All 2 branches missed.">            fields.add(order.isAscending() ? orderByField.asc() : orderByField.desc());</span>
+<span class="nc" id="L232">        }</span>
+
+<span class="nc" id="L234">        return fields;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

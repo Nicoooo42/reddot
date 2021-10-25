@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BoardMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.core.service.mapper</a> &gt; <span class="el_source">BoardMapperImpl.java</span></div><h1>BoardMapperImpl.java</h1><pre class="source lang-java linenums">package com.reddot.core.service.mapper;
+
+import com.reddot.core.domain.Board;
+import com.reddot.core.service.dto.BoardDTO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+    date = &quot;2021-10-26T01:11:31+0200&quot;,
+    comments = &quot;version: 1.4.2.Final, compiler: javac, environment: Java 11.0.12 (Eclipse Foundation)&quot;
+)
+@Component
+<span class="nc" id="L16">public class BoardMapperImpl implements BoardMapper {</span>
+
+    @Override
+    public Board toEntity(BoardDTO dto) {
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if ( dto == null ) {</span>
+<span class="nc" id="L21">            return null;</span>
+        }
+
+<span class="nc" id="L24">        Board board = new Board();</span>
+
+<span class="nc" id="L26">        board.setId( dto.getId() );</span>
+<span class="nc" id="L27">        board.setName( dto.getName() );</span>
+
+<span class="nc" id="L29">        return board;</span>
+    }
+
+    @Override
+    public BoardDTO toDto(Board entity) {
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        if ( entity == null ) {</span>
+<span class="nc" id="L35">            return null;</span>
+        }
+
+<span class="nc" id="L38">        BoardDTO boardDTO = new BoardDTO();</span>
+
+<span class="nc" id="L40">        boardDTO.setId( entity.getId() );</span>
+<span class="nc" id="L41">        boardDTO.setName( entity.getName() );</span>
+
+<span class="nc" id="L43">        return boardDTO;</span>
+    }
+
+    @Override
+    public List&lt;Board&gt; toEntity(List&lt;BoardDTO&gt; dtoList) {
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if ( dtoList == null ) {</span>
+<span class="nc" id="L49">            return null;</span>
+        }
+
+<span class="nc" id="L52">        List&lt;Board&gt; list = new ArrayList&lt;Board&gt;( dtoList.size() );</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        for ( BoardDTO boardDTO : dtoList ) {</span>
+<span class="nc" id="L54">            list.add( toEntity( boardDTO ) );</span>
+<span class="nc" id="L55">        }</span>
+
+<span class="nc" id="L57">        return list;</span>
+    }
+
+    @Override
+    public List&lt;BoardDTO&gt; toDto(List&lt;Board&gt; entityList) {
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if ( entityList == null ) {</span>
+<span class="nc" id="L63">            return null;</span>
+        }
+
+<span class="nc" id="L66">        List&lt;BoardDTO&gt; list = new ArrayList&lt;BoardDTO&gt;( entityList.size() );</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        for ( Board board : entityList ) {</span>
+<span class="nc" id="L68">            list.add( toDto( board ) );</span>
+<span class="nc" id="L69">        }</span>
+
+<span class="nc" id="L71">        return list;</span>
+    }
+
+    @Override
+    public void partialUpdate(Board entity, BoardDTO dto) {
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        if ( dto == null ) {</span>
+<span class="nc" id="L77">            return;</span>
+        }
+
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if ( dto.getId() != null ) {</span>
+<span class="nc" id="L81">            entity.setId( dto.getId() );</span>
+        }
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        if ( dto.getName() != null ) {</span>
+<span class="nc" id="L84">            entity.setName( dto.getName() );</span>
+        }
+<span class="nc" id="L86">    }</span>
+
+    @Override
+    public BoardDTO toDtoId(Board board) {
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        if ( board == null ) {</span>
+<span class="nc" id="L91">            return null;</span>
+        }
+
+<span class="nc" id="L94">        BoardDTO boardDTO = new BoardDTO();</span>
+
+<span class="nc" id="L96">        boardDTO.setId( board.getId() );</span>
+
+<span class="nc" id="L98">        return boardDTO;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

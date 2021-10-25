@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommentResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core Service</a> &gt; <a href="index.source.html" class="el_package">com.reddot.core.web.rest</a> &gt; <span class="el_source">CommentResource.java</span></div><h1>CommentResource.java</h1><pre class="source lang-java linenums">package com.reddot.core.web.rest;
+
+import com.reddot.core.repository.CommentRepository;
+import com.reddot.core.service.CommentService;
+import com.reddot.core.service.dto.CommentDTO;
+import com.reddot.core.web.rest.errors.BadRequestAlertException;
+
+import io.undertow.util.BadRequestException;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.ResponseUtil;
+
+/**
+ * REST controller for managing {@link com.reddot.core.domain.Comment}.
+ */
+@RestController
+@RequestMapping(&quot;/api&quot;)
+public class CommentResource {
+
+<span class="nc" id="L30">    private final Logger log = LoggerFactory.getLogger(CommentResource.class);</span>
+
+    private static final String ENTITY_NAME = &quot;coreComment&quot;;
+
+    @Value(&quot;${jhipster.clientApp.name}&quot;)
+    private String applicationName;
+
+    private final CommentService commentService;
+
+    private final CommentRepository commentRepository;
+
+<span class="nc" id="L41">    public CommentResource(CommentService commentService, CommentRepository commentRepository) {</span>
+<span class="nc" id="L42">        this.commentService = commentService;</span>
+<span class="nc" id="L43">        this.commentRepository = commentRepository;</span>
+<span class="nc" id="L44">    }</span>
+
+    /**
+     * {@code POST  /comments} : Create a new comment.
+     *
+     * @param commentDTO the commentDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new commentDTO, or with status {@code 400 (Bad Request)} if the comment has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     * @throws BadRequestException 
+     */
+    @PostMapping(&quot;/comments&quot;)
+    public ResponseEntity&lt;CommentDTO&gt; createComment(@RequestBody CommentDTO commentDTO) throws URISyntaxException, BadRequestException {
+<span class="nc" id="L56">        log.debug(&quot;REST request to save Comment : {}&quot;, commentDTO);</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (commentDTO.getId() != null) {</span>
+<span class="nc" id="L58">            throw new BadRequestAlertException(&quot;A new comment cannot already have an ID&quot;, ENTITY_NAME, &quot;idexists&quot;);</span>
+        }
+<span class="nc" id="L60">        CommentDTO result = commentService.save(commentDTO);</span>
+<span class="nc" id="L61">        return ResponseEntity</span>
+<span class="nc" id="L62">            .created(new URI(&quot;/api/comments/&quot; + result.getId()))</span>
+<span class="nc" id="L63">            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))</span>
+<span class="nc" id="L64">            .body(result);</span>
+    }
+
+    /**
+     * {@code PUT  /comments/:id} : Updates an existing comment.
+     *
+     * @param id the id of the commentDTO to save.
+     * @param commentDTO the commentDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated commentDTO,
+     * or with status {@code 400 (Bad Request)} if the commentDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the commentDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     * @throws BadRequestException 
+     */
+    @PutMapping(&quot;/comments/{id}&quot;)
+    public ResponseEntity&lt;CommentDTO&gt; updateComment(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody CommentDTO commentDTO
+    ) throws URISyntaxException, BadRequestException {
+<span class="nc" id="L83">        log.debug(&quot;REST request to update Comment : {}, {}&quot;, id, commentDTO);</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if (commentDTO.getId() == null) {</span>
+<span class="nc" id="L85">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        if (!Objects.equals(id, commentDTO.getId())) {</span>
+<span class="nc" id="L88">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        if (!commentRepository.existsById(id)) {</span>
+<span class="nc" id="L92">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="nc" id="L95">        CommentDTO result = commentService.save(commentDTO);</span>
+<span class="nc" id="L96">        return ResponseEntity</span>
+<span class="nc" id="L97">            .ok()</span>
+<span class="nc" id="L98">            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, commentDTO.getId().toString()))</span>
+<span class="nc" id="L99">            .body(result);</span>
+    }
+
+    /**
+     * {@code PATCH  /comments/:id} : Partial updates given fields of an existing comment, field will ignore if it is null
+     *
+     * @param id the id of the commentDTO to save.
+     * @param commentDTO the commentDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated commentDTO,
+     * or with status {@code 400 (Bad Request)} if the commentDTO is not valid,
+     * or with status {@code 404 (Not Found)} if the commentDTO is not found,
+     * or with status {@code 500 (Internal Server Error)} if the commentDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PatchMapping(value = &quot;/comments/{id}&quot;, consumes = { &quot;application/json&quot;, &quot;application/merge-patch+json&quot; })
+    public ResponseEntity&lt;CommentDTO&gt; partialUpdateComment(
+        @PathVariable(value = &quot;id&quot;, required = false) final Long id,
+        @RequestBody CommentDTO commentDTO
+    ) throws URISyntaxException {
+<span class="nc" id="L118">        log.debug(&quot;REST request to partial update Comment partially : {}, {}&quot;, id, commentDTO);</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">        if (commentDTO.getId() == null) {</span>
+<span class="nc" id="L120">            throw new BadRequestAlertException(&quot;Invalid id&quot;, ENTITY_NAME, &quot;idnull&quot;);</span>
+        }
+<span class="nc bnc" id="L122" title="All 2 branches missed.">        if (!Objects.equals(id, commentDTO.getId())) {</span>
+<span class="nc" id="L123">            throw new BadRequestAlertException(&quot;Invalid ID&quot;, ENTITY_NAME, &quot;idinvalid&quot;);</span>
+        }
+
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        if (!commentRepository.existsById(id)) {</span>
+<span class="nc" id="L127">            throw new BadRequestAlertException(&quot;Entity not found&quot;, ENTITY_NAME, &quot;idnotfound&quot;);</span>
+        }
+
+<span class="nc" id="L130">        Optional&lt;CommentDTO&gt; result = commentService.partialUpdate(commentDTO);</span>
+
+<span class="nc" id="L132">        return ResponseUtil.wrapOrNotFound(</span>
+            result,
+<span class="nc" id="L134">            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, commentDTO.getId().toString())</span>
+        );
+    }
+
+    /**
+     * {@code GET  /comments} : get all the comments.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of comments in body.
+     */
+    @GetMapping(&quot;/comments&quot;)
+    public List&lt;CommentDTO&gt; getAllComments() {
+<span class="nc" id="L145">        log.debug(&quot;REST request to get all Comments&quot;);</span>
+<span class="nc" id="L146">        return commentService.findAll();</span>
+    }
+
+    /**
+     * {@code GET  /comments/:id} : get the &quot;id&quot; comment.
+     *
+     * @param id the id of the commentDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the commentDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping(&quot;/comments/{id}&quot;)
+    public ResponseEntity&lt;CommentDTO&gt; getComment(@PathVariable Long id) {
+<span class="nc" id="L157">        log.debug(&quot;REST request to get Comment : {}&quot;, id);</span>
+<span class="nc" id="L158">        Optional&lt;CommentDTO&gt; commentDTO = commentService.findOne(id);</span>
+<span class="nc" id="L159">        return ResponseUtil.wrapOrNotFound(commentDTO);</span>
+    }
+
+    /**
+     * {@code DELETE  /comments/:id} : delete the &quot;id&quot; comment.
+     *
+     * @param id the id of the commentDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping(&quot;/comments/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteComment(@PathVariable Long id) {
+<span class="nc" id="L170">        log.debug(&quot;REST request to delete Comment : {}&quot;, id);</span>
+<span class="nc" id="L171">        commentService.delete(id);</span>
+<span class="nc" id="L172">        return ResponseEntity</span>
+<span class="nc" id="L173">            .noContent()</span>
+<span class="nc" id="L174">            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))</span>
+<span class="nc" id="L175">            .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

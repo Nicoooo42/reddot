@@ -1,0 +1,110 @@
+9c8b6ef6576fc7e6cd99d88c6960235c
+"use strict"; // These constants are injected via webpack DefinePlugin variables.
+// You can add more variables in webpack.common.js or in profile specific webpack.<dev|prod>.js files.
+// If you change the values in the webpack config files, you need to re run webpack to update the application
+
+/* istanbul ignore next */
+function cov_2kzjzchja1() {
+  var path = "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\app.constants.ts";
+  var hash = "f6e3370a871b1a3063954f115cde1a297c72094d";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\app.constants.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 6,
+          column: 54
+        }
+      },
+      "2": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 30
+        }
+      },
+      "3": {
+        start: {
+          line: 8,
+          column: 0
+        },
+        end: {
+          line: 8,
+          column: 52
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\app.constants.ts",
+      mappings: ";AAAA,mEAAmE;AACnE,sGAAsG;AACtG,6GAA6G;;;AAKhG,QAAA,OAAO,GAAG,WAAW,CAAC;AACtB,QAAA,kBAAkB,GAAG,sBAAsB,CAAC",
+      names: [],
+      sources: ["C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\app.constants.ts"],
+      sourcesContent: ["// These constants are injected via webpack DefinePlugin variables.\n// You can add more variables in webpack.common.js or in profile specific webpack.<dev|prod>.js files.\n// If you change the values in the webpack config files, you need to re run webpack to update the application\n\ndeclare const __DEBUG_INFO_ENABLED__: boolean;\ndeclare const __VERSION__: string;\n\nexport const VERSION = __VERSION__;\nexport const DEBUG_INFO_ENABLED = __DEBUG_INFO_ENABLED__;\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "f6e3370a871b1a3063954f115cde1a297c72094d"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2kzjzchja1 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_2kzjzchja1();
+cov_2kzjzchja1().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/* istanbul ignore next */
+cov_2kzjzchja1().s[1]++;
+exports.DEBUG_INFO_ENABLED = exports.VERSION = void 0;
+
+/* istanbul ignore next */
+cov_2kzjzchja1().s[2]++;
+exports.VERSION = __VERSION__;
+
+/* istanbul ignore next */
+cov_2kzjzchja1().s[3]++;
+exports.DEBUG_INFO_ENABLED = __DEBUG_INFO_ENABLED__;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcTmljb2xhc1xcRGVza3RvcFxcdGVzdDZcXGdhdGV3YXlcXHNyY1xcbWFpblxcd2ViYXBwXFxhcHBcXGFwcC5jb25zdGFudHMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6ImNBQUE7QUFDQTtBQUNBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUthLE9BQUEsQ0FBQSxPQUFBLEdBQVUsV0FBVjs7OztBQUNBLE9BQUEsQ0FBQSxrQkFBQSxHQUFxQixzQkFBckIiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBUaGVzZSBjb25zdGFudHMgYXJlIGluamVjdGVkIHZpYSB3ZWJwYWNrIERlZmluZVBsdWdpbiB2YXJpYWJsZXMuXG4vLyBZb3UgY2FuIGFkZCBtb3JlIHZhcmlhYmxlcyBpbiB3ZWJwYWNrLmNvbW1vbi5qcyBvciBpbiBwcm9maWxlIHNwZWNpZmljIHdlYnBhY2suPGRldnxwcm9kPi5qcyBmaWxlcy5cbi8vIElmIHlvdSBjaGFuZ2UgdGhlIHZhbHVlcyBpbiB0aGUgd2VicGFjayBjb25maWcgZmlsZXMsIHlvdSBuZWVkIHRvIHJlIHJ1biB3ZWJwYWNrIHRvIHVwZGF0ZSB0aGUgYXBwbGljYXRpb25cblxuZGVjbGFyZSBjb25zdCBfX0RFQlVHX0lORk9fRU5BQkxFRF9fOiBib29sZWFuO1xuZGVjbGFyZSBjb25zdCBfX1ZFUlNJT05fXzogc3RyaW5nO1xuXG5leHBvcnQgY29uc3QgVkVSU0lPTiA9IF9fVkVSU0lPTl9fO1xuZXhwb3J0IGNvbnN0IERFQlVHX0lORk9fRU5BQkxFRCA9IF9fREVCVUdfSU5GT19FTkFCTEVEX187XG4iXX0=

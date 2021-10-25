@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LocaleConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Gateway</a> &gt; <a href="index.source.html" class="el_package">com.reddot.gateway.config</a> &gt; <span class="el_source">LocaleConfiguration.java</span></div><h1>LocaleConfiguration.java</h1><pre class="source lang-java linenums">package com.reddot.gateway.config;
+
+import java.time.Duration;
+import java.util.Locale;
+import java.util.TimeZone;
+import javax.annotation.Nonnull;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.i18n.LocaleContext;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.context.i18n.SimpleLocaleContext;
+import org.springframework.context.i18n.TimeZoneAwareLocaleContext;
+import org.springframework.http.HttpCookie;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
+import org.springframework.web.server.ServerWebExchange;
+import org.springframework.web.server.WebFilter;
+import org.springframework.web.server.i18n.LocaleContextResolver;
+
+@Configuration
+<span class="nc" id="L26">public class LocaleConfiguration {</span>
+
+    @Bean(name = &quot;localeContextResolver&quot;)
+    public LocaleContextResolver localeContextResolver() {
+<span class="nc" id="L30">        return new AngularCookieLocaleContextResolver();</span>
+    }
+
+    @Bean
+    public WebFilter localeChangeFilter(LocaleContextResolver localeContextResolver) {
+<span class="nc" id="L35">        return (exchange, chain) -&gt; {</span>
+            // Find locale change in query param. Must also look form params ?
+<span class="nc" id="L37">            String newLocale = exchange.getRequest().getQueryParams().getFirst(&quot;language&quot;);</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">            if (newLocale != null) {</span>
+<span class="nc" id="L39">                localeContextResolver.setLocaleContext(exchange, new SimpleLocaleContext(StringUtils.parseLocaleString(newLocale)));</span>
+            }
+            // Proceed in any case.
+<span class="nc" id="L42">            return chain.filter(exchange);</span>
+        };
+    }
+
+<span class="nc" id="L46">    static class AngularCookieLocaleContextResolver implements LocaleContextResolver {</span>
+
+<span class="nc" id="L48">        private static final String LOCALE_REQUEST_ATTRIBUTE_NAME = AngularCookieLocaleContextResolver.class.getName() + &quot;.LOCALE&quot;;</span>
+
+<span class="nc" id="L50">        private static final String TIME_ZONE_REQUEST_ATTRIBUTE_NAME = AngularCookieLocaleContextResolver.class.getName() + &quot;.TIME_ZONE&quot;;</span>
+
+        private static final String QUOTE = &quot;%22&quot;;
+
+        private static final String COOKIE_NAME = &quot;NG_TRANSLATE_LANG_KEY&quot;;
+
+        private static final String COOKIE_PATH = &quot;/&quot;;
+
+<span class="nc" id="L58">        protected final Log logger = LogFactory.getLog(getClass());</span>
+
+        @Override
+        @Nonnull
+        public LocaleContext resolveLocaleContext(@Nonnull ServerWebExchange exchange) {
+<span class="nc" id="L63">            parseLocaleCookieIfNecessary(exchange);</span>
+<span class="nc" id="L64">            return new TimeZoneAwareLocaleContext() {</span>
+                @Override
+                public Locale getLocale() {
+<span class="nc" id="L67">                    return (Locale) exchange.getAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME);</span>
+                }
+
+                @Override
+                public TimeZone getTimeZone() {
+<span class="nc" id="L72">                    return (TimeZone) exchange.getAttribute(TIME_ZONE_REQUEST_ATTRIBUTE_NAME);</span>
+                }
+            };
+        }
+
+        @Override
+        public void setLocaleContext(@Nonnull ServerWebExchange exchange, LocaleContext localeContext) {
+<span class="nc" id="L79">            Assert.notNull(exchange.getResponse(), &quot;ServerHttpResponse is required for AngularCookieLocaleContextResolver&quot;);</span>
+
+<span class="nc" id="L81">            Locale locale = null;</span>
+<span class="nc" id="L82">            TimeZone timeZone = null;</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">            if (localeContext != null) {</span>
+<span class="nc" id="L84">                locale = localeContext.getLocale();</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">                if (localeContext instanceof TimeZoneAwareLocaleContext) {</span>
+<span class="nc" id="L86">                    timeZone = ((TimeZoneAwareLocaleContext) localeContext).getTimeZone();</span>
+                }
+<span class="nc" id="L88">                addCookie(</span>
+<span class="nc" id="L89">                    exchange.getResponse(),</span>
+<span class="nc bnc" id="L90" title="All 4 branches missed.">                    QUOTE + (locale != null ? locale.toString() : &quot;-&quot;) + (timeZone != null ? ' ' + timeZone.getID() : &quot;&quot;) + QUOTE</span>
+                );
+            } else {
+<span class="nc" id="L93">                removeCookie(exchange.getResponse());</span>
+            }
+<span class="nc" id="L95">            exchange</span>
+<span class="nc" id="L96">                .getAttributes()</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">                .put(LOCALE_REQUEST_ATTRIBUTE_NAME, (locale != null ? locale : LocaleContextHolder.getLocale(exchange.getLocaleContext())));</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">            if (timeZone != null) {</span>
+<span class="nc" id="L99">                exchange.getAttributes().put(TIME_ZONE_REQUEST_ATTRIBUTE_NAME, timeZone);</span>
+            } else {
+<span class="nc" id="L101">                exchange.getAttributes().remove(TIME_ZONE_REQUEST_ATTRIBUTE_NAME);</span>
+            }
+<span class="nc" id="L103">        }</span>
+
+        private void addCookie(@Nonnull ServerHttpResponse response, String cookieValue) {
+<span class="nc" id="L106">            Assert.notNull(response, &quot;ServerHttpResponse must not be null&quot;);</span>
+<span class="nc" id="L107">            ResponseCookie cookie = ResponseCookie.from(COOKIE_NAME, cookieValue).path(COOKIE_PATH).build();</span>
+<span class="nc" id="L108">            response.addCookie(cookie);</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">            if (logger.isDebugEnabled()) {</span>
+<span class="nc" id="L110">                logger.debug(&quot;Added cookie with name [&quot; + COOKIE_NAME + &quot;] and value [&quot; + cookieValue + &quot;]&quot;);</span>
+            }
+<span class="nc" id="L112">        }</span>
+
+        private void removeCookie(@Nonnull ServerHttpResponse response) {
+<span class="nc" id="L115">            Assert.notNull(response, &quot;ServerHttpResponse must not be null&quot;);</span>
+<span class="nc" id="L116">            ResponseCookie cookie = ResponseCookie.from(COOKIE_NAME, &quot;&quot;).path(COOKIE_PATH).maxAge(Duration.ZERO).build();</span>
+<span class="nc" id="L117">            response.addCookie(cookie);</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">            if (logger.isDebugEnabled()) {</span>
+<span class="nc" id="L119">                logger.debug(&quot;Removed cookie with name [&quot; + COOKIE_NAME + &quot;]&quot;);</span>
+            }
+<span class="nc" id="L121">        }</span>
+
+        private void parseLocaleCookieIfNecessary(ServerWebExchange exchange) {
+<span class="nc bnc" id="L124" title="All 2 branches missed.">            if (exchange.getAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME) == null) {</span>
+                // Retrieve and parse cookie value.
+<span class="nc" id="L126">                HttpCookie cookie = exchange.getRequest().getCookies().getFirst(COOKIE_NAME);</span>
+<span class="nc" id="L127">                Locale locale = null;</span>
+<span class="nc" id="L128">                TimeZone timeZone = null;</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">                if (cookie != null) {</span>
+<span class="nc" id="L130">                    String value = cookie.getValue();</span>
+
+                    // Remove the double quote
+<span class="nc" id="L133">                    value = StringUtils.replace(value, QUOTE, &quot;&quot;);</span>
+
+<span class="nc" id="L135">                    String localePart = value;</span>
+<span class="nc" id="L136">                    String timeZonePart = null;</span>
+<span class="nc" id="L137">                    int spaceIndex = localePart.indexOf(' ');</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">                    if (spaceIndex != -1) {</span>
+<span class="nc" id="L139">                        localePart = value.substring(0, spaceIndex);</span>
+<span class="nc" id="L140">                        timeZonePart = value.substring(spaceIndex + 1);</span>
+                    }
+<span class="nc bnc" id="L142" title="All 2 branches missed.">                    locale = !&quot;-&quot;.equals(localePart) ? StringUtils.parseLocaleString(localePart.replace('-', '_')) : null;</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">                    if (timeZonePart != null) {</span>
+<span class="nc" id="L144">                        timeZone = StringUtils.parseTimeZoneString(timeZonePart);</span>
+                    }
+<span class="nc bnc" id="L146" title="All 2 branches missed.">                    if (logger.isTraceEnabled()) {</span>
+<span class="nc" id="L147">                        logger.trace(</span>
+                            &quot;Parsed cookie value [&quot; +
+<span class="nc" id="L149">                            cookie.getValue() +</span>
+                            &quot;] into locale '&quot; +
+                            locale +
+                            &quot;'&quot; +
+<span class="nc bnc" id="L153" title="All 2 branches missed.">                            (timeZone != null ? &quot; and time zone '&quot; + timeZone.getID() + &quot;'&quot; : &quot;&quot;)</span>
+                        );
+                    }
+                }
+<span class="nc" id="L157">                exchange</span>
+<span class="nc" id="L158">                    .getAttributes()</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">                    .put(LOCALE_REQUEST_ATTRIBUTE_NAME, locale != null ? locale : exchange.getLocaleContext().getLocale());</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">                if (timeZone != null) {</span>
+<span class="nc" id="L161">                    exchange.getAttributes().put(TIME_ZONE_REQUEST_ATTRIBUTE_NAME, timeZone);</span>
+                } else {
+<span class="nc" id="L163">                    exchange.getAttributes().remove(TIME_ZONE_REQUEST_ATTRIBUTE_NAME);</span>
+                }
+            }
+<span class="nc" id="L166">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

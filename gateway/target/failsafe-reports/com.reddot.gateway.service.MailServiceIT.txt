@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.reddot.gateway.service.MailServiceIT
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.322 s <<< FAILURE! - in com.reddot.gateway.service.MailServiceIT
+com.reddot.gateway.service.MailServiceIT.testSendEmailFromTemplate  Time elapsed: 0.029 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: "test title"
+but was : "Activation de votre compte gateway"
+	at com.reddot.gateway.service.MailServiceIT.testSendEmailFromTemplate(MailServiceIT.java:143)
+

@@ -1,0 +1,346 @@
+05818412984bb3a20838c2460dffc116
+"use strict";
+
+/* istanbul ignore next */
+function cov_8s15418rr() {
+  var path = "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\admin\\health\\health.service.ts";
+  var hash = "55fa8743080b4bd651a3843aa9ca143f6dedaf60";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\admin\\health\\health.service.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 31
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 16
+        },
+        end: {
+          line: 4,
+          column: 32
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 15
+        },
+        end: {
+          line: 5,
+          column: 39
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 15
+        },
+        end: {
+          line: 6,
+          column: 46
+        }
+      },
+      "5": {
+        start: {
+          line: 7,
+          column: 37
+        },
+        end: {
+          line: 7,
+          column: 90
+        }
+      },
+      "6": {
+        start: {
+          line: 8,
+          column: 20
+        },
+        end: {
+          line: 16,
+          column: 1
+        }
+      },
+      "7": {
+        start: {
+          line: 10,
+          column: 8
+        },
+        end: {
+          line: 10,
+          column: 25
+        }
+      },
+      "8": {
+        start: {
+          line: 11,
+          column: 8
+        },
+        end: {
+          line: 11,
+          column: 65
+        }
+      },
+      "9": {
+        start: {
+          line: 14,
+          column: 8
+        },
+        end: {
+          line: 14,
+          column: 96
+        }
+      },
+      "10": {
+        start: {
+          line: 17,
+          column: 0
+        },
+        end: {
+          line: 20,
+          column: 2
+        }
+      },
+      "11": {
+        start: {
+          line: 17,
+          column: 37
+        },
+        end: {
+          line: 20,
+          column: 1
+        }
+      },
+      "12": {
+        start: {
+          line: 21,
+          column: 0
+        },
+        end: {
+          line: 24,
+          column: 18
+        }
+      },
+      "13": {
+        start: {
+          line: 25,
+          column: 0
+        },
+        end: {
+          line: 25,
+          column: 38
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 9,
+            column: 4
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 48
+          },
+          end: {
+            line: 12,
+            column: 5
+          }
+        },
+        line: 9
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 13,
+            column: 4
+          },
+          end: {
+            line: 13,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 13,
+            column: 18
+          },
+          end: {
+            line: 15,
+            column: 5
+          }
+        },
+        line: 13
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 17,
+            column: 31
+          },
+          end: {
+            line: 17,
+            column: 32
+          }
+        },
+        loc: {
+          start: {
+            line: 17,
+            column: 37
+          },
+          end: {
+            line: 20,
+            column: 1
+          }
+        },
+        line: 17
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\admin\\health\\health.service.ts",
+      mappings: ";;;;AAAA,wCAA2C;AAC3C,+CAAkD;AAGlD,2FAAsF;IAIzE,aAAa,SAAb,aAAa;IACxB,YAAoB,IAAgB,EAAU,wBAAkD;QAA5E,SAAI,GAAJ,IAAI,CAAY;QAAU,6BAAwB,GAAxB,wBAAwB,CAA0B;IAAG,CAAC;IAEpG,WAAW;QACT,OAAO,IAAI,CAAC,IAAI,CAAC,GAAG,CAAS,IAAI,CAAC,wBAAwB,CAAC,cAAc,CAAC,mBAAmB,CAAC,CAAC,CAAC;IAClG,CAAC;CACF,CAAA;;YAbQ,iBAAU;YAGV,qDAAwB;;AAIpB,aAAa;IADzB,iBAAU,CAAC,EAAE,UAAU,EAAE,MAAM,EAAE,CAAC;6CAEP,iBAAU,EAAoC,qDAAwB;GADrF,aAAa,CAMzB;AANY,sCAAa",
+      names: [],
+      sources: ["C:\\Users\\Nicolas\\Desktop\\test6\\gateway\\src\\main\\webapp\\app\\admin\\health\\health.service.ts"],
+      sourcesContent: ["import { Injectable } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable } from 'rxjs';\n\nimport { ApplicationConfigService } from 'app/core/config/application-config.service';\nimport { Health } from './health.model';\n\n@Injectable({ providedIn: 'root' })\nexport class HealthService {\n  constructor(private http: HttpClient, private applicationConfigService: ApplicationConfigService) {}\n\n  checkHealth(): Observable<Health> {\n    return this.http.get<Health>(this.applicationConfigService.getEndpointFor('management/health'));\n  }\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "55fa8743080b4bd651a3843aa9ca143f6dedaf60"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_8s15418rr = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_8s15418rr();
+cov_8s15418rr().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/* istanbul ignore next */
+cov_8s15418rr().s[1]++;
+exports.HealthService = void 0;
+const tslib_1 =
+/* istanbul ignore next */
+(cov_8s15418rr().s[2]++, require("tslib"));
+const core_1 =
+/* istanbul ignore next */
+(cov_8s15418rr().s[3]++, require("@angular/core"));
+const http_1 =
+/* istanbul ignore next */
+(cov_8s15418rr().s[4]++, require("@angular/common/http"));
+const application_config_service_1 =
+/* istanbul ignore next */
+(cov_8s15418rr().s[5]++, require("app/core/config/application-config.service"));
+
+/* istanbul ignore next */
+cov_8s15418rr().s[6]++;
+let HealthService = class HealthService {
+  constructor(http, applicationConfigService) {
+    /* istanbul ignore next */
+    cov_8s15418rr().f[0]++;
+    cov_8s15418rr().s[7]++;
+    this.http = http;
+
+    /* istanbul ignore next */
+    cov_8s15418rr().s[8]++;
+    this.applicationConfigService = applicationConfigService;
+  }
+
+  checkHealth() {
+    /* istanbul ignore next */
+    cov_8s15418rr().f[1]++;
+    cov_8s15418rr().s[9]++;
+    return this.http.get(this.applicationConfigService.getEndpointFor('management/health'));
+  }
+
+};
+
+/* istanbul ignore next */
+cov_8s15418rr().s[10]++;
+
+HealthService.ctorParameters = () => {
+  /* istanbul ignore next */
+  cov_8s15418rr().f[2]++;
+  cov_8s15418rr().s[11]++;
+  return [{
+    type: http_1.HttpClient
+  }, {
+    type: application_config_service_1.ApplicationConfigService
+  }];
+};
+
+/* istanbul ignore next */
+cov_8s15418rr().s[12]++;
+HealthService = tslib_1.__decorate([core_1.Injectable({
+  providedIn: 'root'
+}), tslib_1.__metadata("design:paramtypes", [http_1.HttpClient, application_config_service_1.ApplicationConfigService])], HealthService);
+
+/* istanbul ignore next */
+cov_8s15418rr().s[13]++;
+exports.HealthService = HealthService;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcTmljb2xhc1xcRGVza3RvcFxcdGVzdDZcXGdhdGV3YXlcXHNyY1xcbWFpblxcd2ViYXBwXFxhcHBcXGFkbWluXFxoZWFsdGhcXGhlYWx0aC5zZXJ2aWNlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFjQzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFkRCxNQUFBLE1BQUE7QUFBQTtBQUFBLHlCQUFBLE9BQUEsQ0FBQSxlQUFBLENBQUEsQ0FBQTtBQUNBLE1BQUEsTUFBQTtBQUFBO0FBQUEseUJBQUEsT0FBQSxDQUFBLHNCQUFBLENBQUEsQ0FBQTtBQUdBLE1BQUEsNEJBQUE7QUFBQTtBQUFBLHlCQUFBLE9BQUEsQ0FBQSw0Q0FBQSxDQUFBLENBQUE7Ozs7SUFJYSxhQUFhLEdBQUEsTUFBYixhQUFhLENBQUE7QUFDeEIsRUFBQSxXQUFBLENBQW9CLElBQXBCLEVBQThDLHdCQUE5QyxFQUFnRztBQUFBO0FBQUE7QUFBQTtBQUE1RSxTQUFBLElBQUEsR0FBQSxJQUFBOztBQUE0RTtBQUFBO0FBQWxELFNBQUEsd0JBQUEsR0FBQSx3QkFBQTtBQUFzRDs7QUFFcEcsRUFBQSxXQUFXLEdBQUE7QUFBQTtBQUFBO0FBQUE7QUFDVCxXQUFPLEtBQUssSUFBTCxDQUFVLEdBQVYsQ0FBc0IsS0FBSyx3QkFBTCxDQUE4QixjQUE5QixDQUE2QyxtQkFBN0MsQ0FBdEIsQ0FBUDtBQUNEOztBQUx1QixDOzs7Ozs7Ozs7O1VBUGpCLE1BQUEsQ0FBQTs7VUFHQSw0QkFBQSxDQUFBOzs7Ozs7QUFJSSxhQUFhLEdBQUEsT0FBQSxDQUFBLFVBQUEsQ0FBQSxDQUR6QixNQUFBLENBQUEsVUFBQSxDQUFXO0FBQUUsRUFBQSxVQUFVLEVBQUU7QUFBZCxDQUFYLENBQ3lCLEUseUNBQ0UsTUFBQSxDQUFBLFUsRUFBOEMsNEJBQUEsQ0FBQSx3QixFQURoRCxDQUFBLEVBQWIsYUFBYSxDQUFiOzs7O0FBQUEsT0FBQSxDQUFBLGFBQUEsR0FBQSxhQUFBIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgSW5qZWN0YWJsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgSHR0cENsaWVudCB9IGZyb20gJ0Bhbmd1bGFyL2NvbW1vbi9odHRwJztcbmltcG9ydCB7IE9ic2VydmFibGUgfSBmcm9tICdyeGpzJztcblxuaW1wb3J0IHsgQXBwbGljYXRpb25Db25maWdTZXJ2aWNlIH0gZnJvbSAnYXBwL2NvcmUvY29uZmlnL2FwcGxpY2F0aW9uLWNvbmZpZy5zZXJ2aWNlJztcbmltcG9ydCB7IEhlYWx0aCB9IGZyb20gJy4vaGVhbHRoLm1vZGVsJztcblxuQEluamVjdGFibGUoeyBwcm92aWRlZEluOiAncm9vdCcgfSlcbmV4cG9ydCBjbGFzcyBIZWFsdGhTZXJ2aWNlIHtcbiAgY29uc3RydWN0b3IocHJpdmF0ZSBodHRwOiBIdHRwQ2xpZW50LCBwcml2YXRlIGFwcGxpY2F0aW9uQ29uZmlnU2VydmljZTogQXBwbGljYXRpb25Db25maWdTZXJ2aWNlKSB7fVxuXG4gIGNoZWNrSGVhbHRoKCk6IE9ic2VydmFibGU8SGVhbHRoPiB7XG4gICAgcmV0dXJuIHRoaXMuaHR0cC5nZXQ8SGVhbHRoPih0aGlzLmFwcGxpY2F0aW9uQ29uZmlnU2VydmljZS5nZXRFbmRwb2ludEZvcignbWFuYWdlbWVudC9oZWFsdGgnKSk7XG4gIH1cbn1cbiJdfQ==

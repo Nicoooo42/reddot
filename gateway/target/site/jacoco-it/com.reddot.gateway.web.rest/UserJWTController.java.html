@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserJWTController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Gateway</a> &gt; <a href="index.source.html" class="el_package">com.reddot.gateway.web.rest</a> &gt; <span class="el_source">UserJWTController.java</span></div><h1>UserJWTController.java</h1><pre class="source lang-java linenums">package com.reddot.gateway.web.rest;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.reddot.gateway.security.jwt.JWTFilter;
+import com.reddot.gateway.security.jwt.TokenProvider;
+import com.reddot.gateway.web.rest.vm.LoginVM;
+import javax.validation.Valid;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
+
+/**
+ * Controller to authenticate users.
+ */
+@RestController
+@RequestMapping(&quot;/api&quot;)
+public class UserJWTController {
+
+    private final TokenProvider tokenProvider;
+
+    private final ReactiveAuthenticationManager authenticationManager;
+
+<span class="fc" id="L28">    public UserJWTController(TokenProvider tokenProvider, ReactiveAuthenticationManager authenticationManager) {</span>
+<span class="fc" id="L29">        this.tokenProvider = tokenProvider;</span>
+<span class="fc" id="L30">        this.authenticationManager = authenticationManager;</span>
+<span class="fc" id="L31">    }</span>
+
+    @PostMapping(&quot;/authenticate&quot;)
+    public Mono&lt;ResponseEntity&lt;JWTToken&gt;&gt; authorize(@Valid @RequestBody Mono&lt;LoginVM&gt; loginVM) {
+<span class="fc" id="L35">        return loginVM</span>
+<span class="fc" id="L36">            .flatMap(login -&gt;</span>
+<span class="fc" id="L37">                authenticationManager</span>
+<span class="fc" id="L38">                    .authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword()))</span>
+<span class="fc" id="L39">                    .flatMap(auth -&gt; Mono.fromCallable(() -&gt; tokenProvider.createToken(auth, login.isRememberMe())))</span>
+            )
+<span class="fc" id="L41">            .map(jwt -&gt; {</span>
+<span class="fc" id="L42">                HttpHeaders httpHeaders = new HttpHeaders();</span>
+<span class="fc" id="L43">                httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, &quot;Bearer &quot; + jwt);</span>
+<span class="fc" id="L44">                return new ResponseEntity&lt;&gt;(new JWTToken(jwt), httpHeaders, HttpStatus.OK);</span>
+            });
+    }
+
+    /**
+     * Object to return as body in JWT Authentication.
+     */
+    static class JWTToken {
+
+        private String idToken;
+
+<span class="fc" id="L55">        JWTToken(String idToken) {</span>
+<span class="fc" id="L56">            this.idToken = idToken;</span>
+<span class="fc" id="L57">        }</span>
+
+        @JsonProperty(&quot;id_token&quot;)
+        String getIdToken() {
+<span class="fc" id="L61">            return idToken;</span>
+        }
+
+        void setIdToken(String idToken) {
+<span class="nc" id="L65">            this.idToken = idToken;</span>
+<span class="nc" id="L66">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

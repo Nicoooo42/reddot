@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\core\util\alert.service.spec.ts">
+    <testCase name="Alert service test Alert Service Test should produce a proper alert object and fetch it" duration="42"/>
+    <testCase name="Alert service test Alert Service Test should produce a proper alert object and add it to external alert objects array" duration="13"/>
+    <testCase name="Alert service test Alert Service Test should produce an alert object with correct id" duration="13"/>
+    <testCase name="Alert service test Alert Service Test should close an alert correctly" duration="9"/>
+    <testCase name="Alert service test Alert Service Test should close an alert on timeout correctly" duration="14"/>
+    <testCase name="Alert service test Alert Service Test should clear alerts" duration="11"/>
+    <testCase name="Alert service test Alert Service Test should produce a scoped alert" duration="8"/>
+    <testCase name="Alert service test Alert Service Test should produce a success message" duration="12"/>
+    <testCase name="Alert service test Alert Service Test should produce a success message with custom position" duration="12"/>
+    <testCase name="Alert service test Alert Service Test should produce a error message" duration="10"/>
+    <testCase name="Alert service test Alert Service Test should produce a warning message" duration="14"/>
+    <testCase name="Alert service test Alert Service Test should produce a info message" duration="7"/>
+    <testCase name="Alert service test Alert Service Test should produce a info message with translated message if key exists" duration="12"/>
+    <testCase name="Alert service test Alert Service Test should produce a info message with provided message if key does not exists" duration="8"/>
+    <testCase name="Alert service test Alert Service Test should produce a info message with provided key if transltion key does not exist in translations and message is not provided" duration="8"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\core\auth\account.service.spec.ts">
+    <testCase name="Account Service save should call account saving endpoint with correct values" duration="59"/>
+    <testCase name="Account Service authenticate authenticationState should emit null if input is null" duration="19"/>
+    <testCase name="Account Service authenticate authenticationState should emit the same account as was in input parameter" duration="9"/>
+    <testCase name="Account Service identity should call /account only once if last call have not returned" duration="9"/>
+    <testCase name="Account Service identity should call /account only once if not logged out after first authentication and should call /account again if user has logged out" duration="14"/>
+    <testCase name="Account Service identity should change the language on authentication if necessary should change language if user has not changed language manually" duration="11"/>
+    <testCase name="Account Service identity should change the language on authentication if necessary should not change language if user has changed language manually" duration="14"/>
+    <testCase name="Account Service identity navigateToStoredUrl should navigate to the previous stored url post successful authentication" duration="12"/>
+    <testCase name="Account Service identity navigateToStoredUrl should not navigate to the previous stored url when authentication fails" duration="16"/>
+    <testCase name="Account Service identity navigateToStoredUrl should not navigate to the previous stored url when no such url exists post successful authentication" duration="14"/>
+    <testCase name="Account Service hasAnyAuthority hasAnyAuthority string parameter should return false if user is not logged" duration="11"/>
+    <testCase name="Account Service hasAnyAuthority hasAnyAuthority string parameter should return false if user is logged and has not authority" duration="15"/>
+    <testCase name="Account Service hasAnyAuthority hasAnyAuthority string parameter should return true if user is logged and has authority" duration="15"/>
+    <testCase name="Account Service hasAnyAuthority hasAnyAuthority array parameter should return false if user is not logged" duration="9"/>
+    <testCase name="Account Service hasAnyAuthority hasAnyAuthority array parameter should return false if user is logged and has not authority" duration="6"/>
+    <testCase name="Account Service hasAnyAuthority hasAnyAuthority array parameter should return true if user is logged and has authority" duration="9"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\user-management\list\user-management.component.spec.ts">
+    <testCase name="User Management Component OnInit Should call load all on init" duration="62"/>
+    <testCase name="User Management Component setActive Should update user and call load all" duration="33"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\layouts\main\main.component.spec.ts">
+    <testCase name="MainComponent page title navigation end should set page title to default title if pageTitle is missing on routes" duration="45"/>
+    <testCase name="MainComponent page title navigation end should set page title to root route pageTitle if there is no child routes" duration="30"/>
+    <testCase name="MainComponent page title navigation end should set page title to child route pageTitle if child routes exist and pageTitle is set for child route" duration="28"/>
+    <testCase name="MainComponent page title navigation end should set page title to parent route pageTitle if child routes exists but pageTitle is not set for child route data" duration="17"/>
+    <testCase name="MainComponent page title navigation start should not set page title on navigation start" duration="28"/>
+    <testCase name="MainComponent page title language change should set page title to default title if pageTitle is missing on routes" duration="17"/>
+    <testCase name="MainComponent page title language change should set page title to root route pageTitle if there is no child routes" duration="35"/>
+    <testCase name="MainComponent page title language change should set page title to child route pageTitle if child routes exist and pageTitle is set for child route" duration="26"/>
+    <testCase name="MainComponent page title language change should set page title to parent route pageTitle if child routes exists but pageTitle is not set for child route data" duration="23"/>
+    <testCase name="MainComponent page language attribute should change page language attribute on language change" duration="25"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\shared\alert\alert-error.component.spec.ts">
+    <testCase name="Alert Error Component Error Handling Should display an alert on status 0" duration="22"/>
+    <testCase name="Alert Error Component Error Handling Should display an alert on status 404" duration="18"/>
+    <testCase name="Alert Error Component Error Handling Should display an alert on generic error" duration="16"/>
+    <testCase name="Alert Error Component Error Handling Should display an alert on status 400 for generic error" duration="29"/>
+    <testCase name="Alert Error Component Error Handling Should display an alert on status 400 for generic error without message" duration="16"/>
+    <testCase name="Alert Error Component Error Handling Should display an alert on status 400 for invalid parameters" duration="14"/>
+    <testCase name="Alert Error Component Error Handling Should display an alert on status 400 for error headers" duration="11"/>
+    <testCase name="Alert Error Component Error Handling Should display an alert on status 500 with detail" duration="20"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\shared\sort\sort-by.directive.spec.ts">
+    <testCase name="Directive: SortByDirective should initialize predicate, order, icon when initial component predicate differs from column predicate" duration="132"/>
+    <testCase name="Directive: SortByDirective should initialize predicate, order, icon when initial component predicate is same as column predicate" duration="65"/>
+    <testCase name="Directive: SortByDirective should update component predicate, order, icon when user clicks on column header" duration="33"/>
+    <testCase name="Directive: SortByDirective should update component predicate, order, icon when user double clicks on column header" duration="45"/>
+    <testCase name="Directive: SortByDirective should not run sorting on click if sorting icon is hidden" duration="48"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\login\login.component.spec.ts">
+    <testCase name="LoginComponent ngOnInit Should call accountService.identity on Init" duration="74"/>
+    <testCase name="LoginComponent ngOnInit Should call accountService.isAuthenticated on Init" duration="36"/>
+    <testCase name="LoginComponent ngOnInit should navigate to home page on Init if authenticated=true" duration="41"/>
+    <testCase name="LoginComponent ngAfterViewInit shoult set focus to username input after the view has been initialized" duration="30"/>
+    <testCase name="LoginComponent login should authenticate the user and navigate to home page" duration="28"/>
+    <testCase name="LoginComponent login should authenticate the user but not navigate to home page if authentication process is already routing to cached url from localstorage" duration="42"/>
+    <testCase name="LoginComponent login should stay on login form and show error message on login error" duration="36"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\home\home.component.spec.ts">
+    <testCase name="Home Component ngOnInit Should synchronize account variable with current account" duration="56"/>
+    <testCase name="Home Component login Should navigate to /login on login" duration="52"/>
+    <testCase name="Home Component ngOnDestroy Should destroy authentication state subscription on component destroy" duration="49"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\layouts\navbar\navbar.component.spec.ts">
+    <testCase name="Navbar Component Should call profileService.getProfileInfo on init" duration="47"/>
+    <testCase name="Navbar Component Should hold current authenticated user in variable account" duration="26"/>
+    <testCase name="Navbar Component Should hold current authenticated user in variable account if user is authenticated before page load" duration="44"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\register\register.component.spec.ts">
+    <testCase name="RegisterComponent should ensure the two passwords entered match" duration="30"/>
+    <testCase name="RegisterComponent should update success to true after creating an account" duration="36"/>
+    <testCase name="RegisterComponent should notify of user existence upon 400/login already in use" duration="17"/>
+    <testCase name="RegisterComponent should notify of email existence upon 400/email address already in use" duration="29"/>
+    <testCase name="RegisterComponent should notify of generic error" duration="25"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\password\password.component.spec.ts">
+    <testCase name="PasswordComponent should show error if passwords do not match" duration="41"/>
+    <testCase name="PasswordComponent should call Auth.changePassword when passwords match" duration="25"/>
+    <testCase name="PasswordComponent should set success to true upon success" duration="30"/>
+    <testCase name="PasswordComponent should notify of error if change password fails" duration="32"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\shared\pagination\item-count.component.spec.ts">
+    <testCase name="ItemCountComponent test UI logic tests should initialize with undefined" duration="39"/>
+    <testCase name="ItemCountComponent test UI logic tests should set calculated numbers to undefined if the page value is not yet defined" duration="29"/>
+    <testCase name="ItemCountComponent test UI logic tests should change the content on page change" duration="31"/>
+    <testCase name="ItemCountComponent test UI logic tests should set the second number to totalItems if this is the last page which contains less than itemsPerPage items" duration="33"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\password-reset\init\password-reset-init.component.spec.ts">
+    <testCase name="PasswordResetInitComponent sets focus after the view has been initialized" duration="36"/>
+    <testCase name="PasswordResetInitComponent notifies of success upon successful requestReset" duration="34"/>
+    <testCase name="PasswordResetInitComponent no notification of success upon error response" duration="36"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\entities\user\user.service.spec.ts">
+    <testCase name="User Service Service methods should return Users" duration="31"/>
+    <testCase name="User Service Service methods should propagate not found response" duration="15"/>
+    <testCase name="User Service Service methods addUserToCollectionIfMissing should add a User to an empty array" duration="24"/>
+    <testCase name="User Service Service methods addUserToCollectionIfMissing should not add a User to an array that contains it" duration="20"/>
+    <testCase name="User Service Service methods addUserToCollectionIfMissing should add a User to an array that doesn&apos;t contain it" duration="18"/>
+    <testCase name="User Service Service methods addUserToCollectionIfMissing should add only unique User to an array" duration="18"/>
+    <testCase name="User Service Service methods addUserToCollectionIfMissing should accept varargs" duration="11"/>
+    <testCase name="User Service Service methods addUserToCollectionIfMissing should accept null and undefined values" duration="14"/>
+    <testCase name="User Service Service methods addUserToCollectionIfMissing should return initial array if no users is added" duration="13"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\user-management\update\user-management-update.component.spec.ts">
+    <testCase name="User Management Update Component OnInit Should load authorities and language on init" duration="35"/>
+    <testCase name="User Management Update Component save Should call update service on save for existing user" duration="48"/>
+    <testCase name="User Management Update Component save Should call create service on save for new user" duration="25"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\health\modal\health-modal.component.spec.ts">
+    <testCase name="HealthModalComponent readableValue should return stringify value" duration="37"/>
+    <testCase name="HealthModalComponent readableValue should return string value" duration="66"/>
+    <testCase name="HealthModalComponent readableValue should return storage space in an human readable unit (GB)" duration="62"/>
+    <testCase name="HealthModalComponent readableValue should return storage space in an human readable unit (MB)" duration="13"/>
+    <testCase name="HealthModalComponent readableValue should return string value" duration="22"/>
+    <testCase name="HealthModalComponent dismiss should call dismiss when dismiss modal is called" duration="15"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\health\health.component.spec.ts">
+    <testCase name="HealthComponent getBadgeClass should get badge class" duration="28"/>
+    <testCase name="HealthComponent refresh should call refresh on init" duration="38"/>
+    <testCase name="HealthComponent refresh should handle a 503 on refreshing health data" duration="23"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\shared\auth\has-any-authority.directive.spec.ts">
+    <testCase name="HasAnyAuthorityDirective tests set jhiHasAnyAuthority should show restricted content to user if user has required role" duration="65"/>
+    <testCase name="HasAnyAuthorityDirective tests set jhiHasAnyAuthority should not show restricted content to user if user has not required role" duration="38"/>
+    <testCase name="HasAnyAuthorityDirective tests change authorities should show or not show restricted content correctly if user authorities are changing" duration="26"/>
+    <testCase name="HasAnyAuthorityDirective tests ngOnDestroy should destroy authentication state subscription on component destroy" duration="18"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\metrics\metrics.component.spec.ts">
+    <testCase name="MetricsComponent refresh should call refresh on init" duration="39"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\activate\activate.component.spec.ts">
+    <testCase name="ActivateComponent calls activate.get with the key from params" duration="33"/>
+    <testCase name="ActivateComponent should set set success to true upon successful activation" duration="46"/>
+    <testCase name="ActivateComponent should set set error to true upon activation failure" duration="49"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\password-reset\finish\password-reset-finish.component.spec.ts">
+    <testCase name="PasswordResetFinishComponent should define its initial state" duration="67"/>
+    <testCase name="PasswordResetFinishComponent sets focus after the view has been initialized" duration="33"/>
+    <testCase name="PasswordResetFinishComponent should ensure the two passwords entered match" duration="23"/>
+    <testCase name="PasswordResetFinishComponent should update success to true after resetting password" duration="18"/>
+    <testCase name="PasswordResetFinishComponent should notify of generic error" duration="28"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\shared\sort\sort.directive.spec.ts">
+    <testCase name="Directive: SortDirective should update predicate, order and invoke sortChange function" duration="38"/>
+    <testCase name="Directive: SortDirective should change sort order to descending when same field is sorted again" duration="48"/>
+    <testCase name="Directive: SortDirective should change sort order to ascending when different field is sorted" duration="24"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\core\util\data-util.service.spec.ts">
+    <testCase name="Data Utils Service Test byteSize should return the bytesize of the text" duration="20"/>
+    <testCase name="Data Utils Service Test openFile should open the file in the new window" duration="34"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\settings\settings.component.spec.ts">
+    <testCase name="SettingsComponent should send the current identity upon save" duration="40"/>
+    <testCase name="SettingsComponent should notify of success upon successful save" duration="39"/>
+    <testCase name="SettingsComponent should notify of error upon failed save" duration="26"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\core\util\parse-links.service.spec.ts">
+    <testCase name="Parse links service test Parse Links Service Test should throw an error when passed an empty string" duration="170"/>
+    <testCase name="Parse links service test Parse Links Service Test should throw an error when passed without comma" duration="20"/>
+    <testCase name="Parse links service test Parse Links Service Test should throw an error when passed without semicolon" duration="18"/>
+    <testCase name="Parse links service test Parse Links Service Test should return links when headers are passed" duration="11"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\core\auth\auth-jwt.service.spec.ts">
+    <testCase name="Auth JWT Get Token should return empty token if not found in local storage nor session storage" duration="35"/>
+    <testCase name="Auth JWT Get Token should return token from session storage if local storage is empty" duration="17"/>
+    <testCase name="Auth JWT Get Token should return token from localstorage storage" duration="13"/>
+    <testCase name="Auth JWT Login should clear session storage and save in local storage when rememberMe is true" duration="27"/>
+    <testCase name="Auth JWT Login should clear local storage and save in session storage when rememberMe is false" duration="28"/>
+    <testCase name="Auth JWT Logout should clear storage" duration="35"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\layouts\profiles\page-ribbon.component.spec.ts">
+    <testCase name="Page Ribbon Component Should call profileService.getProfileInfo on init" duration="50"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\core\util\event-manager.service.spec.ts">
+    <testCase name="Event Manager tests EventWithContent should create correctly EventWithContent" duration="1"/>
+    <testCase name="Event Manager tests EventManager should not fail when nosubscriber and broadcasting" duration="55"/>
+    <testCase name="Event Manager tests EventManager should create an observable and callback when broadcasted EventWithContent" duration="12"/>
+    <testCase name="Event Manager tests EventManager should create an observable and callback when broadcasted string" duration="14"/>
+    <testCase name="Event Manager tests EventManager should subscribe to multiple events" duration="13"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\shared\alert\alert.component.spec.ts">
+    <testCase name="Alert Component Should call alertService.get on init" duration="34"/>
+    <testCase name="Alert Component Should call alertService.clear on destroy" duration="30"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\logs\logs.component.spec.ts">
+    <testCase name="LogsComponent OnInit should set all default values correctly" duration="68"/>
+    <testCase name="LogsComponent OnInit Should call load all on init" duration="26"/>
+    <testCase name="LogsComponent change log level should change log level correctly" duration="82"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\user-management\delete\user-management-delete-dialog.component.spec.ts">
+    <testCase name="User Management Delete Component confirmDelete Should call delete service on confirmDelete" duration="33"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\password\password-strength-bar\password-strength-bar.component.spec.ts">
+    <testCase name="PasswordStrengthBarComponent PasswordStrengthBarComponents should initialize with default values" duration="46"/>
+    <testCase name="PasswordStrengthBarComponent PasswordStrengthBarComponents should increase strength upon password value change" duration="55"/>
+    <testCase name="PasswordStrengthBarComponent PasswordStrengthBarComponents should change the color based on strength" duration="56"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\configuration\configuration.component.spec.ts">
+    <testCase name="ConfigurationComponent OnInit Should call load all on init" duration="46"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\user-management\detail\user-management-detail.component.spec.ts">
+    <testCase name="User Management Detail Component OnInit Should call load all on init" duration="24"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\metrics\metrics.service.spec.ts">
+    <testCase name="Logs Service Service methods should return Metrics" duration="27"/>
+    <testCase name="Logs Service Service methods should return Thread Dump" duration="26"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\logs\logs.service.spec.ts">
+    <testCase name="Logs Service Service methods should change log level" duration="76"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\register\register.service.spec.ts">
+    <testCase name="RegisterService Service Service methods should call register endpoint with correct values" duration="54"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\configuration\configuration.service.spec.ts">
+    <testCase name="Logs Service Service methods should get the config" duration="25"/>
+    <testCase name="Logs Service Service methods should get the env" duration="19"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\shared\date\format-medium-date.pipe.spec.ts">
+    <testCase name="FormatMediumDatePipe should return an empty string when receive undefined" duration="1"/>
+    <testCase name="FormatMediumDatePipe should return an empty string when receive null" duration="0"/>
+    <testCase name="FormatMediumDatePipe should format date like this D MMM YYYY" duration="10"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\shared\date\format-medium-datetime.pipe.spec.ts">
+    <testCase name="FormatMediumDatePipe should return an empty string when receive undefined" duration="2"/>
+    <testCase name="FormatMediumDatePipe should return an empty string when receive null" duration="0"/>
+    <testCase name="FormatMediumDatePipe should format date like this D MMM YYYY" duration="2"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\core\config\application-config.service.spec.ts">
+    <testCase name="ApplicationConfigService should be created" duration="26"/>
+    <testCase name="ApplicationConfigService without prefix should return correctly" duration="12"/>
+    <testCase name="ApplicationConfigService without prefix should return correctly when passing microservice" duration="8"/>
+    <testCase name="ApplicationConfigService with prefix should return correctly" duration="15"/>
+    <testCase name="ApplicationConfigService with prefix should return correctly when passing microservice" duration="9"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\health\health.service.spec.ts">
+    <testCase name="HealthService Service Service methods should call management/health endpoint with correct values" duration="14"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\activate\activate.service.spec.ts">
+    <testCase name="ActivateService Service Service methods should call api/activate endpoint with correct values" duration="15"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\password\password.service.spec.ts">
+    <testCase name="Password Service Service methods should call change-password endpoint with correct values" duration="21"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\password-reset\finish\password-reset-finish.service.spec.ts">
+    <testCase name="PasswordResetFinish Service Service methods should call reset-password/finish endpoint with correct values" duration="12"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\shared\language\translate.directive.spec.ts">
+    <testCase name="TranslateDirective Tests should change HTML" duration="31"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\core\util\operators.spec.ts">
+    <testCase name="Operators Test isPresent should remove null and undefined values" duration="1"/>
+    <testCase name="Operators Test filterNaN should return 0 for NaN" duration="0"/>
+    <testCase name="Operators Test filterNaN should return number for a number" duration="1"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\account\password-reset\init\password-reset-init.service.spec.ts">
+    <testCase name="PasswordResetInit Service Service methods should call reset-password/init endpoint with correct values" duration="12"/>
+  </file>
+  <file path="C:\Users\Nicolas\Desktop\test6\gateway\src\main\webapp\app\admin\user-management\service\user-management.service.spec.ts">
+    <testCase name="User Service Service methods should return User" duration="11"/>
+    <testCase name="User Service Service methods should return Authorities" duration="7"/>
+    <testCase name="User Service Service methods should propagate not found response" duration="9"/>
+  </file>
+</testExecutions>

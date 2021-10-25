@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Authority.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Gateway</a> &gt; <a href="index.source.html" class="el_package">com.reddot.gateway.domain</a> &gt; <span class="el_source">Authority.java</span></div><h1>Authority.java</h1><pre class="source lang-java linenums">package com.reddot.gateway.domain;
+
+import java.io.Serializable;
+import java.util.Objects;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.relational.core.mapping.Table;
+
+/**
+ * An authority (a security role) used by Spring Security.
+ */
+@Table(&quot;jhi_authority&quot;)
+<span class="fc" id="L15">public class Authority implements Serializable, Persistable&lt;String&gt; {</span>
+
+    private static final long serialVersionUID = 1L;
+
+    @NotNull
+    @Size(max = 50)
+    @Id
+    private String name;
+
+    public String getName() {
+<span class="fc" id="L25">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="fc" id="L29">        this.name = name;</span>
+<span class="fc" id="L30">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        if (this == o) {</span>
+<span class="nc" id="L35">            return true;</span>
+        }
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (!(o instanceof Authority)) {</span>
+<span class="nc" id="L38">            return false;</span>
+        }
+<span class="nc" id="L40">        return Objects.equals(name, ((Authority) o).name);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L45">        return Objects.hashCode(name);</span>
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+<span class="nc" id="L51">        return &quot;Authority{&quot; +</span>
+            &quot;name='&quot; + name + '\'' +
+            &quot;}&quot;;
+    }
+
+    @Override
+    public String getId() {
+<span class="nc" id="L58">        return name;</span>
+    }
+
+    @Override
+    public boolean isNew() {
+<span class="nc" id="L63">        return true;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
