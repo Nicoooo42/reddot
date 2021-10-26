@@ -1,8 +1,9 @@
 package com.reddot.core.service;
 
-import com.reddot.core.service.dto.PostDTO;
 import java.util.List;
 import java.util.Optional;
+
+import com.reddot.core.service.dto.PostDTO;
 
 /**
  * Service Interface for managing {@link com.reddot.core.domain.Post}.

@@ -2,8 +2,9 @@ package com.reddot.core.service.dto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.reddot.core.web.rest.TestUtil;
 import org.junit.jupiter.api.Test;
+
+import com.reddot.core.web.rest.TestUtil;
 
 class PostDTOTest {
 

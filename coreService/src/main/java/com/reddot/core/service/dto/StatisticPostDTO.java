@@ -1,7 +1,6 @@
 package com.reddot.core.service.dto;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A DTO for the {@link com.reddot.core.domain.Board} entity.

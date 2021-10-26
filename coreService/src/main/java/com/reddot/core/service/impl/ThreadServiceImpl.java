@@ -1,18 +1,20 @@
 package com.reddot.core.service.impl;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.reddot.core.domain.Thread;
 import com.reddot.core.repository.ThreadRepository;
 import com.reddot.core.service.ThreadService;
 import com.reddot.core.service.dto.ThreadDTO;
 import com.reddot.core.service.mapper.ThreadMapper;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Service Implementation for managing {@link Thread}.

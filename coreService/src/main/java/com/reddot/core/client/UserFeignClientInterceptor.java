@@ -1,9 +1,11 @@
 package com.reddot.core.client;
 
+import org.springframework.stereotype.Component;
+
 import com.reddot.core.security.SecurityUtils;
+
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import org.springframework.stereotype.Component;
 
 @Component
 public class UserFeignClientInterceptor implements RequestInterceptor {

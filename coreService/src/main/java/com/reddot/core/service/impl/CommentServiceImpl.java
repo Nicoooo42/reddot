@@ -1,5 +1,15 @@
 package com.reddot.core.service.impl;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.reddot.core.domain.Comment;
 import com.reddot.core.repository.CommentRepository;
 import com.reddot.core.service.CommentService;
@@ -7,15 +17,6 @@ import com.reddot.core.service.dto.CommentDTO;
 import com.reddot.core.service.mapper.CommentMapper;
 
 import io.undertow.util.BadRequestException;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Service Implementation for managing {@link Comment}.

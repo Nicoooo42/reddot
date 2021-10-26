@@ -2,10 +2,8 @@ package com.reddot.core.security.jwt;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.reddot.core.security.AuthoritiesConstants;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
 import java.util.Collections;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
@@ -16,6 +14,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.util.ReflectionTestUtils;
+
+import com.reddot.core.security.AuthoritiesConstants;
+
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import tech.jhipster.config.JHipsterProperties;
 
 class JWTFilterTest {

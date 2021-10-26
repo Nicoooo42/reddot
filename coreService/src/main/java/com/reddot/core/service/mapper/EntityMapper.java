@@ -1,6 +1,7 @@
 package com.reddot.core.service.mapper;
 
 import java.util.List;
+
 import org.mapstruct.BeanMapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;

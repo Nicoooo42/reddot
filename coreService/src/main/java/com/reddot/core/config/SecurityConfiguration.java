@@ -1,18 +1,18 @@
 package com.reddot.core.config;
 
-import com.reddot.core.security.*;
-import com.reddot.core.security.jwt.*;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
+
+import com.reddot.core.security.AuthoritiesConstants;
+import com.reddot.core.security.jwt.JWTConfigurer;
+import com.reddot.core.security.jwt.TokenProvider;
+
 import tech.jhipster.config.JHipsterProperties;
 
 @EnableWebSecurity

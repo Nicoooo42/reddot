@@ -1,11 +1,11 @@
 package com.reddot.core.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.reddot.core.service.dto.CommentDTO;
 
 import io.undertow.util.BadRequestException;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * Service Interface for managing {@link com.reddot.core.domain.Comment}.

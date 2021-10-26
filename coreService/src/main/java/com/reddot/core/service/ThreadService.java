@@ -1,8 +1,9 @@
 package com.reddot.core.service;
 
-import com.reddot.core.service.dto.ThreadDTO;
 import java.util.List;
 import java.util.Optional;
+
+import com.reddot.core.service.dto.ThreadDTO;
 
 /**
  * Service Interface for managing {@link com.reddot.core.domain.Thread}.
