@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-10-26T01:11:31+0200",
+    date = "2021-10-26T02:19:34+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.12 (Eclipse Foundation)"
 )
 @Component
@@ -29,6 +29,7 @@ public class PostMapperImpl implements PostMapper {
 
         post.setId( dto.getId() );
         post.setName( dto.getName() );
+        post.setUserName( dto.getUserName() );
         post.setContent( dto.getContent() );
         post.thread( threadMapper.toEntity( dto.getThread() ) );
 
@@ -75,6 +76,9 @@ public class PostMapperImpl implements PostMapper {
         if ( dto.getName() != null ) {
             entity.setName( dto.getName() );
         }
+        if ( dto.getUserName() != null ) {
+            entity.setUserName( dto.getUserName() );
+        }
         if ( dto.getContent() != null ) {
             entity.setContent( dto.getContent() );
         }
@@ -95,6 +99,7 @@ public class PostMapperImpl implements PostMapper {
         postDTO.setId( s.getId() );
         postDTO.setName( s.getName() );
         postDTO.setContent( s.getContent() );
+        postDTO.setUserName( s.getUserName() );
 
         return postDTO;
     }

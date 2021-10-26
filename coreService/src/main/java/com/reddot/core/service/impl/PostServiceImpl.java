@@ -74,4 +74,10 @@ public class PostServiceImpl implements PostService {
         log.debug("Request to delete Post : {}", id);
         postRepository.deleteById(id);
     }
+    
+    @Override
+    public List<PostDTO> findByUserName(String login) {
+        log.debug("Request to find Posts by login : {}", login);
+        return postRepository.findByUserName(login).stream().map(postMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+    }
 }

@@ -50,8 +50,8 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://localhost:5432/coreService
-    username: coreService
-    password:
+    username: postgres
+    password: azerty
     hikari:
       poolName: Hikari
       auto-commit: false

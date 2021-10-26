@@ -29,6 +29,9 @@ public class Post implements Serializable {
 
     @Column(name = "content")
     private String content;
+    
+    @Column(name = "user_name")
+    private String userName;
 
     @OneToMany(mappedBy = "post")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -65,6 +68,19 @@ public class Post implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getUserName() {
+        return this.userName;
+    }
+
+    public Post UserName(String userName) {
+        this.setUserName(userName);
+        return this;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getContent() {

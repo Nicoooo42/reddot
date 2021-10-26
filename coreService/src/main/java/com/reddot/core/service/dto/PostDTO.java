@@ -13,6 +13,8 @@ public class PostDTO implements Serializable {
     private String name;
 
     private String content;
+    
+    private String userName;
 
     private ThreadDTO thread;
 
@@ -39,8 +41,16 @@ public class PostDTO implements Serializable {
     public void setContent(String content) {
         this.content = content;
     }
+    
+    public String getUserName() {
+		return userName;
+	}
 
-    public ThreadDTO getThread() {
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public ThreadDTO getThread() {
         return thread;
     }
 

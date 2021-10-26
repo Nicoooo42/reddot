@@ -1,6 +1,9 @@
 package com.reddot.core.repository;
 
 import com.reddot.core.domain.Post;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -9,4 +12,6 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {}
+public interface PostRepository extends JpaRepository<Post, Long> {
+	List<Post> findByUserName(String userName);
+}

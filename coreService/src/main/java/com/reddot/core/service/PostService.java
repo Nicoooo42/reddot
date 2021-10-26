@@ -45,4 +45,11 @@ public interface PostService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    /**
+     * Find by UserName
+     *
+     * @param login
+     */
+	List<PostDTO> findByUserName(String login);
 }

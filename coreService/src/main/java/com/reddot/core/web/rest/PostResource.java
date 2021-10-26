@@ -61,22 +61,25 @@ public class PostResource {
      * @throws JsonProcessingException 
      */
     @PostMapping("/posts")
-    public ResponseEntity<PostDTO> createPost(@RequestBody PostDTO postDTO) throws URISyntaxException, JsonProcessingException {
+    public ResponseEntity<PostDTO> createPost(@RequestBody PostDTO postDTO) throws URISyntaxException {
         log.debug("REST request to save Post : {}", postDTO);
         if (postDTO.getId() != null) {
             throw new BadRequestAlertException("A new post cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        PostDTO result = postService.save(postDTO);
         
-        ObjectMapper mapper = new ObjectMapper();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String login = authentication.getName();
+        
+        postDTO.setUserName(login);
+        PostDTO result = postService.save(postDTO);
 
     	try {
+            ObjectMapper mapper = new ObjectMapper();
             StatisticPostDTO stats = new StatisticPostDTO();
             
             Calendar cal = Calendar.getInstance();
             
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            stats.setUser(authentication.getName());
+            stats.setUser(login);
             
             stats.setYear(cal.get(Calendar.YEAR));
             stats.setMonth(cal.get(Calendar.MONTH));
@@ -173,6 +176,18 @@ public class PostResource {
     public List<PostDTO> getAllPosts() {
         log.debug("REST request to get all Posts");
         return postService.findAll();
+    }
+    
+    
+    /**
+     * {@code GET  /posts} : get all the posts by UserName.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of posts in body.
+     */
+    @GetMapping("/posts/username/{login}")
+    public List<PostDTO> getAllPosts(@PathVariable String login) {
+        log.debug("REST request to get all Posts by login");
+        return postService.findByUserName(login);
     }
 
     /**
